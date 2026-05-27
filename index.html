@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wearable AI Accessibility Scoping Review</title>
+  <meta name="description" content="A scoping review project mapping health, neurodiversity, HCI, XR, and wearable AI accessibility into design principles.">
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #5c6675;
+      --line: #d8dee8;
+      --soft: #f5f7fa;
+      --accent: #0f6b68;
+      --accent-2: #8f3d56;
+      --warm: #f6efe7;
+      --blue: #e9f2f7;
+      --green: #e9f4ef;
+      --violet: #f1edf7;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      line-height: 1.62;
+      letter-spacing: 0;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      background: #ffffff;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 64px;
+      font-size: 0.95rem;
+    }
+
+    .brand {
+      font-weight: 720;
+      color: var(--ink);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .hero {
+      padding: 58px 0 42px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(233, 242, 247, 0.9), rgba(246, 239, 231, 0.88)),
+        #f7f8fa;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+      gap: 34px;
+      align-items: center;
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      max-width: 880px;
+      font-size: clamp(2.1rem, 5vw, 4.4rem);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      margin: 0 0 22px;
+      color: #394657;
+      font-size: 1.13rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid var(--accent);
+      color: #ffffff;
+      background: var(--accent);
+      border-radius: 6px;
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    .button.secondary {
+      color: var(--accent);
+      background: #ffffff;
+    }
+
+    .loop {
+      background: rgba(255,255,255,0.8);
+      border: 1px solid rgba(23,32,42,0.12);
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .loop-title {
+      margin: 0 0 12px;
+      font-weight: 720;
+    }
+
+    .loop-track {
+      display: grid;
+      gap: 8px;
+    }
+
+    .loop-node {
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #ffffff;
+      font-weight: 650;
+    }
+
+    .loop-node small {
+      display: block;
+      color: var(--muted);
+      font-weight: 480;
+    }
+
+    main {
+      padding: 26px 0 54px;
+    }
+
+    section {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 20px 0 8px;
+      font-size: 1.08rem;
+      line-height: 1.3;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 8px 0;
+    }
+
+    .lede {
+      max-width: 860px;
+      color: #384557;
+      font-size: 1.05rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 24px;
+    }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(150px, 1fr));
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .principle {
+      min-height: 132px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    .principle:nth-child(3n+1) { background: var(--blue); }
+    .principle:nth-child(3n+2) { background: var(--green); }
+    .principle:nth-child(3n) { background: var(--warm); }
+
+    .principle strong {
+      display: block;
+      margin-bottom: 6px;
+      line-height: 1.25;
+    }
+
+    .principle span {
+      color: #344254;
+      font-size: 0.95rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 4px;
+      font-size: 0.94rem;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--soft);
+    }
+
+    ul {
+      margin: 8px 0 0 20px;
+      padding: 0;
+    }
+
+    li {
+      margin: 4px 0;
+    }
+
+    .keyword-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .keyword-block {
+      border-left: 4px solid var(--accent-2);
+      padding: 8px 12px;
+      background: var(--soft);
+      min-height: 126px;
+    }
+
+    .keyword-block strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    footer {
+      padding: 24px 0 36px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid,
+      .two-col,
+      .keyword-grid {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+
+      .hero {
+        padding-top: 36px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav aria-label="Primary navigation">
+        <div class="brand">Wearable AI Accessibility Review</div>
+        <div class="nav-links">
+          <a href="#framework">Framework</a>
+          <a href="#translation">Translation Map</a>
+          <a href="#keywords">Keywords</a>
+          <a href="meeting_brief.pdf">PDF</a>
+          <a href="meeting_brief.html">Full Brief</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>Cognitive Accessibility for Wearable Intelligence</h1>
+        <p class="subtitle">A scoping review project mapping neurodiversity, health-based support strategies, HCI accessibility, XR, and human-AI interaction into design principles for wearable AI.</p>
+        <p>核心目标：把医学 / 康复 / 神经多样性领域中关于认知、感官、运动、情绪与环境支持的方法，系统映射到 Wearable AI / UI/UX Accessibility 的设计原则中。</p>
+        <div class="actions">
+          <a class="button" href="meeting_brief.pdf">Download PDF</a>
+          <a class="button secondary" href="meeting_brief.html">Read Full Brief</a>
+          <a class="button secondary" href="meeting_brief.md">Markdown Source</a>
+        </div>
+      </div>
+      <div class="loop" aria-label="CAWI interaction loop">
+        <p class="loop-title">CAWI Loop</p>
+        <div class="loop-track">
+          <div class="loop-node">Environment <small>lighting, noise, public context</small></div>
+          <div class="loop-node">Perception <small>vision, hearing, sensory load</small></div>
+          <div class="loop-node">Cognition <small>attention, memory, executive function</small></div>
+          <div class="loop-node">Action <small>gesture, gaze, voice, posture, fatigue</small></div>
+          <div class="loop-node">AI Inference & Adaptation <small>personalization, transparency, accountability</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section id="purpose">
+      <h2>What This Review Maps</h2>
+      <div class="two-col">
+        <div>
+          <h3>Health and Neurodiversity</h3>
+          <p>Identify cognitive, sensory, motor, perceptual, emotional, and environmental access needs, plus support strategies from clinical, rehabilitation, occupational therapy, education, digital health, and assistive technology literature.</p>
+        </div>
+        <div>
+          <h3>HCI, XR, and Wearable AI</h3>
+          <p>Translate those needs into interaction techniques, design implications, evaluation criteria, and accessibility principles for smart glasses, wearable sensors, AR/XR, gaze-aware systems, and adaptive AI assistants.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="framework">
+      <h2>CAWI Framework</h2>
+      <p class="lede">CAWI reframes accessibility as a property of the full embodied AI loop, where cognition, perception, bodily action, real-world context, and AI inference all become part of interaction.</p>
+      <div class="principles">
+        <div class="principle"><strong>Contextual Perceivability</strong><span>Information remains perceivable across changing light, noise, movement, crowding, and physical context.</span></div>
+        <div class="principle"><strong>Sensory Modulation</strong><span>Users can regulate channel, intensity, timing, color, sound, vibration, motion, and frequency.</span></div>
+        <div class="principle"><strong>Cognitive Legibility</strong><span>Prompts, task state, AI assistance, and recovery paths are understandable and manageable.</span></div>
+        <div class="principle"><strong>Body-Capability-Aware Operability</strong><span>Interaction respects fatigue, posture, tremor, reach, balance, and alternative input needs.</span></div>
+        <div class="principle"><strong>Attention Respect</strong><span>Systems avoid unsafe, intrusive, or cognitively harmful interruptions.</span></div>
+        <div class="principle"><strong>Adaptive Transparency</strong><span>Adaptations are visible, adjustable, reversible, and under user control.</span></div>
+        <div class="principle"><strong>Inference Accountability</strong><span>AI inferences about cognition, attention, fatigue, or intent are correctable and non-pathologizing.</span></div>
+      </div>
+    </section>
+
+    <section id="translation">
+      <h2>Health-to-HCI Translation Map</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Health / Rehab Finding</th>
+            <th>Support Strategy</th>
+            <th>HCI Translation</th>
+            <th>Wearable AI Principle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Sensory overload</td><td>Sensory modulation, predictable feedback</td><td>Adjustable audio / visual / haptic intensity</td><td>Sensory Modulation</td></tr>
+          <tr><td>ADHD attention difficulty</td><td>Task chunking, reminders, external structure</td><td>Context-aware prompts and interruption control</td><td>Attention Respect</td></tr>
+          <tr><td>Executive function difficulty</td><td>Step-by-step guidance, planning aids</td><td>Cognitive scaffolding and visible task state</td><td>Cognitive Legibility</td></tr>
+          <tr><td>Low vision</td><td>Contrast, magnification, audio support</td><td>Adaptive overlays, spatial audio, object recognition</td><td>Contextual Perceivability</td></tr>
+          <tr><td>Motor fatigue</td><td>Reduced repetition, rest breaks</td><td>Low-effort gestures and alternative input modes</td><td>Body-Capability-Aware Operability</td></tr>
+          <tr><td>AI misreads user state</td><td>Contextual assessment, human interpretation</td><td>Correctable inference and user override</td><td>Inference Accountability</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="questions">
+      <h2>Research Questions</h2>
+      <ul>
+        <li>What cognitive, sensory, motor, perceptual, emotional, and environmental access needs are relevant to wearable intelligence?</li>
+        <li>What intervention, accommodation, adaptation, or support strategies have been proposed for these needs?</li>
+        <li>How have HCI, XR, wearable computing, and accessible computing translated these needs into design principles or system features?</li>
+        <li>What new accessibility principles are needed when AI systems sense, infer, and adapt to users' cognition, perception, bodily action, and real-world context?</li>
+      </ul>
+    </section>
+
+    <section id="keywords">
+      <h2>Search Directions and Keywords</h2>
+      <div class="keyword-grid">
+        <div class="keyword-block"><strong>Neurodiversity</strong>autism, autistic, ADHD, dyslexia, dyspraxia, sensory processing, executive function</div>
+        <div class="keyword-block"><strong>Sensory Support</strong>sensory overload, sensory modulation, sound sensitivity, light sensitivity, haptic sensitivity, flicker, frequency</div>
+        <div class="keyword-block"><strong>Wearable Systems</strong>wearable AI, smart glasses, AR glasses, head-mounted display, body-worn sensors, eye tracking</div>
+        <div class="keyword-block"><strong>Cognitive Support</strong>attention, memory, cognitive load, mental workload, task sequencing, cognitive scaffolding</div>
+        <div class="keyword-block"><strong>Human-AI Interaction</strong>adaptive AI, personalization, transparency, user control, explainability, misclassification</div>
+        <div class="keyword-block"><strong>Accessibility</strong>cognitive accessibility, XR accessibility, inclusive design, accessible computing, assistive technology</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>Project materials: <a href="meeting_brief.pdf">PDF brief</a>, <a href="meeting_brief.html">full webpage brief</a>, and <a href="meeting_brief.md">Markdown source</a>.</p>
+    </div>
+  </footer>
+</body>
+</html>

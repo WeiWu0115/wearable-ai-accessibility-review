@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>Wearable AI Accessibility Scoping Review 会议版研究地图</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+    color: #202124;
+    line-height: 1.58;
+    font-size: 11.2pt;
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+  }
+  h1, h2, h3 { line-height: 1.25; color: #102033; page-break-after: avoid; }
+  h1 { font-size: 24pt; margin: 0 0 18px; border-bottom: 3px solid #2b6cb0; padding-bottom: 10px; }
+  h2 { font-size: 17pt; margin: 30px 0 10px; border-bottom: 1px solid #d5dde8; padding-bottom: 5px; }
+  h3 { font-size: 13.5pt; margin: 20px 0 8px; }
+  p { margin: 7px 0; }
+  blockquote { margin: 12px 0; padding: 9px 14px; border-left: 4px solid #2b6cb0; background: #f5f8fc; color: #26384d; }
+  blockquote p { margin: 0; }
+  ul, ol { margin: 7px 0 10px 22px; padding: 0; }
+  li { margin: 3px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 18px; font-size: 9.4pt; page-break-inside: auto; }
+  tr { page-break-inside: avoid; page-break-after: auto; }
+  th, td { border: 1px solid #cfd8e3; padding: 6px 7px; vertical-align: top; }
+  th { background: #edf4fb; color: #102033; font-weight: 700; }
+  code { font-family: "SFMono-Regular", Consolas, monospace; font-size: 0.9em; background: #f3f4f6; padding: 1px 4px; border-radius: 3px; }
+  pre { white-space: pre-wrap; overflow-wrap: anywhere; background: #f6f8fa; border: 1px solid #d8dee4; padding: 10px 12px; border-radius: 6px; font-size: 8.8pt; line-height: 1.42; page-break-inside: avoid; }
+  pre code { background: transparent; padding: 0; border-radius: 0; }
+  hr { border: none; border-top: 1px solid #d8dee4; margin: 18px 0; }
+</style>
+</head>
+<body>
+<h1>Wearable AI Accessibility Scoping Review 会议版研究地图</h1>
+<blockquote>
+<p>用途：这份文件用于和医学 / 健康领域合作者、HCI / CS 合作者快速对齐项目范围、研究问题、检索关键词、数据提取方向和下一步分工。  </p>
+<p>项目核心：把健康、康复、神经多样性领域中关于认知、感官、运动、情绪与环境支持的方法，系统映射到 Wearable AI / HCI / UI/UX Accessibility 的设计原则中，最终提出面向 Wearable Intelligence 的新 accessibility principles。</p>
+</blockquote>
+<hr>
+<h2>1. 一句话项目定位</h2>
+<p>当 AI 从屏幕里的软件进入眼镜、耳机、手表、身体传感器、AR/XR 和日常环境时，accessibility 不再只是“让界面可读、可点击、可理解”，而是要让不同认知、感官、运动和神经特征的人，能够安全、可控、低负担地参与一个由身体、环境、AI 推理和反馈组成的交互循环。</p>
+<p><strong>建议英文核心表述：</strong></p>
+<blockquote>
+<p>Wearable intelligence requires a new accessibility paradigm because it makes cognition, perception, bodily action, environmental context, and AI inference part of the interface itself.</p>
+</blockquote>
+<hr>
+<h2>2. 我们到底要做什么</h2>
+<p>这是一个 <strong>scoping review</strong>，不是临床疗效系统综述，也不是单纯的 HCI guideline paper。</p>
+<p>我们要 map 三件事：</p>
+<ol>
+<li><strong>医学 / 健康 / 康复 / 神经多样性领域</strong>  </li>
+</ol>
+<p>   不同人群有哪些认知、感官、运动、情绪、环境相关 access needs？这些 needs 在临床、康复、教育、occupational therapy、assistive technology 中通常怎么被支持？</p>
+<ol>
+<li><strong>CS / HCI / Accessibility / XR / Wearable Computing 领域</strong>  </li>
+</ol>
+<p>   这些 needs 在人机交互里已经被怎么翻译成设计方法、系统功能、交互技术或 evaluation criteria？</p>
+<ol>
+<li><strong>Wearable AI 新原则</strong>  </li>
+</ol>
+<p>   当系统能感知 gaze、motion、physiology、location、context，并用 AI 推断注意力、疲劳、压力、意图或认知状态时，传统 UI/UX accessibility 需要被怎样扩展？</p>
+<hr>
+<h2>3. 最终想产出的东西</h2>
+<h3>3.1 Access Need Taxonomy</h3>
+<p>一套跨医学和 HCI 的 access needs 分类，不只按诊断分类，而是按交互障碍分类：</p>
+<ul>
+<li>cognitive needs：attention, memory, executive function, cognitive load, comprehension, task sequencing</li>
+<li>sensory needs：sound sensitivity, light sensitivity, haptic sensitivity, sensory overload, flicker, motion sensitivity</li>
+<li>motor needs：gesture difficulty, fatigue, tremor, posture, reach, balance, repetitive movement burden</li>
+<li>perceptual needs：low vision, blindness, hearing differences, spatial awareness, object recognition</li>
+<li>emotional / social needs：anxiety, uncertainty, overwhelm, stigma, social discomfort, predictability</li>
+<li>environmental needs：noise, lighting, crowding, public space, outdoor context, movement, safety</li>
+<li>AI-mediated needs：privacy, transparency, misclassification, user control, override, autonomy, non-pathologizing inference</li>
+</ul>
+<h3>3.2 Health-to-HCI Translation Map</h3>
+<p>把医学 / 康复领域的方法翻译成人机交互设计语言。</p>
+<table><thead><tr><th>医学 / 健康发现</th><th>常见支持方式</th><th>HCI / CS 翻译</th><th>Wearable AI 设计原则</th></tr></thead><tbody>
+<tr><td>sensory overload</td><td>sensory modulation, predictable feedback</td><td>adjustable audio / visual / haptic intensity</td><td>Sensory Modulation</td></tr>
+<tr><td>ADHD attention difficulty</td><td>external structure, reminders, task chunking</td><td>context-aware prompts, interruption control</td><td>Attention Respect</td></tr>
+<tr><td>executive function difficulty</td><td>step-by-step guidance, planning aid</td><td>cognitive scaffolding, visible task state</td><td>Cognitive Legibility</td></tr>
+<tr><td>autism sensory sensitivity</td><td>environmental adjustment, sensory profile</td><td>personalized feedback profiles</td><td>Sensory Modulation</td></tr>
+<tr><td>low vision</td><td>contrast, magnification, audio support</td><td>adaptive overlays, spatial audio, object recognition</td><td>Contextual Perceivability</td></tr>
+<tr><td>hearing differences</td><td>captions, visual substitution</td><td>directional captions, haptic alerts</td><td>Multimodal Substitution</td></tr>
+<tr><td>motor fatigue</td><td>reduced repetition, rest breaks</td><td>low-effort gestures, alternative input modes</td><td>Body-Capability-Aware Operability</td></tr>
+<tr><td>anxiety / uncertainty</td><td>predictability, control, preparation</td><td>transparent AI feedback, preview before action</td><td>Adaptive Transparency</td></tr>
+<tr><td>AI misreads user state</td><td>clinical context, human interpretation</td><td>correctable inference, user override</td><td>Inference Accountability</td></tr>
+</tbody></table>
+<h3>3.3 CAWI Framework</h3>
+<p>暂定框架名：</p>
+<p><strong>CAWI: Cognitive Accessibility for Wearable Intelligence</strong></p>
+<p>初步原则：</p>
+<ol>
+<li><strong>Contextual Perceivability</strong>  </li>
+</ol>
+<p>   信息在真实环境变化中仍然可感知，例如光线、噪音、移动、遮挡、公共空间。</p>
+<ol>
+<li><strong>Sensory Modulation</strong>  </li>
+</ol>
+<p>   用户可以调节声音、颜色、亮度、震动、动画、频次、强度和反馈通道。</p>
+<ol>
+<li><strong>Cognitive Legibility</strong>  </li>
+</ol>
+<p>   AI 提示、任务状态、下一步动作和错误恢复路径必须认知上可理解、可承受。</p>
+<ol>
+<li><strong>Body-Capability-Aware Operability</strong>  </li>
+</ol>
+<p>   交互不能默认用户有稳定的手、眼、颈部、姿态、平衡或长时间动作能力。</p>
+<ol>
+<li><strong>Attention Respect</strong>  </li>
+</ol>
+<p>   系统不能随意抢占注意力；提示、提醒、警报需要考虑时机、安全、频率和认知负担。</p>
+<ol>
+<li><strong>Adaptive Transparency</strong>  </li>
+</ol>
+<p>   系统自适应了什么、为什么适应、如何关闭或修改，用户应该知道并能控制。</p>
+<ol>
+<li><strong>Inference Accountability</strong>  </li>
+</ol>
+<p>   如果 AI 推断用户的注意力、疲劳、压力、情绪、意图或能力，就必须允许误判、纠正、退出，并避免把神经多样性行为病理化。</p>
+<hr>
+<h2>4. 推荐研究问题</h2>
+<h3>RQ1: Health / Neurodiversity Access Needs</h3>
+<p>健康、康复、神经多样性和 assistive technology 文献中，哪些 cognitive, sensory, motor, perceptual, emotional, environmental access needs 与 wearable intelligence 相关？</p>
+<h3>RQ2: Support Strategies</h3>
+<p>针对这些 needs，医学、康复、教育、occupational therapy、digital health 和 assistive technology 文献提出过哪些 intervention, accommodation, adaptation 或 support strategies？</p>
+<h3>RQ3: HCI / CS Translation</h3>
+<p>HCI, XR, wearable computing, accessible computing 和 human-AI interaction 文献如何把这些 needs 转化为 design principles, interaction techniques, guidelines 或 system features？</p>
+<h3>RQ4: New Principles for Wearable AI</h3>
+<p>当 wearable AI 可以感知环境、身体、gaze、physiology，并推断 cognition / attention / intent 时，UI/UX accessibility 需要新增或改写哪些原则？</p>
+<hr>
+<h2>5. PCC 范围定义</h2>
+<h3>Population / Participants</h3>
+<p>不要只按 diagnosis 组织最终结果，但检索时可以使用 diagnosis 作为入口。</p>
+<p>重点包括：</p>
+<ul>
+<li>autistic people / autism spectrum</li>
+<li>ADHD</li>
+<li>dyslexia</li>
+<li>dyspraxia / developmental coordination disorder</li>
+<li>sensory processing differences</li>
+<li>executive function differences</li>
+<li>cognitive impairment</li>
+<li>anxiety / stress-sensitive users</li>
+<li>low vision / blindness</li>
+<li>hearing differences</li>
+<li>photosensitivity</li>
+<li>vestibular sensitivity / motion sensitivity</li>
+<li>aging users</li>
+<li>motor fatigue</li>
+<li>tremor</li>
+<li>upper-limb limitation</li>
+<li>mobility constraints</li>
+<li>neurodivergent users broadly</li>
+<li>disabled users with cognitive, sensory, motor, perceptual, or wearable access needs</li>
+</ul>
+<h3>Concept</h3>
+<p>核心概念：</p>
+<p><strong>cognitive accessibility and neurodiverse access strategies for wearable intelligence</strong></p>
+<p>子概念：</p>
+<ul>
+<li>cognitive accessibility</li>
+<li>sensory accessibility</li>
+<li>motor accessibility</li>
+<li>perceptual accessibility</li>
+<li>environmental accessibility</li>
+<li>adaptive / AI-mediated accessibility</li>
+<li>ethical accessibility</li>
+</ul>
+<h3>Context</h3>
+<p>重点场景：</p>
+<ul>
+<li>wearable AI / wearable intelligence</li>
+<li>smart glasses / AR glasses</li>
+<li>head-mounted displays</li>
+<li>XR / AR / VR / MR</li>
+<li>wearable sensors</li>
+<li>eye-tracking wearables</li>
+<li>physiological sensing</li>
+<li>context-aware AI</li>
+<li>mobile assistive systems</li>
+<li>digital health systems with embodied or wearable relevance</li>
+<li>assistive technology relevant to everyday interaction</li>
+</ul>
+<hr>
+<h2>6. 研究方向地图</h2>
+<h3>Direction A: Neurodiversity and Sensory Regulation</h3>
+<p>要问：</p>
+<ul>
+<li>neurodivergent users 在声音、颜色、光线、震动、动画、频次、突发提示上有哪些 sensitivity？</li>
+<li>哪些调节方式被医学、OT、教育或 assistive technology 使用？</li>
+<li>wearable AI 如何避免 sensory overload？</li>
+</ul>
+<p>关键词：</p>
+<ul>
+<li>neurodiversity, neurodivergent, autism, autistic, ADHD</li>
+<li>sensory processing, sensory sensitivity, sensory overload</li>
+<li>sensory modulation, sensory regulation, sensory profile</li>
+<li>sound sensitivity, light sensitivity, tactile sensitivity, haptic sensitivity</li>
+<li>visual clutter, flicker, flashing, motion sensitivity</li>
+<li>assistive technology, digital health, wearable, mobile intervention</li>
+</ul>
+<h3>Direction B: Attention, Executive Function, and Cognitive Scaffolding</h3>
+<p>要问：</p>
+<ul>
+<li>ADHD、autism、cognitive impairment、aging 等人群在 attention, memory, sequencing, planning 上有哪些支持需求？</li>
+<li>reminder、task chunking、step-by-step prompt、external structure 怎么转成 wearable AI 提示？</li>
+<li>AI assistant 的提醒频率和时机如何避免增加 cognitive load？</li>
+</ul>
+<p>关键词：</p>
+<ul>
+<li>attention, executive function, working memory, memory support</li>
+<li>cognitive load, mental workload, confusion, comprehension</li>
+<li>task sequencing, task management, planning support</li>
+<li>cognitive scaffolding, prompting, reminders, external structure</li>
+<li>ADHD, autism, cognitive impairment, mild cognitive impairment, aging</li>
+<li>context-aware prompts, adaptive assistance, interruption management</li>
+</ul>
+<h3>Direction C: Motor Accessibility and Fatigue</h3>
+<p>要问：</p>
+<ul>
+<li>wearable / AR / smart glasses 是否默认了过高的 gesture ability？</li>
+<li>手势、头部动作、眼动、长时间佩戴是否造成 fatigue？</li>
+<li>PT / OT 中的 fatigue management、reduced repetition、alternative movement 怎么翻译成 interaction design？</li>
+</ul>
+<p>关键词：</p>
+<ul>
+<li>motor accessibility, motor impairment, motor fatigue</li>
+<li>gesture interaction, gesture fatigue, mid-air gestures</li>
+<li>upper-limb fatigue, reach, tremor, posture, balance</li>
+<li>alternative input, switch access, voice input, gaze input</li>
+<li>wearable interaction, smart glasses, AR interaction</li>
+<li>fatigue management, rest breaks, occupational therapy</li>
+</ul>
+<h3>Direction D: Perceptual and Environmental Accessibility</h3>
+<p>要问：</p>
+<ul>
+<li>真实环境中的光线、噪音、拥挤、移动和空间复杂度如何影响 wearable AI？</li>
+<li>low vision / blindness / hearing differences 的支持方式如何转成 spatial audio、caption、object recognition、AR overlay？</li>
+<li>环境感知 AI 是否会制造新的误导或依赖？</li>
+</ul>
+<p>关键词：</p>
+<ul>
+<li>low vision, blindness, visual impairment</li>
+<li>deaf, hard of hearing, hearing impairment</li>
+<li>spatial awareness, object recognition, navigation support</li>
+<li>environmental awareness, environmental adaptation</li>
+<li>spatial audio, captions, directional captions, haptic alerts</li>
+<li>outdoor lighting, noise, public space, crowding</li>
+<li>AR overlay, smart glasses, assistive wearable</li>
+</ul>
+<h3>Direction E: AI Inference, Personalization, and Ethics</h3>
+<p>要问：</p>
+<ul>
+<li>wearable AI 如何推断 attention、fatigue、stress、intent、cognitive load？</li>
+<li>gaze、heart rate、skin conductance、EEG、pupil dilation 等信号是否可靠？</li>
+<li>如果 AI 误判 neurodivergent 行为，会不会造成 stigma、loss of autonomy 或 harmful adaptation？</li>
+</ul>
+<p>关键词：</p>
+<ul>
+<li>human-AI interaction, AI accessibility, adaptive AI</li>
+<li>cognitive state inference, attention inference, intent recognition</li>
+<li>physiological sensing, biosignals, heart rate, skin conductance</li>
+<li>eye tracking, gaze tracking, pupil dilation</li>
+<li>personalization, adaptive interface, context-aware AI</li>
+<li>explainability, transparency, user control, override</li>
+<li>privacy, consent, fairness, misclassification, autonomy</li>
+<li>non-pathologizing design, disability justice, neurodiversity</li>
+</ul>
+<h3>Direction F: Existing Accessibility Principles and Their Limits</h3>
+<p>要问：</p>
+<ul>
+<li>WCAG / mobile accessibility / inclusive design 已经提供了哪些原则？</li>
+<li>哪些原则可以继承，哪些必须转化？</li>
+<li>screen-based accessibility 到 wearable intelligence 的核心断裂在哪里？</li>
+</ul>
+<p>关键词：</p>
+<ul>
+<li>web accessibility, WCAG, mobile accessibility</li>
+<li>cognitive accessibility, digital accessibility</li>
+<li>inclusive design, universal design, accessible computing</li>
+<li>XR accessibility, AR accessibility, VR accessibility</li>
+<li>accessibility guideline, framework, taxonomy, design principle</li>
+<li>wearable accessibility, embodied interaction, human-centered AI</li>
+</ul>
+<hr>
+<h2>7. 检索策略：建议分层搜索</h2>
+<p>不要一开始用一个超长 search string。建议按层检索，每层负责一个文献区域。</p>
+<h3>Layer 1: Health / Neurodiversity / Support Needs</h3>
+<pre><code>(neurodiversity OR neurodivergent OR autism OR autistic OR ADHD OR dyslexia OR dyspraxia OR "developmental coordination disorder" OR "cognitive impairment" OR "sensory processing" OR "sensory sensitivity" OR "executive function")
+AND
+(accessibility OR accommodation OR intervention OR support OR "assistive technology" OR "self-regulation" OR "sensory modulation" OR "cognitive support" OR "attention support")
+AND
+(wearable OR "mobile health" OR mHealth OR "digital health" OR "assistive device" OR "smart glasses" OR "augmented reality" OR "virtual reality" OR "extended reality")</code></pre>
+<h3>Layer 2: Sensory Modulation / Sound / Color / Frequency</h3>
+<pre><code>("sensory overload" OR "sensory modulation" OR "sensory processing" OR "sensory sensitivity" OR "sensory regulation")
+AND
+(autism OR autistic OR neurodivergent OR ADHD OR anxiety)
+AND
+(sound OR audio OR color OR light OR brightness OR haptic OR vibration OR flicker OR flashing OR frequency OR intensity)
+AND
+("assistive technology" OR digital OR wearable OR mobile OR "augmented reality" OR "virtual reality")</code></pre>
+<h3>Layer 3: Wearable / Gaze / Physiological Sensing</h3>
+<pre><code>("wearable technology" OR wearable OR "smart glasses" OR "AR glasses" OR "head-mounted display" OR "body-worn sensor" OR "eye tracking" OR gaze OR "physiological sensing" OR "context-aware")
+AND
+("cognitive load" OR attention OR confusion OR fatigue OR overload OR "mental workload" OR "sensory overload" OR "executive function")
+AND
+(accessibility OR neurodiversity OR disability OR "assistive technology" OR adaptation OR personalization)</code></pre>
+<h3>Layer 4: HCI / XR / Accessibility Principles</h3>
+<pre><code>(accessibility OR "accessible computing" OR "inclusive design" OR "universal design" OR "cognitive accessibility")
+AND
+("human-computer interaction" OR HCI OR "augmented reality" OR "virtual reality" OR XR OR "wearable interaction" OR "human-AI interaction")
+AND
+(guideline OR framework OR principle OR taxonomy OR "design implication" OR "design recommendation")</code></pre>
+<h3>Layer 5: AI Accessibility / Human-AI Interaction</h3>
+<pre><code>("artificial intelligence" OR AI OR "machine learning" OR "adaptive system" OR "context-aware AI" OR "generative AI" OR "human-AI interaction")
+AND
+(accessibility OR disability OR neurodiversity OR "cognitive accessibility")
+AND
+(explainability OR transparency OR fairness OR personalization OR autonomy OR "user control" OR privacy OR misclassification)</code></pre>
+<hr>
+<h2>8. 数据库建议</h2>
+<h3>Health / Medicine / Rehabilitation</h3>
+<ul>
+<li>PubMed / MEDLINE</li>
+<li>PsycINFO</li>
+<li>CINAHL</li>
+<li>Embase</li>
+<li>Scopus</li>
+<li>Web of Science</li>
+</ul>
+<h3>HCI / CS / Engineering</h3>
+<ul>
+<li>ACM Digital Library</li>
+<li>IEEE Xplore</li>
+<li>SpringerLink</li>
+<li>ScienceDirect</li>
+<li>JMIR</li>
+</ul>
+<h3>Standards / Grey Literature</h3>
+<p>用于建立背景，不作为主要证据来源：</p>
+<ul>
+<li>W3C WCAG</li>
+<li>W3C XR Accessibility User Requirements</li>
+<li>WHO assistive technology resources</li>
+<li>Apple / Microsoft / Google accessibility and inclusive design guidance</li>
+<li>NICE / NHS / CDC resources when relevant</li>
+</ul>
+<hr>
+<h2>9. Inclusion / Exclusion Criteria</h2>
+<h3>Include</h3>
+<p>纳入文献需要至少满足一个 access need 条件和一个 context 条件。</p>
+<p>Access need 条件：</p>
+<ul>
+<li>cognitive accessibility</li>
+<li>sensory accessibility</li>
+<li>motor accessibility</li>
+<li>perceptual accessibility</li>
+<li>neurodiversity</li>
+<li>assistive technology</li>
+<li>health-based support strategy</li>
+<li>rehabilitation / occupational therapy strategy</li>
+<li>cognitive scaffolding</li>
+<li>sensory modulation</li>
+<li>accessibility design principle</li>
+<li>XR / wearable accessibility</li>
+<li>AI-mediated accessibility</li>
+</ul>
+<p>Context 条件：</p>
+<ul>
+<li>wearable systems</li>
+<li>smart glasses / AR / VR / XR</li>
+<li>mobile or embodied support</li>
+<li>assistive technology</li>
+<li>digital health</li>
+<li>HCI accessibility</li>
+<li>human-AI interaction</li>
+<li>context-aware systems</li>
+<li>gaze / eye tracking</li>
+<li>physiological sensing</li>
+<li>body-based interaction</li>
+</ul>
+<h3>Exclude</h3>
+<p>排除：</p>
+<ul>
+<li>只讲医学诊断、没有 support / accessibility / technology implication 的文献</li>
+<li>只讲算法性能、没有 human access / disability / design implication 的文献</li>
+<li>只讲 general AI ethics、没有 disability / accessibility relevance 的文献</li>
+<li>只讲 general web accessibility、没有 cognitive / neurodiverse / wearable / XR / AI relevance 的文献</li>
+<li>只讲 VR sickness、但不涉及 access needs、sensory sensitivity 或 design principle 的文献</li>
+<li>无全文、重复、非人类研究、纯观点且无框架的文章</li>
+</ul>
+<hr>
+<h2>10. 数据提取表应该记录什么</h2>
+<h3>Bibliographic Metadata</h3>
+<ul>
+<li>Paper_ID</li>
+<li>Title</li>
+<li>Authors</li>
+<li>Year</li>
+<li>Venue_Journal</li>
+<li>DOI_URL</li>
+<li>Database</li>
+<li>Search_Layer</li>
+<li>Paper_Type</li>
+<li>Field</li>
+<li>Study_Method</li>
+<li>Sample_Size</li>
+<li>Participant_Group</li>
+<li>Technology_Context</li>
+</ul>
+<h3>Access Need Codes</h3>
+<ul>
+<li>Cognitive_Need</li>
+<li>Sensory_Need</li>
+<li>Motor_Need</li>
+<li>Perceptual_Need</li>
+<li>Emotional_Need</li>
+<li>Environmental_Need</li>
+<li>AI_Specific_Need</li>
+<li>User_Group</li>
+<li>Access_Barrier</li>
+</ul>
+<h3>Support Strategy Codes</h3>
+<ul>
+<li>Sensory_Modulation</li>
+<li>Multimodal_Substitution</li>
+<li>Cognitive_Scaffolding</li>
+<li>Attention_Management</li>
+<li>Motor_Accommodation</li>
+<li>Personalization</li>
+<li>Context_Adaptation</li>
+<li>Human_In_The_Loop</li>
+<li>Explainability_Control</li>
+<li>Safety_Strategy</li>
+</ul>
+<h3>HCI Translation Codes</h3>
+<ul>
+<li>HCI_Principle</li>
+<li>Interaction_Modality</li>
+<li>Wearable_Relevance</li>
+<li>XR_Relevance</li>
+<li>AI_Relevance</li>
+<li>Everyday_Context_Relevance</li>
+<li>Design_Implication</li>
+<li>Evaluation_Method</li>
+<li>Evidence_Strength</li>
+<li>Limitation</li>
+</ul>
+<h3>CAWI Mapping Codes</h3>
+<ul>
+<li>Loop_Component</li>
+<li>CAWI_Principle</li>
+<li>Health_Finding</li>
+<li>HCI_Translation</li>
+<li>Wearable_Intelligence_Implication</li>
+<li>Quote_or_Evidence</li>
+<li>Notes</li>
+</ul>
+<hr>
+<h2>11. 今天和医学生讨论时最重要的问题</h2>
+<h3>11.1 关于医学 / 健康范围</h3>
+<ol>
+<li>哪些 diagnosis / user groups 最适合作为检索入口？  </li>
+</ol>
+<p>   例如 autism, ADHD, dyslexia, cognitive impairment, anxiety, sensory processing differences, low vision, hearing differences, vestibular sensitivity。</p>
+<ol>
+<li>哪些健康领域术语比 HCI 术语更标准？  </li>
+</ol>
+<p>   例如 sensory modulation, self-regulation, occupational therapy, executive function, cognitive rehabilitation。</p>
+<ol>
+<li>“声音、颜色、频率、频次、震动、光线”等调节，在医学文献里通常属于哪些概念？  </li>
+</ol>
+<p>   可能是 sensory modulation, environmental adaptation, sensory regulation, stimulus control, sensory diet。</p>
+<ol>
+<li>哪些 clinical / rehab support strategies 可以被翻译成 wearable AI design features？</li>
+</ol>
+<ol>
+<li>有没有需要避免的病理化语言？  </li>
+</ol>
+<p>   例如不要把 neurodivergent behavior 直接描述成 deficit，而要描述为 access needs, support needs, sensory/cognitive differences。</p>
+<h3>11.2 关于 HCI / CS 范围</h3>
+<ol>
+<li>我们是否把 XR / smart glasses 纳入 wearable intelligence 的主要邻近领域？</li>
+</ol>
+<ol>
+<li>AI 部分是否聚焦在 personalization, adaptation, inference, explainability, user control，而不是泛泛讨论 AI ethics？</li>
+</ol>
+<ol>
+<li>最终 principle 是要像 WCAG 那样抽象，还是更像 HCI design implications 那样具体？</li>
+</ol>
+<ol>
+<li>哪些 wearable interaction modalities 必须覆盖？  </li>
+</ol>
+<p>   建议至少包括 gaze, voice, gesture, haptic, audio, visual overlay, physiological sensing。</p>
+<ol>
+<li>evaluation 要不要单独作为一个结果维度？  </li>
+</ol>
+<p>   例如 lab study, field study, participatory design, clinical trial, usability study, qualitative interview。</p>
+<hr>
+<h2>12. 推荐会议议程</h2>
+<h3>0-10 min: 项目共同目标</h3>
+<ul>
+<li>这不是单纯做 neurodiversity review。</li>
+<li>也不是单纯做 wearable device review。</li>
+<li>目标是把医学支持策略翻译成 Wearable AI accessibility principles。</li>
+</ul>
+<h3>10-25 min: 医学范围确认</h3>
+<ul>
+<li>哪些人群纳入？</li>
+<li>哪些病症 / 状态作为 search terms？</li>
+<li>哪些支持方法是医学上合理的？</li>
+<li>哪些术语要避免？</li>
+</ul>
+<h3>25-40 min: HCI / CS 范围确认</h3>
+<ul>
+<li>wearable intelligence 的边界是什么？</li>
+<li>smart glasses, XR, mobile assistive tech 是否都纳入？</li>
+<li>AI inference / personalization / adaptive systems 的边界是什么？</li>
+</ul>
+<h3>40-55 min: Search Strategy</h3>
+<ul>
+<li>确认数据库。</li>
+<li>确认 5 个 search layers。</li>
+<li>每层先做 pilot search，避免过宽或过窄。</li>
+</ul>
+<h3>55-70 min: Data Extraction and Division of Labor</h3>
+<ul>
+<li>医学生负责 health / clinical / rehab coding 的定义。</li>
+<li>HCI 研究者负责 interaction modality / design implication / wearable relevance。</li>
+<li>两边共同决定 CAWI principle mapping。</li>
+</ul>
+<hr>
+<h2>13. 建议分工</h2>
+<table><thead><tr><th>任务</th><th>医学 / 健康合作者</th><th>HCI / CS 合作者</th><th>共同决定</th></tr></thead><tbody>
+<tr><td>Population terms</td><td>主负责</td><td>辅助</td><td>最终纳入人群</td></tr>
+<tr><td>Health support strategies</td><td>主负责</td><td>翻译到设计</td><td>taxonomy</td></tr>
+<tr><td>HCI / wearable terms</td><td>辅助</td><td>主负责</td><td>wearable intelligence 边界</td></tr>
+<tr><td>Screening criteria</td><td>共同</td><td>共同</td><td>include / exclude rules</td></tr>
+<tr><td>Data extraction codebook</td><td>health codes</td><td>HCI / AI codes</td><td>CAWI mapping</td></tr>
+<tr><td>Final principles</td><td>medical grounding</td><td>design formulation</td><td>CAWI framework</td></tr>
+</tbody></table>
+<hr>
+<h2>14. 初步 manuscript 结构</h2>
+<ol>
+<li>Introduction  </li>
+</ol>
+<p>   说明 AI 从 screen-based interaction 进入 wearable / embodied / context-aware interaction，导致 accessibility 范式变化。</p>
+<ol>
+<li>Background  </li>
+</ol>
+<p>   分三块：digital accessibility, health / neurodiversity support, wearable intelligence。</p>
+<ol>
+<li>Methods  </li>
+</ol>
+<p>   PRISMA-ScR, JBI PCC, databases, search strategy, inclusion / exclusion, screening, data extraction, synthesis。</p>
+<ol>
+<li>Results I: Access Needs  </li>
+</ol>
+<p>   cognitive, sensory, motor, perceptual, emotional, environmental, AI-mediated needs。</p>
+<ol>
+<li>Results II: Support Strategies  </li>
+</ol>
+<p>   sensory modulation, cognitive scaffolding, attention support, motor accommodation, environmental adaptation, multimodal substitution, personalization。</p>
+<ol>
+<li>Results III: HCI Translation  </li>
+</ol>
+<p>   已有 HCI / XR / wearable / AI accessibility 如何处理这些 needs。</p>
+<ol>
+<li>Discussion  </li>
+</ol>
+<p>   哪些 accessibility principles 可以继承，哪些必须转化，哪些需要新增。</p>
+<ol>
+<li>CAWI Framework  </li>
+</ol>
+<p>   提出 7 个 wearable intelligence accessibility principles。</p>
+<ol>
+<li>Limitations  </li>
+</ol>
+<p>   文献语言、学科偏差、AI 快速发展、clinical categories 与 lived experience 的差距等。</p>
+<ol>
+<li>Conclusion  </li>
+</ol>
+<p>   强调未来 accessibility 要处理 embodied, adaptive, gaze-aware, inference-mediated human-AI loops。</p>
+<hr>
+<h2>15. 立即下一步</h2>
+<ol>
+<li>今天会议确认 scope：人群、健康术语、HCI 边界、AI 边界。</li>
+<li>把这份 brief 转成 3-5 页 protocol。</li>
+<li>建立 Zotero / Rayyan / spreadsheet workflow。</li>
+<li>用 5 个 search layers 做 pilot search。</li>
+<li>每层先抽 20-50 篇，看结果是否太宽或太窄。</li>
+<li>建立 seed bibliography。</li>
+<li>修订 inclusion / exclusion criteria。</li>
+<li>建立 data extraction template。</li>
+<li>开始 title / abstract screening。</li>
+<li>根据前 100-300 篇结果修订 CAWI 初版 taxonomy。</li>
+</ol>
+<hr>
+<h2>16. 今天可以直接说给合作者听的版本</h2>
+<p>我们想做的不是单纯总结“有哪些 wearable accessibility 研究”，而是做一个跨医学和 HCI 的 scoping review。医学这边会提供关于 neurodiversity、sensory processing、executive function、motor fatigue、anxiety、low vision、hearing differences 等方面的 access needs 和 support strategies；HCI 这边会把这些策略翻译成 wearable AI 可以实现或必须遵守的 design principles。最终我们希望提出一个新的 accessibility framework，用来指导 smart glasses、wearable sensors、AR/XR、context-aware AI assistant 等系统，尤其关注声音、颜色、频率、震动、提示时机、认知负担、身体疲劳、AI 误判、用户控制和非病理化设计。</p>
+<hr>
+<h2>17. 本项目的判断标准</h2>
+<p>一篇文献越符合下面条件，越可能是核心文献：</p>
+<ul>
+<li>它不是只讲 diagnosis，而是讲 support / accommodation / intervention / accessibility。</li>
+<li>它能说明某类 user need 如何影响 interaction。</li>
+<li>它能提供 sound, color, light, haptic, frequency, prompt, attention, fatigue, environment 等具体调节策略。</li>
+<li>它能被翻译到 wearable, XR, smart glasses, physiological sensing, context-aware AI 或 human-AI interaction。</li>
+<li>它能帮助我们提出新的 accessibility principle，而不只是重复已有 WCAG 原则。</li>
+</ul>
+
+</body>
+</html>
