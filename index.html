@@ -195,6 +195,25 @@
       gap: 24px;
     }
 
+    .meeting-callout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: center;
+      padding: 18px;
+      border: 2px solid var(--accent);
+      border-radius: 8px;
+      background: var(--green);
+    }
+
+    .meeting-callout h2 {
+      margin-bottom: 6px;
+    }
+
+    .meeting-callout p {
+      max-width: 760px;
+    }
+
     .principles {
       display: grid;
       grid-template-columns: repeat(7, minmax(150px, 1fr));
@@ -320,6 +339,7 @@
     @media (max-width: 860px) {
       .hero-grid,
       .two-col,
+      .meeting-callout,
       .keyword-grid {
         grid-template-columns: 1fr;
       }
@@ -382,6 +402,16 @@
   </div>
 
   <main class="wrap">
+    <section id="medical-meeting">
+      <div class="meeting-callout">
+        <div>
+          <h2>For Today’s Medical Meeting</h2>
+          <p>Open the interview guide to use the medical collaborator question list, browser audio recorder, live notes, and post-meeting analysis prompt.</p>
+        </div>
+        <a class="button" href="interview_questions.html">Open Interview Guide</a>
+      </div>
+    </section>
+
     <section id="purpose">
       <h2>What This Review Maps</h2>
       <div class="two-col">
