@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Medical Collaborator Interview Guide | Wearable AI Accessibility Review</title>
+  <meta name="description" content="Interview guide and browser recorder for aligning medical collaborator feedback with a wearable AI accessibility scoping review.">
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #5c6675;
+      --line: #d8dee8;
+      --soft: #f5f7fa;
+      --accent: #0f6b68;
+      --accent-2: #8f3d56;
+      --danger: #a13232;
+      --warm: #f6efe7;
+      --blue: #e9f2f7;
+      --green: #e9f4ef;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      line-height: 1.62;
+      letter-spacing: 0;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      background: #ffffff;
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 64px;
+      font-size: 0.95rem;
+    }
+
+    .brand {
+      font-weight: 720;
+      color: var(--ink);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .hero {
+      padding: 44px 0 34px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(233, 242, 247, 0.92), rgba(246, 239, 231, 0.9)),
+        #f7f8fa;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      max-width: 1000px;
+      font-size: clamp(2rem, 4.5vw, 3.8rem);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: clamp(1.32rem, 3vw, 1.9rem);
+      line-height: 1.22;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 20px 0 8px;
+      font-size: 1.12rem;
+      line-height: 1.32;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 8px 0;
+    }
+
+    .subtitle,
+    .lede {
+      max-width: 900px;
+      color: #394657;
+      font-size: 1.07rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .button,
+    button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid var(--accent);
+      color: #ffffff;
+      background: var(--accent);
+      border-radius: 6px;
+      font: inherit;
+      font-weight: 650;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .button.secondary,
+    button.secondary {
+      color: var(--accent);
+      background: #ffffff;
+    }
+
+    button.danger {
+      border-color: var(--danger);
+      background: var(--danger);
+    }
+
+    button:disabled {
+      cursor: not-allowed;
+      opacity: 0.55;
+    }
+
+    main {
+      padding: 26px 0 54px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    section,
+    aside {
+      padding: 26px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .question-group {
+      margin: 16px 0;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    .question-group:nth-of-type(3n+1) {
+      background: var(--blue);
+    }
+
+    .question-group:nth-of-type(3n+2) {
+      background: var(--green);
+    }
+
+    .question-group:nth-of-type(3n) {
+      background: var(--warm);
+    }
+
+    .question-group h3 {
+      margin-top: 0;
+    }
+
+    ol, ul {
+      margin: 8px 0 0 20px;
+      padding: 0;
+    }
+
+    li {
+      margin: 6px 0;
+    }
+
+    .panel {
+      position: sticky;
+      top: 14px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+    }
+
+    .status {
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #cbd6df;
+      border-radius: 6px;
+      background: #ffffff;
+      color: #273646;
+      min-height: 44px;
+    }
+
+    .timer {
+      font-variant-numeric: tabular-nums;
+      font-size: 1.5rem;
+      font-weight: 720;
+    }
+
+    audio {
+      width: 100%;
+      margin: 10px 0;
+    }
+
+    textarea,
+    input[type="text"] {
+      width: 100%;
+      border: 1px solid #cbd6df;
+      border-radius: 6px;
+      padding: 10px;
+      font: inherit;
+      background: #ffffff;
+      color: var(--ink);
+    }
+
+    textarea {
+      min-height: 240px;
+      resize: vertical;
+    }
+
+    label {
+      display: block;
+      margin: 12px 0 5px;
+      font-weight: 650;
+    }
+
+    .note {
+      margin: 14px 0;
+      padding: 14px;
+      border-left: 4px solid var(--accent);
+      background: var(--soft);
+    }
+
+    .warning {
+      border-left-color: var(--danger);
+    }
+
+    .checklist label {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin: 7px 0;
+      font-weight: 500;
+    }
+
+    .checklist input {
+      margin-top: 6px;
+    }
+
+    footer {
+      padding: 24px 0 36px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 900px) {
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .panel {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav aria-label="Primary navigation">
+        <a class="brand" href="index.html">Wearable AI Accessibility Review</a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="search_protocol.html">Search Protocol</a>
+          <a href="#questions">Questions</a>
+          <a href="#recorder">Recorder</a>
+          <a href="meeting_brief.pdf">PDF Brief</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="wrap">
+      <h1>Medical Collaborator Interview Guide</h1>
+      <p class="subtitle">Use this page during the meeting to align medical terminology, population scope, search strategy, support strategy taxonomy, screening criteria, and ethics for the wearable AI accessibility scoping review.</p>
+      <div class="actions">
+        <a class="button" href="#questions">Open Questions</a>
+        <a class="button secondary" href="#recorder">Record Audio</a>
+        <a class="button secondary" href="search_protocol.html">Review Search Protocol</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <div class="layout">
+      <div>
+        <section id="goal">
+          <h2>Meeting Goal</h2>
+          <p class="lede">By the end of this conversation, we want enough medical input to produce the next version of the scoping review method: population terms, medical keywords, support strategy taxonomy, inclusion / exclusion logic, and any safety or non-pathologizing language concerns.</p>
+          <div class="note warning">
+            <strong>Recording note:</strong> Ask for permission before recording. The recorder on this page saves audio in the browser for download; it does not automatically upload the recording.
+          </div>
+        </section>
+
+        <section id="agenda">
+          <h2>Suggested 45-60 Minute Agenda</h2>
+          <ol>
+            <li>Project framing: explain the health-to-HCI translation goal.</li>
+            <li>Population scope: confirm which groups and conditions belong in the review.</li>
+            <li>Medical terminology: align clinical / rehab terms with HCI terms.</li>
+            <li>Search strategy: review the seven search layers and database choices.</li>
+            <li>Data extraction: decide what medical information must be coded.</li>
+            <li>Ethics and risk: identify language, inference, and privacy concerns.</li>
+            <li>Outputs: ask for seed papers, terms to add, and terms to avoid.</li>
+          </ol>
+        </section>
+
+        <section id="questions">
+          <h2>Question List</h2>
+
+          <div class="question-group">
+            <h3>1. Scope and Populations</h3>
+            <ol>
+              <li>From a medical or health perspective, which populations are most relevant to this review?</li>
+              <li>Are autism, ADHD, dyslexia, dyspraxia, sensory processing differences, anxiety, low vision, hearing differences, and vestibular sensitivity reasonable entry points?</li>
+              <li>What important groups are missing, such as intellectual disability, learning disability, traumatic brain injury, mild cognitive impairment, dementia, aphasia, migraine, photosensitive epilepsy, PTSD, chronic fatigue, or chronic pain?</li>
+              <li>Which diagnosis terms should be treated carefully because they may broaden the review too much?</li>
+              <li>Should the final taxonomy be organized by diagnosis, by access need, or by support strategy?</li>
+            </ol>
+          </div>
+
+          <div class="question-group">
+            <h3>2. Medical Keywords and Terminology</h3>
+            <ol>
+              <li>In medical, rehab, or occupational therapy literature, what terms describe sound, color, brightness, vibration, frequency, timing, and stimulus intensity?</li>
+              <li>Which terms are most standard: sensory modulation, sensory regulation, sensory processing, sensory overload, stimulus control, sensory diet, or environmental adaptation?</li>
+              <li>What are the best terms for executive function support, attention support, task sequencing, memory support, and cognitive scaffolding?</li>
+              <li>How should we search for motor fatigue, gesture fatigue, upper-limb fatigue, posture, tremor, balance, and low-effort action?</li>
+              <li>Which MeSH terms, subject headings, or database-specific terms should we add for PubMed, PsycINFO, CINAHL, or Embase?</li>
+            </ol>
+          </div>
+
+          <div class="question-group">
+            <h3>3. Support Strategies</h3>
+            <ol>
+              <li>What support strategies are common for neurodivergent or sensory-sensitive users?</li>
+              <li>Which strategies are about modifying the stimulus itself, such as sound, color, brightness, vibration, flicker, or frequency?</li>
+              <li>Which strategies are about structure and cognition, such as prompts, reminders, task chunking, planning, and external organization?</li>
+              <li>Which strategies are about environment, such as noise reduction, lighting adjustment, preparation, predictability, or safe space?</li>
+              <li>Which support strategies require clinician, caregiver, teacher, or human-in-the-loop involvement?</li>
+              <li>Which strategies should not be automatically translated into AI adaptation without user control?</li>
+            </ol>
+          </div>
+
+          <div class="question-group">
+            <h3>4. Inclusion and Exclusion Criteria</h3>
+            <ol>
+              <li>If a paper only discusses diagnosis but no support, accommodation, intervention, accessibility, or design implication, should we exclude it?</li>
+              <li>If a paper is health-only and does not mention wearable or digital technology, when should it still be included as evidence for health-to-HCI translation?</li>
+              <li>How much clinical intervention literature should be included before the review becomes too broad for CHI?</li>
+              <li>Which clinical study types are most useful for this review: trials, reviews, qualitative studies, clinical guidelines, case studies, occupational therapy papers, or assistive technology papers?</li>
+              <li>Should we rate evidence strength, or only map evidence type because this is a scoping review?</li>
+            </ol>
+          </div>
+
+          <div class="question-group">
+            <h3>5. Data Extraction and Coding</h3>
+            <ol>
+              <li>What fields should we extract from medical papers beyond diagnosis and sample size?</li>
+              <li>Should support strategies be coded as sensory modulation, cognitive scaffolding, attention management, motor accommodation, environmental adaptation, multimodal substitution, personalization, or human-in-the-loop support?</li>
+              <li>What outcomes should be recorded: anxiety reduction, overload reduction, task completion, fatigue reduction, autonomy, safety, quality of life, or adherence?</li>
+              <li>How should we code the difference between clinical needs, lived experience needs, and technology design implications?</li>
+              <li>What would make a finding strong enough to influence a wearable AI accessibility principle?</li>
+            </ol>
+          </div>
+
+          <div class="question-group">
+            <h3>6. AI, Risk, and Ethics</h3>
+            <ol>
+              <li>What risks arise if wearable AI infers attention, fatigue, stress, emotion, cognitive load, intent, or ability from gaze, movement, heart rate, skin conductance, EEG, or behavior?</li>
+              <li>What neurodivergent behaviors should not be treated as deficits or abnormal signals by AI?</li>
+              <li>Which data types are most sensitive from a medical or ethical perspective?</li>
+              <li>How should we describe non-pathologizing design in language that medical and HCI audiences both accept?</li>
+              <li>What user controls are medically or ethically important: opt-out, override, correction, consent, clinician configuration, local processing, or confidence display?</li>
+            </ol>
+          </div>
+
+          <div class="question-group">
+            <h3>7. Concrete Outputs We Need From This Meeting</h3>
+            <ol>
+              <li>A revised population list.</li>
+              <li>A medical keyword replacement table.</li>
+              <li>A list of must-use MeSH / subject heading terms.</li>
+              <li>A support strategy taxonomy from the health side.</li>
+              <li>Seed papers, review papers, guidelines, or known authors.</li>
+              <li>Terms to avoid because they are outdated, stigmatizing, or clinically inaccurate.</li>
+              <li>Recommendations for revising the seven-layer search protocol.</li>
+            </ol>
+          </div>
+        </section>
+      </div>
+
+      <aside id="recorder">
+        <div class="panel">
+          <h2>Audio Recorder</h2>
+          <p>Record the meeting in your browser, then download the audio file. After the meeting, send the audio file to Codex for transcription and analysis.</p>
+          <div class="status" id="recorderStatus">Recorder ready. Ask for consent before starting.</div>
+          <div class="timer" id="timer">00:00</div>
+          <div class="actions">
+            <button id="startBtn" type="button">Start Recording</button>
+            <button class="danger" id="stopBtn" type="button" disabled>Stop</button>
+          </div>
+          <audio id="audioPlayback" controls hidden></audio>
+          <div class="actions">
+            <a class="button secondary" id="downloadAudio" href="#" download="medical-collaborator-interview-2026-05-27.webm" hidden>Download Audio</a>
+          </div>
+
+          <label for="meetingTitle">Meeting title</label>
+          <input id="meetingTitle" type="text" value="Medical Collaborator Interview - 2026-05-27">
+
+          <label for="notes">Live notes</label>
+          <textarea id="notes" placeholder="Write quick notes here during the meeting. You can download them as Markdown afterward."></textarea>
+
+          <div class="actions">
+            <button class="secondary" id="downloadNotes" type="button">Download Notes</button>
+            <button class="secondary" id="copyPrompt" type="button">Copy Analysis Prompt</button>
+          </div>
+
+          <div class="note">
+            <strong>After the meeting:</strong> drag the downloaded audio file into Codex and say: “Please transcribe this, extract medical search terms, revise the search protocol, and create the next version.”
+          </div>
+
+          <div class="checklist">
+            <h3>Quick Checklist</h3>
+            <label><input type="checkbox"> Consent to record confirmed</label>
+            <label><input type="checkbox"> Population list revised</label>
+            <label><input type="checkbox"> Medical search terms captured</label>
+            <label><input type="checkbox"> MeSH / subject headings captured</label>
+            <label><input type="checkbox"> Support strategy taxonomy discussed</label>
+            <label><input type="checkbox"> Risks and non-pathologizing language discussed</label>
+            <label><input type="checkbox"> Seed papers requested</label>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>Project materials: <a href="index.html">homepage</a>, <a href="search_protocol.html">search protocol</a>, <a href="meeting_brief.pdf">PDF brief</a>, and <a href="meeting_brief.md">Markdown source</a>.</p>
+    </div>
+  </footer>
+
+  <script>
+    const startBtn = document.getElementById('startBtn');
+    const stopBtn = document.getElementById('stopBtn');
+    const statusEl = document.getElementById('recorderStatus');
+    const timerEl = document.getElementById('timer');
+    const audioPlayback = document.getElementById('audioPlayback');
+    const downloadAudio = document.getElementById('downloadAudio');
+    const downloadNotes = document.getElementById('downloadNotes');
+    const copyPrompt = document.getElementById('copyPrompt');
+    const notes = document.getElementById('notes');
+    const meetingTitle = document.getElementById('meetingTitle');
+
+    let mediaRecorder;
+    let chunks = [];
+    let startTime = 0;
+    let timerInterval;
+
+    function formatTime(totalSeconds) {
+      const minutes = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
+      const seconds = Math.floor(totalSeconds % 60).toString().padStart(2, '0');
+      return `${minutes}:${seconds}`;
+    }
+
+    function startTimer() {
+      startTime = Date.now();
+      timerInterval = window.setInterval(() => {
+        timerEl.textContent = formatTime((Date.now() - startTime) / 1000);
+      }, 500);
+    }
+
+    function stopTimer() {
+      window.clearInterval(timerInterval);
+    }
+
+    function filenameSafe(value) {
+      return value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'medical-collaborator-interview';
+    }
+
+    startBtn.addEventListener('click', async () => {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        chunks = [];
+        mediaRecorder = new MediaRecorder(stream);
+        mediaRecorder.ondataavailable = event => {
+          if (event.data.size > 0) {
+            chunks.push(event.data);
+          }
+        };
+        mediaRecorder.onstop = () => {
+          const blob = new Blob(chunks, { type: mediaRecorder.mimeType || 'audio/webm' });
+          const url = URL.createObjectURL(blob);
+          audioPlayback.src = url;
+          audioPlayback.hidden = false;
+          downloadAudio.href = url;
+          downloadAudio.download = `${filenameSafe(meetingTitle.value)}.webm`;
+          downloadAudio.hidden = false;
+          stream.getTracks().forEach(track => track.stop());
+          statusEl.textContent = 'Recording stopped. You can play back or download the audio.';
+        };
+        mediaRecorder.start();
+        startBtn.disabled = true;
+        stopBtn.disabled = false;
+        downloadAudio.hidden = true;
+        audioPlayback.hidden = true;
+        statusEl.textContent = 'Recording in progress...';
+        timerEl.textContent = '00:00';
+        startTimer();
+      } catch (error) {
+        statusEl.textContent = `Microphone access failed: ${error.message}`;
+      }
+    });
+
+    stopBtn.addEventListener('click', () => {
+      if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+        mediaRecorder.stop();
+        stopTimer();
+        startBtn.disabled = false;
+        stopBtn.disabled = true;
+      }
+    });
+
+    downloadNotes.addEventListener('click', () => {
+      const title = meetingTitle.value || 'Medical Collaborator Interview';
+      const content = `# ${title}
+
+Date: 2026-05-27
+
+## Live Notes
+
+${notes.value || '[No notes entered]'}
+
+## Follow-Up Prompt
+
+Please transcribe the attached audio, extract medical search terms, revise the scoping review search protocol, update the keyword alignment matrix, and prepare the next project version.
+`;
+      const blob = new Blob([content], { type: 'text/markdown;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${filenameSafe(title)}-notes.md`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    });
+
+    copyPrompt.addEventListener('click', async () => {
+      const prompt = 'Please transcribe the attached medical collaborator interview audio, extract medical search terms, revise the scoping review search protocol, update the keyword alignment matrix, identify inclusion/exclusion changes, and prepare the next version tag.';
+      try {
+        await navigator.clipboard.writeText(prompt);
+        statusEl.textContent = 'Analysis prompt copied.';
+      } catch (error) {
+        statusEl.textContent = prompt;
+      }
+    });
+  </script>
+</body>
+</html>
