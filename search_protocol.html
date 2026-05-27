@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHI-Level Search Protocol | Wearable AI Accessibility Review</title>
+  <meta name="description" content="Search protocol for a CHI-level scoping review on cognitive accessibility for wearable intelligence.">
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #5c6675;
+      --line: #d8dee8;
+      --soft: #f5f7fa;
+      --accent: #0f6b68;
+      --accent-2: #8f3d56;
+      --warm: #f6efe7;
+      --blue: #e9f2f7;
+      --green: #e9f4ef;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      line-height: 1.62;
+      letter-spacing: 0;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      background: #ffffff;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 64px;
+      font-size: 0.95rem;
+    }
+
+    .brand {
+      font-weight: 720;
+      color: var(--ink);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .hero {
+      padding: 46px 0 34px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(233, 242, 247, 0.92), rgba(246, 239, 231, 0.9)),
+        #f7f8fa;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      max-width: 980px;
+      font-size: clamp(2rem, 4.5vw, 3.8rem);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: clamp(1.35rem, 3vw, 2rem);
+      line-height: 1.22;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 22px 0 8px;
+      font-size: 1.12rem;
+      line-height: 1.32;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 8px 0;
+    }
+
+    .subtitle,
+    .lede {
+      max-width: 880px;
+      color: #394657;
+      font-size: 1.07rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid var(--accent);
+      color: #ffffff;
+      background: var(--accent);
+      border-radius: 6px;
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    .button.secondary {
+      color: var(--accent);
+      background: #ffffff;
+    }
+
+    main {
+      padding: 26px 0 54px;
+    }
+
+    section {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 4px;
+      font-size: 0.93rem;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--soft);
+    }
+
+    ul, ol {
+      margin: 8px 0 0 20px;
+      padding: 0;
+    }
+
+    li {
+      margin: 4px 0;
+    }
+
+    pre {
+      margin: 10px 0 0;
+      padding: 12px;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      border: 1px solid #d3dce6;
+      border-radius: 6px;
+      background: #f6f8fa;
+      color: #17202a;
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .note {
+      margin: 14px 0;
+      padding: 14px;
+      border-left: 4px solid var(--accent);
+      background: var(--soft);
+    }
+
+    .layer {
+      margin: 16px 0;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    .layer:nth-of-type(3n+1) {
+      background: var(--blue);
+    }
+
+    .layer:nth-of-type(3n+2) {
+      background: var(--green);
+    }
+
+    .layer:nth-of-type(3n) {
+      background: var(--warm);
+    }
+
+    .layer h3 {
+      margin-top: 0;
+    }
+
+    .pill {
+      display: inline-block;
+      margin: 2px 3px 2px 0;
+      padding: 2px 7px;
+      border: 1px solid #cbd6df;
+      border-radius: 999px;
+      background: #ffffff;
+      color: #273646;
+      white-space: nowrap;
+      font-size: 0.9rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 24px;
+    }
+
+    footer {
+      padding: 24px 0 36px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 860px) {
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 34px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav aria-label="Primary navigation">
+        <a class="brand" href="index.html">Wearable AI Accessibility Review</a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="#layers">Search Layers</a>
+          <a href="#venues">HCI Venues</a>
+          <a href="#screening">Screening</a>
+          <a href="meeting_brief.pdf">PDF Brief</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="wrap">
+      <h1>CHI-Level Search Protocol</h1>
+      <p class="subtitle">A defensible scoping review search strategy for mapping health-based support strategies, neurodiversity, accessibility, HCI, XR, wearable computing, and human-AI interaction into principles for wearable intelligence.</p>
+      <div class="actions">
+        <a class="button" href="#layers">Review Search Layers</a>
+        <a class="button secondary" href="#venues">HCI Venue Search</a>
+        <a class="button secondary" href="index.html">Back to Project Home</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section id="positioning">
+      <h2>Protocol Positioning</h2>
+      <p class="lede">This protocol is designed for a CHI full paper level scoping review. The search is intentionally layered because the project does not simply ask whether wearable accessibility systems exist. It asks how health, rehabilitation, and neurodiversity support knowledge can be translated into HCI and wearable AI accessibility principles.</p>
+      <div class="note">
+        <strong>Search logic:</strong> Do not force every health paper to mention wearable technology. First capture clinically grounded support strategies, then map them to HCI, XR, wearable computing, and AI-mediated interaction.
+      </div>
+    </section>
+
+    <section id="questions">
+      <h2>Review Questions Covered by the Search</h2>
+      <ol>
+        <li>What cognitive, sensory, motor, perceptual, emotional, environmental, and AI-mediated access needs are relevant to wearable intelligence?</li>
+        <li>What health, rehabilitation, occupational therapy, education, and assistive technology strategies support these needs?</li>
+        <li>How have HCI, XR, wearable computing, accessible computing, and human-AI interaction translated these needs into design principles or system features?</li>
+        <li>What principles are needed for wearable AI systems that sense, infer, personalize, and adapt in real-world embodied contexts?</li>
+      </ol>
+    </section>
+
+    <section id="databases">
+      <h2>Database Coverage</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Database Group</th>
+            <th>Databases</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Health, clinical, rehabilitation</td>
+            <td>PubMed / MEDLINE, PsycINFO, CINAHL, Embase, Scopus, Web of Science</td>
+            <td>Capture diagnostic language, support strategies, sensory modulation, cognitive support, occupational therapy, rehabilitation, and assistive technology.</td>
+          </tr>
+          <tr>
+            <td>HCI, accessibility, engineering</td>
+            <td>ACM Digital Library, IEEE Xplore, SpringerLink, ScienceDirect, JMIR, Taylor & Francis, SAGE</td>
+            <td>Capture HCI, accessible computing, wearable computing, XR, human-AI interaction, digital health, and design research.</td>
+          </tr>
+          <tr>
+            <td>Standards and grey literature</td>
+            <td>W3C WCAG, W3C XR Accessibility User Requirements, WHO Assistive Technology, Apple, Microsoft, Google accessibility guidance</td>
+            <td>Contextualize current accessibility principles and industry practice. These sources support framing, not the main evidence base.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="controlled-vocabulary">
+      <h2>Controlled Vocabulary and Subject Terms</h2>
+      <p>For PubMed / MEDLINE and other health databases, keyword searches should be adapted with controlled vocabulary where available.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Concept</th>
+            <th>Candidate Controlled Terms</th>
+            <th>Free-Text Terms to Pair</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Neurodiversity and cognition</td>
+            <td>Autism Spectrum Disorder; Attention Deficit Disorder with Hyperactivity; Cognition Disorders; Executive Function</td>
+            <td><span class="pill">autism</span><span class="pill">autistic</span><span class="pill">ADHD</span><span class="pill">neurodivergent</span><span class="pill">executive function</span><span class="pill">working memory</span></td>
+          </tr>
+          <tr>
+            <td>Sensory processing</td>
+            <td>Sensation Disorders; Sensory Thresholds; Photic Stimulation; Auditory Perception</td>
+            <td><span class="pill">sensory overload</span><span class="pill">sensory modulation</span><span class="pill">sound sensitivity</span><span class="pill">photosensitivity</span><span class="pill">haptic sensitivity</span></td>
+          </tr>
+          <tr>
+            <td>Support and rehabilitation</td>
+            <td>Occupational Therapy; Rehabilitation; Cognitive Rehabilitation; Self-Help Devices</td>
+            <td><span class="pill">accommodation</span><span class="pill">support strategy</span><span class="pill">self-regulation</span><span class="pill">cognitive scaffolding</span><span class="pill">assistive technology</span></td>
+          </tr>
+          <tr>
+            <td>Wearable and embodied systems</td>
+            <td>Wearable Electronic Devices; Monitoring, Physiologic; Augmented Reality; Virtual Reality</td>
+            <td><span class="pill">smart glasses</span><span class="pill">wearable AI</span><span class="pill">head-mounted display</span><span class="pill">eye tracking</span><span class="pill">physiological sensing</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="layers">
+      <h2>Seven Search Layers</h2>
+      <p class="lede">Each layer should be run separately and logged with database, date, exact query, filters, result count, and export count. Search strings should be adapted to each database syntax.</p>
+
+      <div class="layer">
+        <h3>Layer 1: Health-Only Support Strategies</h3>
+        <p><strong>Purpose:</strong> Capture clinically grounded support strategies without requiring the paper to mention technology.</p>
+        <pre>("sensory modulation" OR "sensory regulation" OR "cognitive rehabilitation" OR "cognitive scaffolding" OR "executive function support" OR "attention support" OR "fatigue management" OR "environmental adaptation")
+AND
+(autism OR autistic OR ADHD OR neurodivergent OR dyslexia OR dyspraxia OR "cognitive impairment" OR "mild cognitive impairment" OR dementia OR anxiety OR "low vision" OR blindness OR "hearing impairment")</pre>
+      </div>
+
+      <div class="layer">
+        <h3>Layer 2: Neurodiversity and Sensory Modulation</h3>
+        <p><strong>Purpose:</strong> Capture sound, color, light, vibration, frequency, intensity, predictability, and sensory profile literature.</p>
+        <pre>("sensory overload" OR "sensory modulation" OR "sensory processing" OR "sensory sensitivity" OR "sensory profile" OR "sensory diet" OR "stimulus control")
+AND
+(autism OR autistic OR neurodivergent OR ADHD OR anxiety OR migraine OR photosensitivity)
+AND
+(sound OR audio OR noise OR color OR light OR brightness OR haptic OR vibration OR flicker OR flashing OR frequency OR intensity OR predictability)</pre>
+      </div>
+
+      <div class="layer">
+        <h3>Layer 3: Cognitive Support and Executive Function</h3>
+        <p><strong>Purpose:</strong> Capture attention, working memory, task sequencing, prompt design, and cognitive load support.</p>
+        <pre>("executive function" OR attention OR "working memory" OR "cognitive load" OR "mental workload" OR confusion OR comprehension OR "task sequencing" OR "task management")
+AND
+(support OR intervention OR accommodation OR "assistive technology" OR prompting OR reminders OR scaffolding OR "external structure")
+AND
+(ADHD OR autism OR autistic OR neurodivergent OR "cognitive impairment" OR aging OR dementia OR "mild cognitive impairment")</pre>
+      </div>
+
+      <div class="layer">
+        <h3>Layer 4: Motor Fatigue and Embodied Interaction</h3>
+        <p><strong>Purpose:</strong> Capture gesture burden, posture, upper-limb fatigue, tremor, balance, and alternative input.</p>
+        <pre>("motor accessibility" OR "motor impairment" OR "motor fatigue" OR "upper-limb fatigue" OR tremor OR posture OR balance OR reach OR "gesture fatigue")
+AND
+(wearable OR "smart glasses" OR "augmented reality" OR "virtual reality" OR XR OR "gesture interaction" OR "gaze input" OR "voice input" OR "alternative input" OR "switch access")</pre>
+      </div>
+
+      <div class="layer">
+        <h3>Layer 5: Perceptual and Environmental Accessibility</h3>
+        <p><strong>Purpose:</strong> Capture low vision, blindness, hearing access, spatial awareness, public environments, lighting, and noise.</p>
+        <pre>("low vision" OR blindness OR "visual impairment" OR deaf OR "hard of hearing" OR "hearing impairment" OR "vestibular sensitivity" OR "spatial awareness" OR "environmental awareness")
+AND
+(accessibility OR "assistive technology" OR navigation OR captions OR "spatial audio" OR haptic OR "object recognition" OR "environmental adaptation")
+AND
+(wearable OR "smart glasses" OR "augmented reality" OR XR OR mobile OR "digital health")</pre>
+      </div>
+
+      <div class="layer">
+        <h3>Layer 6: HCI, XR, and Wearable Accessibility</h3>
+        <p><strong>Purpose:</strong> Capture design principles, interaction techniques, accessible computing, and HCI evaluations.</p>
+        <pre>(accessibility OR "accessible computing" OR "inclusive design" OR "universal design" OR "cognitive accessibility" OR neurodiversity OR disability)
+AND
+("human-computer interaction" OR HCI OR "augmented reality" OR "virtual reality" OR XR OR "wearable interaction" OR "smart glasses" OR "human-AI interaction")
+AND
+(guideline OR framework OR principle OR taxonomy OR "design implication" OR "design recommendation" OR evaluation OR "participatory design")</pre>
+      </div>
+
+      <div class="layer">
+        <h3>Layer 7: Human-AI Accessibility and Inference Risk</h3>
+        <p><strong>Purpose:</strong> Capture adaptation, personalization, cognitive-state inference, explainability, user control, privacy, and misclassification.</p>
+        <pre>("artificial intelligence" OR AI OR "machine learning" OR "adaptive system" OR "context-aware AI" OR "human-AI interaction" OR "affect recognition" OR "intent recognition" OR "cognitive state inference" OR "behavioral sensing" OR biosignal)
+AND
+(accessibility OR disability OR neurodiversity OR "cognitive accessibility")
+AND
+(explainability OR transparency OR fairness OR personalization OR autonomy OR agency OR "user control" OR override OR contestability OR privacy OR misclassification OR uncertainty)</pre>
+      </div>
+    </section>
+
+    <section id="venues">
+      <h2>HCI Venue Hand-Search</h2>
+      <p class="lede">Because CHI reviewers will expect strong HCI coverage, database search should be supplemented by venue-specific search and citation chaining.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Venue Group</th>
+            <th>Venues</th>
+            <th>Search Within Venue</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Core HCI and accessibility</td>
+            <td>CHI, ASSETS, CSCW, DIS, UIST, IUI, MobileHCI, TEI</td>
+            <td>accessibility, disability, neurodiversity, cognitive accessibility, assistive technology, wearable, smart glasses, AI, adaptation</td>
+          </tr>
+          <tr>
+            <td>Wearable and ubiquitous computing</td>
+            <td>UbiComp / IMWUT, ISWC, PerCom</td>
+            <td>wearable interaction, physiological sensing, context-aware systems, activity recognition, attention, fatigue, smart glasses</td>
+          </tr>
+          <tr>
+            <td>XR and visualization</td>
+            <td>ISMAR, IEEE VR, TVCG</td>
+            <td>XR accessibility, AR accessibility, VR accessibility, captions, spatial audio, visual impairment, sensory overload, cybersickness with access relevance</td>
+          </tr>
+          <tr>
+            <td>Accessibility journals and adjacent venues</td>
+            <td>TACCESS, IJHCS, Interacting with Computers, Behaviour & Information Technology, JMIR</td>
+            <td>accessible computing, digital health, cognitive support, disability, wearable assistance, inclusive design</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="population">
+      <h2>Population Terms to Pilot</h2>
+      <p>Use diagnosis and condition terms as search entry points, but synthesize results by access need rather than by diagnosis alone.</p>
+      <div class="two-col">
+        <div>
+          <h3>Core Terms</h3>
+          <p><span class="pill">autism</span><span class="pill">autistic</span><span class="pill">ADHD</span><span class="pill">dyslexia</span><span class="pill">dyspraxia</span><span class="pill">developmental coordination disorder</span><span class="pill">cognitive impairment</span><span class="pill">sensory processing</span></p>
+        </div>
+        <div>
+          <h3>Expansion Terms</h3>
+          <p><span class="pill">intellectual disability</span><span class="pill">learning disability</span><span class="pill">traumatic brain injury</span><span class="pill">mild cognitive impairment</span><span class="pill">dementia</span><span class="pill">aphasia</span><span class="pill">migraine</span><span class="pill">photosensitive epilepsy</span><span class="pill">vestibular disorder</span><span class="pill">PTSD</span><span class="pill">chronic fatigue</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="screening">
+      <h2>Screening and Calibration Plan</h2>
+      <ol>
+        <li>Run a pilot search in PubMed, ACM Digital Library, Scopus, and IEEE Xplore.</li>
+        <li>Sample 20 to 50 records per layer to check whether each layer is too broad, too narrow, or missing known seed papers.</li>
+        <li>Two reviewers independently screen the first 100 to 300 titles and abstracts.</li>
+        <li>Resolve disagreements and refine inclusion / exclusion criteria before full screening.</li>
+        <li>Record reasons for exclusion using stable codes: no accessibility relevance, no health or support relevance, no HCI or wearable relevance, purely technical, purely clinical diagnosis, no human-centered contribution, duplicate, full text unavailable.</li>
+        <li>Use backward and forward citation chaining for seed papers and highly relevant reviews.</li>
+      </ol>
+    </section>
+
+    <section id="extraction">
+      <h2>What the Search Must Enable Us to Extract</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Extraction Category</th>
+            <th>Fields</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Access needs</td>
+            <td>Cognitive, sensory, motor, perceptual, emotional, environmental, and AI-specific barriers.</td>
+          </tr>
+          <tr>
+            <td>Support strategies</td>
+            <td>Sensory modulation, cognitive scaffolding, attention management, motor accommodation, multimodal substitution, personalization, human-in-the-loop support.</td>
+          </tr>
+          <tr>
+            <td>HCI translation</td>
+            <td>Interaction modality, design implication, evaluation method, wearable relevance, XR relevance, AI relevance, everyday context relevance.</td>
+          </tr>
+          <tr>
+            <td>CAWI mapping</td>
+            <td>Loop component, CAWI principle, health finding, HCI translation, wearable intelligence implication, limitation, risk if ignored.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="quality">
+      <h2>Why This Is Stronger Than a Basic Search</h2>
+      <ul>
+        <li>It separates health-only support knowledge from technology-specific HCI literature, reducing premature technology bias.</li>
+        <li>It uses both database search and venue hand-search, which is important for CHI, ASSETS, IMWUT, XR, and wearable computing coverage.</li>
+        <li>It includes controlled vocabulary and free-text terms, improving coverage across medical and computing databases.</li>
+        <li>It explicitly covers AI inference risk, which is central to wearable intelligence and distinct from screen-based accessibility.</li>
+        <li>It supports PRISMA-ScR reporting through layer-level logging, screening calibration, exclusion codes, and citation chaining.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>Project materials: <a href="index.html">homepage</a>, <a href="meeting_brief.pdf">PDF brief</a>, <a href="meeting_brief.html">full meeting brief</a>, and <a href="meeting_brief.md">Markdown source</a>.</p>
+    </div>
+  </footer>
+</body>
+</html>

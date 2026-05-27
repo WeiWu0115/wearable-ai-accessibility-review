@@ -9,6 +9,7 @@ The project maps health, rehabilitation, neurodiversity, HCI, XR, wearable compu
 ## Website Files
 
 - `index.html`: GitHub Pages homepage
+- `search_protocol.html`: CHI-level scoping review search protocol
 - `meeting_brief.html`: full meeting brief webpage
 - `meeting_brief.pdf`: PDF version of the brief
 - `meeting_brief.md`: Markdown source
