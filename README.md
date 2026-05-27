@@ -13,6 +13,15 @@ The project maps health, rehabilitation, neurodiversity, HCI, XR, wearable compu
 - `meeting_brief.html`: full meeting brief webpage
 - `meeting_brief.pdf`: PDF version of the brief
 - `meeting_brief.md`: Markdown source
+- `CHANGELOG.md`: version history
+
+## Current Version
+
+Current baseline tag:
+
+`v0.2-chi-search-protocol-2026-05-27`
+
+This version captures the first public website with the CHI-level search protocol and keyword alignment matrix.
 
 ## Working Framework
 
