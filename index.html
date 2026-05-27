@@ -271,6 +271,46 @@
       margin-bottom: 6px;
     }
 
+    .alignment-table {
+      font-size: 0.9rem;
+    }
+
+    .term-pill {
+      display: inline-block;
+      margin: 2px 3px 2px 0;
+      padding: 2px 7px;
+      border: 1px solid #cbd6df;
+      border-radius: 999px;
+      background: #ffffff;
+      color: #273646;
+      white-space: nowrap;
+    }
+
+    .search-layer {
+      margin: 14px 0;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    .search-layer h3 {
+      margin-top: 0;
+    }
+
+    pre {
+      margin: 10px 0 0;
+      padding: 12px;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      border: 1px solid #d3dce6;
+      border-radius: 6px;
+      background: #f6f8fa;
+      color: #17202a;
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
     footer {
       padding: 24px 0 36px;
       color: var(--muted);
@@ -400,6 +440,7 @@
 
     <section id="keywords">
       <h2>Search Directions and Keywords</h2>
+      <p class="lede">This section aligns the language of medicine, health support, HCI, and wearable AI so the review team can search, screen, and code papers consistently.</p>
       <div class="keyword-grid">
         <div class="keyword-block"><strong>Neurodiversity</strong>autism, autistic, ADHD, dyslexia, dyspraxia, sensory processing, executive function</div>
         <div class="keyword-block"><strong>Sensory Support</strong>sensory overload, sensory modulation, sound sensitivity, light sensitivity, haptic sensitivity, flicker, frequency</div>
@@ -407,6 +448,104 @@
         <div class="keyword-block"><strong>Cognitive Support</strong>attention, memory, cognitive load, mental workload, task sequencing, cognitive scaffolding</div>
         <div class="keyword-block"><strong>Human-AI Interaction</strong>adaptive AI, personalization, transparency, user control, explainability, misclassification</div>
         <div class="keyword-block"><strong>Accessibility</strong>cognitive accessibility, XR accessibility, inclusive design, accessible computing, assistive technology</div>
+      </div>
+
+      <h3>Keyword Alignment Matrix</h3>
+      <table class="alignment-table">
+        <thead>
+          <tr>
+            <th>Review Dimension</th>
+            <th>Health / Medical Terms</th>
+            <th>HCI / Accessibility Terms</th>
+            <th>Wearable AI / CS Terms</th>
+            <th>What We Extract</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Sensory regulation</td>
+            <td><span class="term-pill">sensory processing</span><span class="term-pill">sensory modulation</span><span class="term-pill">sensory overload</span><span class="term-pill">photosensitivity</span></td>
+            <td><span class="term-pill">sensory accessibility</span><span class="term-pill">reduced motion</span><span class="term-pill">visual clutter</span><span class="term-pill">multimodal feedback</span></td>
+            <td><span class="term-pill">adaptive brightness</span><span class="term-pill">haptic intensity</span><span class="term-pill">audio alerts</span><span class="term-pill">feedback frequency</span></td>
+            <td>Sound, color, vibration, brightness, motion, flicker, intensity, timing, and overload reduction.</td>
+          </tr>
+          <tr>
+            <td>Attention and executive function</td>
+            <td><span class="term-pill">ADHD</span><span class="term-pill">executive function</span><span class="term-pill">working memory</span><span class="term-pill">self-regulation</span></td>
+            <td><span class="term-pill">cognitive accessibility</span><span class="term-pill">task chunking</span><span class="term-pill">cognitive scaffolding</span><span class="term-pill">interruption management</span></td>
+            <td><span class="term-pill">context-aware prompts</span><span class="term-pill">adaptive reminders</span><span class="term-pill">attention inference</span><span class="term-pill">notification timing</span></td>
+            <td>Prompt design, reminder timing, task structure, cognitive load, and attention-safe intervention.</td>
+          </tr>
+          <tr>
+            <td>Motor access and fatigue</td>
+            <td><span class="term-pill">motor fatigue</span><span class="term-pill">tremor</span><span class="term-pill">upper-limb limitation</span><span class="term-pill">balance</span></td>
+            <td><span class="term-pill">motor accessibility</span><span class="term-pill">alternative input</span><span class="term-pill">gesture fatigue</span><span class="term-pill">switch access</span></td>
+            <td><span class="term-pill">gaze input</span><span class="term-pill">voice input</span><span class="term-pill">low-effort gestures</span><span class="term-pill">wearable interaction</span></td>
+            <td>Gesture burden, body posture, reach, rest breaks, input alternatives, and fatigue-aware pacing.</td>
+          </tr>
+          <tr>
+            <td>Perception and environment</td>
+            <td><span class="term-pill">low vision</span><span class="term-pill">blindness</span><span class="term-pill">hearing differences</span><span class="term-pill">vestibular sensitivity</span></td>
+            <td><span class="term-pill">perceptual accessibility</span><span class="term-pill">spatial audio</span><span class="term-pill">captions</span><span class="term-pill">environmental adaptation</span></td>
+            <td><span class="term-pill">AR overlay</span><span class="term-pill">object recognition</span><span class="term-pill">directional captions</span><span class="term-pill">smart glasses</span></td>
+            <td>How real-world lighting, noise, movement, space, and object recognition shape access.</td>
+          </tr>
+          <tr>
+            <td>AI adaptation and risk</td>
+            <td><span class="term-pill">stress</span><span class="term-pill">fatigue</span><span class="term-pill">anxiety</span><span class="term-pill">clinical interpretation</span></td>
+            <td><span class="term-pill">user control</span><span class="term-pill">transparency</span><span class="term-pill">explainability</span><span class="term-pill">non-pathologizing design</span></td>
+            <td><span class="term-pill">cognitive state inference</span><span class="term-pill">physiological sensing</span><span class="term-pill">personalization</span><span class="term-pill">misclassification</span></td>
+            <td>What the system infers, how users correct it, privacy risks, and whether adaptation supports autonomy.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Review Search Layers</h3>
+      <div class="search-layer">
+        <h3>Layer 1: Health / Neurodiversity / Access Needs</h3>
+        <pre>(neurodiversity OR neurodivergent OR autism OR autistic OR ADHD OR dyslexia OR dyspraxia OR "cognitive impairment" OR "sensory processing" OR "executive function")
+AND
+(accessibility OR accommodation OR intervention OR support OR "assistive technology" OR "sensory modulation" OR "cognitive support" OR "attention support")
+AND
+(wearable OR "mobile health" OR mHealth OR "digital health" OR "smart glasses" OR "augmented reality" OR "extended reality")</pre>
+      </div>
+
+      <div class="search-layer">
+        <h3>Layer 2: Sensory Feedback, Color, Sound, and Frequency</h3>
+        <pre>("sensory overload" OR "sensory modulation" OR "sensory processing" OR "sensory sensitivity" OR "sensory regulation")
+AND
+(autism OR autistic OR neurodivergent OR ADHD OR anxiety)
+AND
+(sound OR audio OR color OR light OR brightness OR haptic OR vibration OR flicker OR flashing OR frequency OR intensity)
+AND
+("assistive technology" OR digital OR wearable OR mobile OR "augmented reality" OR "virtual reality")</pre>
+      </div>
+
+      <div class="search-layer">
+        <h3>Layer 3: Wearables, Gaze, and Physiological Sensing</h3>
+        <pre>("wearable technology" OR wearable OR "smart glasses" OR "AR glasses" OR "head-mounted display" OR "eye tracking" OR gaze OR "physiological sensing" OR "context-aware")
+AND
+("cognitive load" OR attention OR confusion OR fatigue OR overload OR "mental workload" OR "sensory overload")
+AND
+(accessibility OR neurodiversity OR disability OR "assistive technology" OR adaptation OR personalization)</pre>
+      </div>
+
+      <div class="search-layer">
+        <h3>Layer 4: HCI / XR / Accessibility Principles</h3>
+        <pre>(accessibility OR "accessible computing" OR "inclusive design" OR "universal design" OR "cognitive accessibility")
+AND
+("human-computer interaction" OR HCI OR "augmented reality" OR "virtual reality" OR XR OR "wearable interaction" OR "human-AI interaction")
+AND
+(guideline OR framework OR principle OR taxonomy OR "design implication" OR "design recommendation")</pre>
+      </div>
+
+      <div class="search-layer">
+        <h3>Layer 5: AI Accessibility / Human-AI Interaction</h3>
+        <pre>("artificial intelligence" OR AI OR "machine learning" OR "adaptive system" OR "context-aware AI" OR "generative AI" OR "human-AI interaction")
+AND
+(accessibility OR disability OR neurodiversity OR "cognitive accessibility")
+AND
+(explainability OR transparency OR fairness OR personalization OR autonomy OR "user control" OR privacy OR misclassification)</pre>
       </div>
     </section>
   </main>
