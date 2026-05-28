@@ -11,6 +11,8 @@ The project maps health, rehabilitation, neurodiversity, HCI, XR, wearable compu
 - `index.html`: GitHub Pages homepage
 - `search_protocol.html`: CHI-level scoping review search protocol
 - `interview_questions.html`: medical collaborator interview guide and browser audio recorder
+- `medical_coauthor_analysis.html`: public coding results from the 2026-05-28 medical coauthor interview
+- `analysis/2026-05-28-medical-coauthor/`: public coding memo and automatic raw transcript
 - `meeting_brief.html`: full meeting brief webpage
 - `meeting_brief.pdf`: PDF version of the brief
 - `meeting_brief.md`: Markdown source

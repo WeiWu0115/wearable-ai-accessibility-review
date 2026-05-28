@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+Added:
+
+- Public medical coauthor coding results page.
+- Public automatic raw transcript and coding memo from the 2026-05-28 medical coauthor interview.
+- Homepage link to medical coauthor materials.
+
 ## v0.2-chi-search-protocol-2026-05-27
 
 Date: 2026-05-27

@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Medical Coauthor Coding Results | Wearable AI Accessibility Review</title>
+  <meta name="description" content="Coding results from a medical coauthor interview for the wearable AI accessibility scoping review.">
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #5c6675;
+      --line: #d8dee8;
+      --soft: #f5f7fa;
+      --accent: #0f6b68;
+      --accent-2: #8f3d56;
+      --warm: #f6efe7;
+      --blue: #e9f2f7;
+      --green: #e9f4ef;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      line-height: 1.62;
+      letter-spacing: 0;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      background: #ffffff;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 64px;
+      font-size: 0.95rem;
+    }
+
+    .brand {
+      font-weight: 720;
+      color: var(--ink);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .hero {
+      padding: 46px 0 34px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(233, 242, 247, 0.92), rgba(246, 239, 231, 0.9)),
+        #f7f8fa;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      max-width: 980px;
+      font-size: clamp(2rem, 4.5vw, 3.8rem);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: clamp(1.35rem, 3vw, 2rem);
+      line-height: 1.22;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 22px 0 8px;
+      font-size: 1.12rem;
+      line-height: 1.32;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 8px 0;
+    }
+
+    .subtitle,
+    .lede {
+      max-width: 900px;
+      color: #394657;
+      font-size: 1.07rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid var(--accent);
+      color: #ffffff;
+      background: var(--accent);
+      border-radius: 6px;
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    .button.secondary {
+      color: var(--accent);
+      background: #ffffff;
+    }
+
+    main {
+      padding: 26px 0 54px;
+    }
+
+    section {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .note {
+      margin: 14px 0;
+      padding: 14px;
+      border-left: 4px solid var(--accent);
+      background: var(--soft);
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .result-card {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    .result-card:nth-child(3n+1) { background: var(--blue); }
+    .result-card:nth-child(3n+2) { background: var(--green); }
+    .result-card:nth-child(3n) { background: var(--warm); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 4px;
+      font-size: 0.93rem;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--soft);
+    }
+
+    ul, ol {
+      margin: 8px 0 0 20px;
+      padding: 0;
+    }
+
+    li {
+      margin: 4px 0;
+    }
+
+    code {
+      padding: 1px 5px;
+      border-radius: 4px;
+      background: #eef2f6;
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 0.92em;
+    }
+
+    footer {
+      padding: 24px 0 36px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 860px) {
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+
+      .result-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav aria-label="Primary navigation">
+        <a class="brand" href="index.html">Wearable AI Accessibility Review</a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="search_protocol.html">Search Protocol</a>
+          <a href="interview_questions.html">Interview</a>
+          <a href="meeting_brief.pdf">PDF Brief</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="wrap">
+      <h1>Medical Coauthor Coding Results</h1>
+      <p class="subtitle">Coding results from a medical coauthor interview on sensory pathways, receptors, thresholds, diagnosis/treatment logic, and how these concepts can strengthen the wearable AI accessibility scoping review.</p>
+      <div class="actions">
+        <a class="button" href="analysis/2026-05-28-medical-coauthor/coding_memo.md">Open Coding Memo</a>
+        <a class="button secondary" href="analysis/2026-05-28-medical-coauthor/combined_raw_transcript.md">Open Raw Transcript</a>
+        <a class="button secondary" href="search_protocol.html">Search Protocol</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section>
+      <h2>Bottom Line</h2>
+      <p class="lede">The interview helps reframe wearable AI accessibility as support for a sensory pathway, not just a set of UI preferences. The useful scaffold is:</p>
+      <p><code>stimulus -> receptor -> signal/transduction -> neural pathway -> processing -> interpretation/action -> support/treatment</code></p>
+      <div class="note">
+        This strengthens the review by giving CAWI a health-side foundation: wearable AI may sense external stimuli, modify stimulus intensity or channel, support perception when thresholds differ, reduce overload, compensate for missed signals, and help locate where an access breakdown occurs.
+      </div>
+    </section>
+
+    <section>
+      <h2>High-Level Codes</h2>
+      <div class="result-grid">
+        <div class="result-card"><strong>C1. Physiology vs Pathology</strong><p>Start with normal sensory function, then examine atypical or pathological cases.</p></div>
+        <div class="result-card"><strong>C2. Sensory Pathway as Architecture</strong><p>Sensory access can be understood as receptor, transmission, processing, and output.</p></div>
+        <div class="result-card"><strong>C3. Diagnosis as Debugging</strong><p>Clinical diagnosis locates where the problem occurs; treatment intervenes there.</p></div>
+        <div class="result-card"><strong>C4. Receptor as Key Concept</strong><p>"Sensory" is too broad; the review needs receptor, pathway, and threshold language.</p></div>
+        <div class="result-card"><strong>C5. Threshold and Sensitivity</strong><p>Different bodies have different stimulus thresholds and response curves.</p></div>
+        <div class="result-card"><strong>C6. No One-Size-Fits-All</strong><p>The output should be an adaptive protocol, not a fixed universal setting.</p></div>
+        <div class="result-card"><strong>C7. Modality-Specific Pathways</strong><p>Visual, auditory, olfactory, tactile, thermal, pain, vibration, and proprioceptive pathways differ.</p></div>
+        <div class="result-card"><strong>C8. Somatosensory Expansion</strong><p>Touch, cold, pain, vibration, texture, and proprioception should be added to the plan.</p></div>
+        <div class="result-card"><strong>C9. Reflex / Action Boundary</strong><p>Some sensory pathways end in interpretation; others involve reflex, action, fatigue, or effectors.</p></div>
+        <div class="result-card"><strong>C10. Wearable AI as Intervention</strong><p>Wearable AI can support sensing, diagnosis, treatment, regulation, and accommodation.</p></div>
+        <div class="result-card"><strong>C11. Dynamic Regulation</strong><p>Sensitivity, overload, fatigue, and adaptation change over time and context.</p></div>
+        <div class="result-card"><strong>C12. Term Ambiguity</strong><p>Medical naming varies historically; search must include both functional and anatomical terms.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>What This Adds to the Paper</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Existing Plan</th>
+            <th>Medical Coauthor Addition</th>
+            <th>Resulting Improvement</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Neurodiversity and sensory overload</td>
+            <td>Sensory thresholds, receptors, pathways, and response profiles</td>
+            <td>More precise health-side grounding</td>
+          </tr>
+          <tr>
+            <td>CAWI loop</td>
+            <td>Stimulus -> receptor -> transduction -> pathway -> processing -> action/support</td>
+            <td>Biological scaffold underneath the HCI framework</td>
+          </tr>
+          <tr>
+            <td>Wearable AI adapts feedback</td>
+            <td>Adaptation can be seen as external regulation when the body cannot regulate alone</td>
+            <td>Stronger justification for adaptive transparency and user control</td>
+          </tr>
+          <tr>
+            <td>Visual and auditory accessibility</td>
+            <td>Somatosensory, thermal, pain, vibration, texture, proprioception</td>
+            <td>Better fit for body-worn and haptic wearable systems</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Recommended Search Strategy Updates</h2>
+      <h3>Add Terms</h3>
+      <ul>
+        <li><code>sensory receptor</code>, <code>receptor</code>, <code>sensory pathway</code>, <code>neural pathway</code>, <code>afferent pathway</code></li>
+        <li><code>sensory transduction</code>, <code>sensory threshold</code>, <code>stimulus threshold</code>, <code>sensory responsiveness</code></li>
+        <li><code>sensory adaptation</code>, <code>habituation</code>, <code>sensory gating</code>, <code>signal processing</code></li>
+        <li><code>mechanoreceptor</code>, <code>photoreceptor</code>, <code>hair cell</code>, <code>olfactory receptor neuron</code></li>
+        <li><code>somatosensory</code>, <code>tactile perception</code>, <code>thermoreceptor</code>, <code>nociception</code>, <code>vibration perception</code>, <code>proprioception</code></li>
+      </ul>
+      <h3>Add Search Layer</h3>
+      <p><strong>Layer 0 / 1A: Sensory Physiology and Receptor/Pathway Foundations</strong></p>
+      <p>This layer should be piloted selectively because it can become very broad. Its purpose is conceptual grounding, not uncontrolled expansion.</p>
+    </section>
+
+    <section>
+      <h2>Recommended Extraction Fields</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>New Field</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Sensory_Modality</td><td>Visual, auditory, olfactory, tactile, thermal, pain, vibration, proprioceptive, vestibular, multimodal.</td></tr>
+          <tr><td>Stimulus_Type</td><td>Light, flicker, sound, vibration, pressure, temperature, texture, smell, movement, spatial clutter.</td></tr>
+          <tr><td>Human_Pathway_Component</td><td>Receptor, transduction, pathway/transmission, central processing, interpretation, effector/action.</td></tr>
+          <tr><td>Threshold_Type</td><td>Low threshold, high threshold, variable threshold, unknown.</td></tr>
+          <tr><td>Response_Profile</td><td>Overload, avoidance, seeking, low registration, fatigue, adaptation, habituation, arousal.</td></tr>
+          <tr><td>Support_Target</td><td>Reduce stimulus, amplify stimulus, substitute modality, filter signal, scaffold attention, support action, support diagnosis.</td></tr>
+          <tr><td>HCI_Adjustable_Parameter</td><td>Intensity, frequency, timing, density, modality, predictability, duration, location/context.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Next Version Direction</h2>
+      <p>The next public project version can incorporate this as:</p>
+      <p><code>v0.3-medical-pathway-scaffold-2026-05-28</code></p>
+      <p>This version should revise the search protocol and keyword alignment matrix to include receptor/pathway terminology and somatosensory access.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>Full materials: <a href="analysis/2026-05-28-medical-coauthor/coding_memo.md">coding memo</a>, <a href="analysis/2026-05-28-medical-coauthor/combined_raw_transcript.md">raw transcript</a>, <a href="index.html">project homepage</a>.</p>
+    </div>
+  </footer>
+</body>
+</html>
