@@ -13,6 +13,7 @@ The project maps health, rehabilitation, neurodiversity, HCI, XR, wearable compu
 - `interview_questions.html`: medical collaborator interview guide and browser audio recorder
 - `medical_coauthor_analysis.html`: public coding results from the 2026-05-28 medical coauthor interview
 - `advisor_proposal_scaffold.html`: scaffold page connecting the advisor's prior proposal to the review
+- `restricted/advisor-proposal-pac-020121-password-protected.zip`: password-protected advisor proposal archive
 - `analysis/2026-05-28-medical-coauthor/`: public coding memo and automatic raw transcript
 - `meeting_brief.html`: full meeting brief webpage
 - `meeting_brief.pdf`: PDF version of the brief

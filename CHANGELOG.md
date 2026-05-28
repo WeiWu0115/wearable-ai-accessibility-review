@@ -8,6 +8,7 @@ Added:
 - Public automatic raw transcript and coding memo from the 2026-05-28 medical coauthor interview.
 - Homepage link to medical coauthor materials.
 - Advisor proposal scaffold page, without uploading the private proposal PDF.
+- Password-protected ZIP archive for the advisor proposal.
 
 ## v0.2-chi-search-protocol-2026-05-27
 
