@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Advisor Proposal Scaffold | Wearable AI Accessibility Review</title>
+  <meta name="description" content="How an advisor's previous proposal on sensory processing sensitivity can scaffold the wearable AI accessibility scoping review.">
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #5c6675;
+      --line: #d8dee8;
+      --soft: #f5f7fa;
+      --accent: #0f6b68;
+      --warm: #f6efe7;
+      --blue: #e9f2f7;
+      --green: #e9f4ef;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      line-height: 1.62;
+      letter-spacing: 0;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 64px;
+      font-size: 0.95rem;
+    }
+
+    .brand {
+      font-weight: 720;
+      color: var(--ink);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .hero {
+      padding: 46px 0 34px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(233, 242, 247, 0.92), rgba(246, 239, 231, 0.9)),
+        #f7f8fa;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      max-width: 980px;
+      font-size: clamp(2rem, 4.5vw, 3.8rem);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: clamp(1.35rem, 3vw, 2rem);
+      line-height: 1.22;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 22px 0 8px;
+      font-size: 1.12rem;
+      line-height: 1.32;
+      letter-spacing: 0;
+    }
+
+    p { margin: 8px 0; }
+
+    .subtitle,
+    .lede {
+      max-width: 900px;
+      color: #394657;
+      font-size: 1.07rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid var(--accent);
+      color: #fff;
+      background: var(--accent);
+      border-radius: 6px;
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    .button.secondary {
+      color: var(--accent);
+      background: #fff;
+    }
+
+    main { padding: 26px 0 54px; }
+
+    section {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .note {
+      margin: 14px 0;
+      padding: 14px;
+      border-left: 4px solid var(--accent);
+      background: var(--soft);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .card {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .card:nth-child(3n+1) { background: var(--blue); }
+    .card:nth-child(3n+2) { background: var(--green); }
+    .card:nth-child(3n) { background: var(--warm); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 4px;
+      font-size: 0.93rem;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th { background: var(--soft); }
+
+    ul, ol {
+      margin: 8px 0 0 20px;
+      padding: 0;
+    }
+
+    li { margin: 4px 0; }
+
+    code {
+      padding: 1px 5px;
+      border-radius: 4px;
+      background: #eef2f6;
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 0.92em;
+    }
+
+    footer {
+      padding: 24px 0 36px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 860px) {
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav aria-label="Primary navigation">
+        <a class="brand" href="index.html">Wearable AI Accessibility Review</a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="search_protocol.html">Search Protocol</a>
+          <a href="medical_coauthor_analysis.html">Medical Coding</a>
+          <a href="meeting_brief.pdf">PDF Brief</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="wrap">
+      <h1>Advisor Proposal Scaffold</h1>
+      <p class="subtitle">How the advisor's previous proposal on sensory processing sensitivity, context modulation, attention, arousal, and visual crowding can scaffold the wearable AI accessibility scoping review.</p>
+      <div class="actions">
+        <a class="button" href="#scaffold">Scaffold Logic</a>
+        <a class="button secondary" href="#keywords">Keywords</a>
+        <a class="button secondary" href="#references">Seed References</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section>
+      <h2>Positioning</h2>
+      <p class="lede">This proposal is useful as an internal conceptual, search, and framework scaffold. It should not be treated as the main published evidence source unless the advisor explicitly approves citing or sharing the proposal itself.</p>
+      <div class="note">
+        Recommended use: draw on the proposal's concepts to shape the review, then cite the published literature referenced by the proposal.
+      </div>
+    </section>
+
+    <section id="scaffold">
+      <h2>Scaffold Logic</h2>
+      <p>The proposal gives the review a health-side theory of individual sensory variability:</p>
+      <p><code>environmental stimuli -> sensory processing sensitivity -> context modulation -> information processing / learning</code></p>
+      <p>This connects directly with the medical coauthor pathway scaffold:</p>
+      <p><code>stimulus -> receptor -> pathway -> processing -> interpretation/action -> support</code></p>
+      <p>Together, they help frame wearable AI accessibility as support for heterogeneous sensory thresholds, sensory-cognitive processing, and context-dependent access needs.</p>
+    </section>
+
+    <section>
+      <h2>What We Can Get From It</h2>
+      <div class="grid">
+        <div class="card"><strong>Conceptual Scaffold</strong><p>Use sensory processing sensitivity and context modulation as the health foundation for wearable AI accessibility.</p></div>
+        <div class="card"><strong>Search Scaffold</strong><p>Extract keywords for sensory thresholds, arousal, visual crowding, attention modulation, and physiological sensing.</p></div>
+        <div class="card"><strong>Seed Bibliography</strong><p>Use the proposal's published references as seed papers for backward and forward citation chaining.</p></div>
+        <div class="card"><strong>Framework Scaffold</strong><p>Strengthen CAWI principles such as Contextual Perceivability, Sensory Modulation, and Attention Respect.</p></div>
+        <div class="card"><strong>Advisor Alignment</strong><p>Show how the new CHI scoping review extends the advisor's previous work into HCI and wearable AI.</p></div>
+        <div class="card"><strong>Boundary Setting</strong><p>Use the proposal to ground sensory science without turning the review into a full cognitive neuroscience review.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>How It Maps to CAWI</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Proposal Concept</th>
+            <th>Meaning for This Review</th>
+            <th>CAWI Connection</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Sensory processing sensitivity</td>
+            <td>People differ in how strongly they perceive, tolerate, and respond to sensory stimuli.</td>
+            <td>Sensory Modulation; Adaptive Transparency</td>
+          </tr>
+          <tr>
+            <td>Context modulation</td>
+            <td>Sensory experience changes with attention, arousal, crowding, and environmental context.</td>
+            <td>Contextual Perceivability; Attention Respect</td>
+          </tr>
+          <tr>
+            <td>Visual crowding</td>
+            <td>Nearby visual elements can impair recognition and increase perceptual burden.</td>
+            <td>Reduced visual density; AR overlay constraints</td>
+          </tr>
+          <tr>
+            <td>Physiological arousal</td>
+            <td>Body state changes perception, learning, and tolerance for stimulation.</td>
+            <td>Context-aware adaptation; inference accountability</td>
+          </tr>
+          <tr>
+            <td>Attention modulation</td>
+            <td>Attention can amplify or gate sensory signals.</td>
+            <td>Attention Respect; cognitive-state-aware prompting</td>
+          </tr>
+          <tr>
+            <td>Learning and predictive processing</td>
+            <td>Sensory sensitivity may affect how people learn patterns and respond to expectations.</td>
+            <td>Predictable feedback; cognitive legibility</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="keywords">
+      <h2>Keywords to Add or Strengthen</h2>
+      <ul>
+        <li><code>sensory processing sensitivity</code>, <code>environmental sensitivity</code>, <code>sensory responsiveness</code></li>
+        <li><code>sensory sensitivity</code>, <code>sensory threshold</code>, <code>sensory avoidance</code>, <code>sensory seeking</code>, <code>low registration</code></li>
+        <li><code>visual crowding</code>, <code>stimulus intensity</code>, <code>auditory intensity</code>, <code>visual intensity</code></li>
+        <li><code>physiological arousal</code>, <code>attention modulation</code>, <code>implicit learning</code>, <code>predictive coding</code></li>
+        <li><code>eye tracking</code>, <code>EEG</code>, <code>heart rate variability</code>, <code>skin conductance</code>, <code>pupil size</code></li>
+      </ul>
+    </section>
+
+    <section id="references">
+      <h2>Seed References From the Proposal</h2>
+      <p>These are better candidates for formal citation than the proposal document itself.</p>
+      <ul>
+        <li>Aron & Aron 1997: sensory-processing sensitivity.</li>
+        <li>Aron et al. 2012: sensory processing sensitivity review.</li>
+        <li>Greven et al. 2019: sensory processing sensitivity and environmental sensitivity.</li>
+        <li>Brown & Dunn 2002: Adolescent/Adult Sensory Profile.</li>
+        <li>Ward 2019: individual differences in sensory sensitivity.</li>
+        <li>Ghanizadeh 2011: sensory processing problems in ADHD.</li>
+        <li>Houghton, Stein, & Cortese 2020: sensory abnormalities in anxiety/OCD.</li>
+        <li>Whitney & Levi 2011: visual crowding.</li>
+        <li>Pellicano & Burr 2012: autistic perception and predictive coding.</li>
+        <li>Wallace & Stevenson 2014: multisensory temporal binding window.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Recommended Manuscript Use</h2>
+      <ol>
+        <li>Use the proposal to frame the health-side scaffold internally.</li>
+        <li>Use the published references as seed literature.</li>
+        <li>Revise the search protocol to include sensory processing sensitivity and context modulation terms.</li>
+        <li>Do not upload or cite the full proposal PDF publicly unless the advisor approves.</li>
+        <li>Use this bridge statement with collaborators: "We extend sensory processing sensitivity and context modulation into wearable AI accessibility principles."</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>Related materials: <a href="index.html">project homepage</a>, <a href="search_protocol.html">search protocol</a>, <a href="medical_coauthor_analysis.html">medical coauthor coding results</a>.</p>
+    </div>
+  </footer>
+</body>
+</html>
