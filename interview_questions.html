@@ -145,6 +145,11 @@
       background: var(--danger);
     }
 
+    button.danger:disabled {
+      border-color: #c98a8d;
+      background: #c98a8d;
+    }
+
     button:disabled {
       cursor: not-allowed;
       opacity: 0.55;
@@ -502,6 +507,7 @@
     let chunks = [];
     let startTime = 0;
     let timerInterval;
+    let lastRecordingDuration = '00:00';
 
     function formatTime(totalSeconds) {
       const minutes = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
@@ -510,7 +516,9 @@
     }
 
     function startTimer() {
+      window.clearInterval(timerInterval);
       startTime = Date.now();
+      timerEl.textContent = '00:00';
       timerInterval = window.setInterval(() => {
         timerEl.textContent = formatTime((Date.now() - startTime) / 1000);
       }, 500);
@@ -518,6 +526,10 @@
 
     function stopTimer() {
       window.clearInterval(timerInterval);
+      const duration = startTime ? formatTime((Date.now() - startTime) / 1000) : '00:00';
+      timerEl.textContent = '00:00';
+      startTime = 0;
+      return duration;
     }
 
     function filenameSafe(value) {
@@ -543,7 +555,7 @@
           downloadAudio.download = `${filenameSafe(meetingTitle.value)}.webm`;
           downloadAudio.hidden = false;
           stream.getTracks().forEach(track => track.stop());
-          statusEl.textContent = 'Recording stopped. You can play back or download the audio.';
+          statusEl.textContent = `Recording stopped. Last recording: ${lastRecordingDuration}. You can play back or download the audio.`;
         };
         mediaRecorder.start();
         startBtn.disabled = true;
@@ -551,7 +563,6 @@
         downloadAudio.hidden = true;
         audioPlayback.hidden = true;
         statusEl.textContent = 'Recording in progress...';
-        timerEl.textContent = '00:00';
         startTimer();
       } catch (error) {
         statusEl.textContent = `Microphone access failed: ${error.message}`;
@@ -560,8 +571,8 @@
 
     stopBtn.addEventListener('click', () => {
       if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+        lastRecordingDuration = stopTimer();
         mediaRecorder.stop();
-        stopTimer();
         startBtn.disabled = false;
         stopBtn.disabled = true;
       }
