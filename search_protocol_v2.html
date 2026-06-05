@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Search Protocol v2 — Perceptual Engineering (Two-Arm)</title>
+  <meta name="description" content="Version 2 search protocol for the perceptual-engineering scoping review: symmetric two-arm (HCI + clinical autism dx/tx) PRISMA-ScR strategy.">
+  <style>
+    :root{
+      --ink:#17202a; --muted:#5c6675; --line:#d8dee8; --soft:#f5f7fa;
+      --accent:#0f6b68; --accent-2:#8f3d56; --warm:#f6efe7; --blue:#e9f2f7;
+      --green:#e9f4ef; --violet:#f1edf7;
+    }
+    *{box-sizing:border-box;}
+    body{margin:0;color:var(--ink);background:#fff;
+      font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
+      line-height:1.62;}
+    a{color:var(--accent);text-underline-offset:3px;}
+    .wrap{width:min(1040px,calc(100% - 32px));margin:0 auto;}
+    header{border-bottom:1px solid var(--line);background:#fff;}
+    nav{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;font-size:.95rem;}
+    .brand{font-weight:720;color:var(--ink);}
+    .nav-links{display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
+    .hero{padding:46px 0 34px;border-bottom:1px solid var(--line);
+      background:linear-gradient(90deg,rgba(233,244,239,.92),rgba(233,242,247,.88)),#f7f8fa;}
+    h1{margin:0 0 12px;font-size:clamp(1.8rem,4.2vw,3rem);line-height:1.08;}
+    .subtitle{max-width:780px;margin:0 0 6px;color:#394657;font-size:1.08rem;}
+    .meta{color:var(--muted);font-size:.92rem;margin-top:10px;}
+    main{padding:8px 0 54px;}
+    section{padding:24px 0;border-bottom:1px solid var(--line);}
+    h2{margin:0 0 12px;font-size:clamp(1.3rem,3vw,1.8rem);line-height:1.2;}
+    h3{margin:18px 0 6px;font-size:1.08rem;color:var(--accent);}
+    .tag{display:inline-block;font-size:.74rem;font-weight:700;letter-spacing:.04em;
+      text-transform:uppercase;color:var(--accent);background:var(--green);
+      border:1px solid #cfe6dc;border-radius:999px;padding:2px 10px;margin-bottom:10px;}
+    .lede{font-size:1.04rem;color:#33404f;}
+    pre{margin:10px 0 0;padding:12px;white-space:pre-wrap;overflow-wrap:anywhere;
+      border:1px solid #d3dce6;border-radius:6px;background:#f6f8fa;color:#17202a;
+      font-size:.86rem;line-height:1.55;}
+    code{background:#eef2f7;border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:.9em;}
+    .callout{background:var(--warm);border:1px solid #e6d8c6;border-radius:10px;padding:14px 16px;}
+    .arm{border:1px solid var(--line);border-radius:12px;padding:8px 18px 18px;margin:14px 0;background:#fff;}
+    .arm.a{border-top:4px solid var(--accent);}
+    .arm.b{border-top:4px solid var(--accent-2);}
+    .kv{margin:6px 0;}
+    .kv b{color:var(--ink);}
+    table{width:100%;border-collapse:collapse;margin:8px 0;font-size:.94rem;}
+    th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top;}
+    th{background:var(--soft);font-weight:700;}
+    .button{display:inline-flex;align-items:center;justify-content:center;min-height:40px;
+      padding:9px 16px;border:1px solid var(--accent);color:#fff;background:var(--accent);
+      border-radius:6px;font-weight:650;text-decoration:none;}
+    .button.secondary{color:var(--accent);background:#fff;}
+    footer{padding:22px 0 40px;color:var(--muted);font-size:.92rem;}
+    @media(max-width:640px){table,thead,tbody,th,td,tr{display:block;}th{display:none;}td{border:none;border-bottom:1px solid var(--line);}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav>
+        <span class="brand">Search Protocol · v2</span>
+        <span class="nav-links">
+          <a href="index.html">CAWI Home</a>
+          <a href="perception_review_proposal.html">Proposal</a>
+          <a href="perception_review_scope.html">Scope (editable)</a>
+          <a href="search_protocol.html">v1 协议</a>
+        </span>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="wrap">
+      <h1>Search Protocol · v2</h1>
+      <p class="subtitle"><strong>Perceptual Engineering 范围综述 · 对称双臂检索协议</strong>(HCI 臂 + 临床 autism dx/tx 臂)。</p>
+      <p class="meta">PRISMA-ScR · Arksey &amp; O'Malley 五阶段 · 时间窗 2013–2025 · v1 · 2026-06-05 · 现场可编辑版见 <a href="perception_review_scope.html#search">Scope §5</a></p>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section id="position">
+      <span class="tag">定位</span>
+      <p class="lede">本页是 <strong>version2(感知工程综述)</strong>的检索协议。与 <a href="search_protocol.html">v1(CAWI 原始七层协议)</a> 并存:v1 覆盖更宽的 neurodiversity / wearable / XR / AI accessibility;<strong>v2 聚焦 perceptual engineering,并改为对称双臂</strong>——HCI 端与临床端各自主导一臂、交叉复核,最终两套 corpus 沿神经通路相互 map。</p>
+    </section>
+
+    <section id="method">
+      <span class="tag">方法 · 对称双臂流程</span>
+      <p>两臂均在 <strong>Covidence</strong>;<strong>每个领域专家在自己臂当 1st reviewer、在对方臂当 2nd reviewer</strong>:</p>
+      <table>
+        <thead><tr><th>臂</th><th>1st reviewer(检索 + 建库)</th><th>2nd reviewer</th></tr></thead>
+        <tbody>
+          <tr><td><strong>A · HCI 感知工程</strong></td><td>HCI researcher</td><td>医学生</td></tr>
+          <tr><td><strong>B · 临床(autism dx/tx)</strong></td><td>医学生</td><td>HCI researcher</td></tr>
+        </tbody>
+      </table>
+      <p>两臂均:<strong>两遍筛</strong>(① 标题 + 摘要 → ② 全文),冲突由两人协商或引入<strong>第三 reviewer</strong> 解决。两臂各产出最终 corpus → 见末节「合流 · Map」。</p>
+      <div class="callout" style="margin-top:12px">
+        <strong>时间窗(两臂共用):2013–2025。</strong> 医学侧:DSM-5(2013)统一为单一 ASD、改维度化严重程度分级、<strong>首次将「感觉异常」列为核心特征</strong>(2003 前研究多被推翻 → 自然排除);HCI 侧:~2015 可穿戴 / 泛在计算与生物信息成为 daily device。
+      </div>
+    </section>
+
+    <section id="armA">
+      <span class="tag">臂 A · HCI 感知工程</span>
+      <div class="arm a">
+        <p class="kv"><b>库:</b> ACM DL + IEEE Xplore(+ Scopus 跨学科补全 / snowballing)</p>
+        <p class="kv"><b>venue:</b> CHI · UIST · TEI · DIS · CHI EA · Augmented Humans · IMWUT/UbiComp · ISS · MobileHCI;IEEE: World Haptics · ToH · IEEE VR</p>
+        <p class="kv"><b>式:</b> <code>A</code> AND <code>B</code> AND(<code>C</code> 或 venue 限定)· English · 2013–2025</p>
+        <pre>A — 感知 / 感官目标:
+(perception OR perceptual OR sensory OR multisensory OR cross-modal OR
+ propriocept* OR vestibular OR haptic OR tactile OR thermal OR
+ olfact* OR smell OR gustat* OR taste OR interocept* OR "sensory substitution")
+AND
+B — 作用 / 工程化("act on" 动词,排掉纯展示):
+(stimulat* OR "electrical muscle stimulation" OR EMS OR "galvanic vestibular" OR GVS OR
+ electrotactile OR "electro-tactile" OR actuat* OR augment* OR substitut* OR
+ illusion OR "pseudo-haptic" OR modulat* OR "sensory feedback" OR biofeedback OR
+ "perceptual engineering")
+AND
+C — HCI 语境(用 venue 限定可省略):
+(HCI OR "human-computer interaction" OR interface OR wearable OR
+ "interaction design" OR "user experience" OR on-body OR "augmented human")</pre>
+        <p class="kv" style="margin-top:10px"><b>筛选期排除(Covidence,非检索词):</b> 仅作 <strong>evaluation</strong> 手段者 → 排(技术须作为 <strong>intervention</strong>);纯信息展示 UI;纯 read-out / 控制型 BCI;二次综述;非英文。</p>
+      </div>
+    </section>
+
+    <section id="armB">
+      <span class="tag">臂 B · 临床(autism 诊断与治疗)</span>
+      <div class="arm b">
+        <p class="kv"><b>库:</b> PubMed(+ Scopus),基于 <code>ADSR2</code> MeSH · 2013–2025</p>
+        <p class="kv"><b>式:</b> <code>P</code> AND <code>通路概念(四层 OR)</code> AND <code>诊断 / 治疗</code></p>
+        <pre>P — autism 人群(所有式都 AND 上):
+("Autism Spectrum Disorder"[Mesh] OR autis*[tiab] OR ASD[tiab] OR Asperger*[tiab] OR neurodivers*[tiab])
+AND
+通路概念(四层任一,OR 合并;可加其他通路):
+  受器: (electroretinog* OR ERG OR "auditory brainstem response" OR ABR OR tactile OR somatosensory OR "tactile defensiveness")
+  门控: ("sensory gating" OR GABA OR thalam* OR "excitatory inhibitory" OR "sensory over-responsivity")
+  整合: (multisensory OR "temporal binding window" OR audiovisual OR crossmodal OR postural)
+  情感: (insula* OR amygdala OR interocept* OR "heart rate variability" OR "sensory sensitivity")
+AND
+诊断 / 治疗:
+(diagnos* OR "DSM-5" OR assessment OR treatment OR intervention OR therap* OR rehabilitation)</pre>
+        <p class="kv" style="margin-top:10px"><b>说明:</b> 四层是<strong>主通路</strong>;autism 复杂,<strong>可能并存其他通路</strong>,可加行扩展。各层可分别检索,或如上 OR 合并成一条广检。</p>
+        <p class="kv"><b>筛选期排除:</b> 非 autism 条件的临床假体(人工耳蜗 / 视网膜假体 / TENS)→ 仅 Background / Future Work,不进搜索。</p>
+      </div>
+    </section>
+
+    <section id="map">
+      <span class="tag">合流 · Map</span>
+      <p>两臂各产出最终 corpus → 沿<strong>四阶段神经通路(受器 → 门控 → 整合 → 情感)</strong>把两套 paper <strong>相互 map</strong>:把臂 A 的 HCI 工作对位到臂 B 的医学通路 / 断点,即最终 charting 表。</p>
+      <p class="kv"><b>charting 字段:</b> title / authors / year / venue / 技术 / 模态 / 目标层 / 神经调用类型·承重 / augment-substitute-regulate / 目标人群 / 扩散定位 / 关键发现。</p>
+    </section>
+
+    <section id="notes">
+      <span class="tag">务实提醒</span>
+      <ul>
+        <li>先在 ACM DL 跑 <strong>pilot</strong>(取前 ~20% 读),按命中率收紧臂 A 的 B 组(<code>augment*</code>/<code>modulat*</code> 会带进太多无关 UI,靠 venue + 标题/摘要筛兜底)。</li>
+        <li>目标 corpus 体量对标 Rao 的 ~192。</li>
+        <li>自评 / 量表是 <strong>proxy</strong>(非特异:焦虑 / 抑郁均可致心率·呼吸变化;autism 还有 baseline drift):合理但不应<strong>单独</strong>为神经机制 claim 背书 → 编码 RQ4 时记录验证方式。</li>
+      </ul>
+      <p style="margin-top:14px"><a class="button" href="perception_review_scope.html#search">→ 打开现场可编辑版(Scope §5)</a> <a class="button secondary" href="perception_review_proposal.html">Proposal 立项</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>Perceptual Engineering Scoping Review · Search Protocol v2 · 2026-06-05 · <a href="search_protocol.html">v1 原始协议 →</a> · <a href="index.html">CAWI Home</a></p>
+    </div>
+  </footer>
+</body>
+</html>
