@@ -2,3 +2,12 @@
 # Private interview transcripts and coding notes; do not publish
 private_meeting_analysis/
 transcripts/
+
+# OS cruft
+.DS_Store
+
+# Private advisor proposal (kept only as a password-protected zip under restricted/)
+ProposalSummaryNarrativeRefs-PAC-*.pdf
+
+# Local snapshot archive; not for the published site
+wearable-ai-accessibility-review-2026-05-27.zip
