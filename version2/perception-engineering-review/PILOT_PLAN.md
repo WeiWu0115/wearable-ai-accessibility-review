@@ -1,7 +1,7 @@
 # 臂 A · Pilot 检索方案 + 预期命中量
 
 > Perceptual Engineering Scoping Review · v1 · 2026-06-05
-> 配套:`SEARCH_STRATEGY.md`(检索式)· `CHARTING_TEMPLATE.md`(提取)
+> 配套:`SEARCH_STRATEGY.md`(检索式)· 数据提取(charting)在 Covidence 单独进行
 > ⚠️ 下表数字是**量级估算**(基于领域与 venue 经验),非实库计数。**跑 pilot 后用真实 n 替换。**
 
 ---
@@ -47,7 +47,7 @@
    - precision ~15–25% → 收紧 B(见 §3 narrow 变体)。
    - precision < ~15% → B 过宽,换 narrow 变体 + 强制 venue 限定。
 4. 记录**漏检线索**:读到的好文里有哪些关键词 A/B 没覆盖 → 补词(如 `redirected walking`、`affective haptics`)。
-5. 把 pilot 子集的 ~10–20 篇试填进 `charting.html`,验证字段顺手度。
+5. 把 pilot 子集的 ~10–20 篇在 Covidence 试提取,验证字段顺手度。
 
 ---
 

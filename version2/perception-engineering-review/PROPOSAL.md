@@ -69,7 +69,7 @@
 **检索框架(双库 = "桥"的方法学签名):** ACM DL + 生物医学/工程库(Scopus 和/或 PubMed/IEEE)。三组关键词笛卡尔组合(仿 Rao Fig.2):
 `感官/感知 terms` × `刺激/作用/感知工程 terms` × `HCI venue/context terms`。
 
-**编码:** hybrid deductive(四层 + RQ4 两轴 + RQ5 人群/扩散轴)+ inductive(机制/技术主题归纳)。charting 模板记录:title / authors / year / venue / 技术 / 模态 / 目标层 / 神经调用类型·承重 / 目标人群 / 扩散定位 / 关键发现。
+**编码:** hybrid deductive(四层 + RQ4 两轴 + RQ5 人群/扩散轴)+ inductive(机制/技术主题归纳)。**数据提取(charting)在 Covidence 单独进行,不在本仓库维护。**
 
 **Scope 决策(写作前枚举再主动取舍,仿 `ADSR2` §0.5):** 纳入的感官域、刺激模态、是否含 VR/AR 感官改写、是否含纯临床/医疗器械(倾向排除无 HCI 设计意图者)、时间窗(default **2013–2025**,覆盖 EMS/感知工程兴起期,待定)。
 
@@ -101,7 +101,7 @@ curb-cut 的反面:把残障/神经多样人群当"主流创新的 R&D 实验室
 
 1. 锁定 scope 决策(感官域、模态、时间窗、venue 清单)。
 2. 起草双库检索式(三组关键词)+ pilot search。
-3. 建 charting 模板表(对应第 5 节字段)。
+3. 在 Covidence 单独配置提取字段并提取。
 4. 决定 push 范围(本 proposal / 整个 version2 / git 清理)。
 
 *v0.1 · 2026-06-04 · 对应"perception × neuro scoping review"立项*

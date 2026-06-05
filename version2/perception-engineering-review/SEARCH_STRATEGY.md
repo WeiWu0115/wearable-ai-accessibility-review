@@ -65,9 +65,9 @@ AND
 
 ## 合流 · Map
 
-两臂各产出最终 corpus → 沿**四阶段神经通路(受器 → 门控 → 整合 → 情感)**把两套 paper **相互 map**:把臂 A 的 HCI 工作对位到臂 B 的医学通路 / 断点,即最终 charting 表。
+两臂各产出最终 corpus → 沿**四阶段神经通路(受器 → 门控 → 整合 → 情感)**把两套 paper **相互 map**:把臂 A 的 HCI 工作对位到臂 B 的医学通路 / 断点。
 
-**charting 字段:** title / authors / year / venue / 技术 / 模态 / 目标层 / 神经调用类型·承重 / augment-substitute-regulate / 目标人群 / 扩散定位 / 关键发现。
+**数据提取(charting):** 在 Covidence 单独进行,字段在 Covidence 配置;不在本仓库维护。
 
 ---
 
