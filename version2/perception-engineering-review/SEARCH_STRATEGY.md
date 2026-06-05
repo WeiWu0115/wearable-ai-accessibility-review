@@ -15,50 +15,43 @@
 **库:** ACM DL + IEEE Xplore(+ Scopus 跨学科补全 / snowballing)
 **venue:** CHI · UIST · TEI · DIS · CHI EA · Augmented Humans · IMWUT/UbiComp · ISS · MobileHCI;IEEE: World Haptics · ToH · IEEE VR
 **reviewer:** HCI = 1st(检索 + 建库),医学生 = 2nd · English · 2013–2025
-> HCI researcher 给两个变体(会上版,具体检索时还会再调):**A1 精确**(具名技术 AND 语境)+ **A2 召回**(模态 AND 作用 AND 语境)。先跑 A1 看精度,再用 A2 补召回。
+**式:** `A` AND `B` AND `C`(收敛后的单一版,取代早先 A1/A2 两变体)。
 
-**A1 · 精确(named-technique AND context):**
 ```
+A — 感知 / 感官目标:
 (
-  "sensory substitution" OR "sensory augmentation" OR "sensory modulation"
-  OR "perceptual augmentation" OR "perceptual modulation" OR "perceptual engineering"
-  OR "electrical muscle stimulation" OR EMS
-  OR "galvanic vestibular stimulation" OR GVS
-  OR electrotactile OR "electro-tactile"
-  OR "pseudo-haptic" OR pseudohaptic
-  OR "haptic illusion" OR "thermal illusion"
-  OR "olfactory display" OR "gustatory interface"
-  OR "interoceptive feedback" OR "cross-modal feedback"
-  OR "crossmodal feedback" OR biofeedback
-)
-AND
-(
-  HCI OR "human-computer interaction" OR "interaction design"
-  OR wearable* OR "on-body" OR "on body"
-  OR "augmented human" OR "human augmentation"
-  OR interface* OR "user interface"
-)
-```
-
-**A2 · 召回(modality AND action AND context):**
-```
-(
-  propriocept* OR vestibular OR haptic OR tactile OR thermal
+  perception OR perceptual OR sensory OR multisensory OR "multi-sensory"
+  OR crossmodal OR "cross-modal" OR multimodal OR "multi-modal"
+  OR propriocept* OR vestibular OR haptic OR tactile OR thermal
   OR olfact* OR smell OR gustat* OR taste OR interocept*
+  OR "sensory substitution" OR "sensory augmentation" OR "sensory modulation"
 )
 AND
+B — 作用 / 工程化:
 (
-  stimulat* OR actuat* OR augment* OR substitut* OR modulat*
-  OR illusion OR feedback
+  stimulat* OR "electrical muscle stimulation" OR EMS
+  OR "galvanic vestibular stimulation" OR "galvanic vestibular" OR GVS
+  OR electrotactile OR "electro-tactile"
+  OR actuat* OR actuator*
+  OR augment* OR substitut* OR modulat* OR regulat*
+  OR illusion OR "pseudo-haptic" OR pseudohaptic
+  OR "sensory feedback" OR "perceptual feedback"
+  OR biofeedback OR neurofeedback
+  OR "perceptual engineering"
 )
 AND
+C — HCI 语境:
 (
-  HCI OR "human-computer interaction" OR wearable* OR interface*
-  OR "interaction design" OR "augmented human"
+  HCI OR "human-computer interaction"
+  OR interface* OR wearable* OR "wearable computing"
+  OR "interaction design" OR "interactive system*" OR "user interface*"
+  OR "user experience" OR UX
+  OR on-body OR "on body"
+  OR "augmented human" OR "human augmentation"
 )
 ```
 
-**注:** 臂 A **纳入嗅 / 味**(感知工程嗅味子领域活跃 —— 与臂 B 相反)。
+**注:** 臂 A **纳入嗅 / 味**(感知工程嗅味子领域活跃 —— 与臂 B 相反)。若 B 组 `augment*`/`modulat*`/`regulat*` 召回噪声大,可退回具名技术子集(EMS/GVS/electrotactile/pseudo-haptic/illusion/"sensory substitution"…)提精度。
 **筛选期排除(Covidence,非检索词):** 仅作 **evaluation** 手段者 → 排(技术须作为 **intervention**);纯信息展示 UI;纯 read-out / 控制型 BCI;二次综述;非英文。
 
 ---
@@ -102,9 +95,9 @@ AND 诊断 / 治疗:
 
 ## 务实提醒
 
-- 先在 ACM DL 跑 **pilot**(取前 ~20% 读):臂 A 先 **A1(精确)** 看命中率,再用 **A2(召回)** 补漏;A2 的 `augment*`/`modulat*` 噪声多,靠 venue + 标题/摘要筛兜底。
+- 先在 ACM DL 跑 **pilot**(取前 ~20% 读):若 A/B 的 `augment*`/`modulat*`/`regulat*` 召回噪声大,退回具名技术子集提精度,靠 venue + 标题/摘要筛兜底。
 - 目标 corpus 体量对标 Rao 的 ~192。
 - 自评 / 量表是 **proxy**(非特异:焦虑 / 抑郁均可致心率·呼吸变化;autism 还有 baseline drift):合理但不应**单独**为神经机制 claim 背书 → 编码 RQ4 时记录验证方式。
 - 两位专家均表示**具体检索时会再微调**;本文件为会上(2026-06-05)定稿版。
 
-*v2 · 2026-06-05 · 收录医生(7 感觉域)与 HCI researcher(A1/A2)会上检索式*
+*v3 · 2026-06-05 · 臂 A = HCI researcher 收敛 A/B/C;臂 B = 医生 7 感觉域*
