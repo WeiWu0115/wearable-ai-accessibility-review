@@ -70,7 +70,7 @@
       border-radius:8px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
       font-size:.85rem;line-height:1.55;background:#fff;resize:vertical;}
     .qmeta{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff;}
-    #q-combined{min-height:64px;background:var(--green);border-color:#cfe6dc;}
+    #qa-combined,#qb-combined{min-height:60px;background:var(--green);border-color:#cfe6dc;}
     .qbar{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;}
     .copied{color:var(--accent);font-weight:650;font-size:.9rem;margin-left:6px;}
     footer{padding:22px 0 40px;color:var(--muted);font-size:.92rem;}
@@ -170,48 +170,59 @@
     </section>
 
     <section id="search">
-      <span class="tag">5 · 检索策略 · 可现场编辑</span>
-      <p class="lede">三组关键词笛卡尔组合(仿 Rao et al. Fig.2):<code>A 感知目标</code> AND <code>B 作用/工程化动作</code> AND(<code>C 语境</code> 或改用 venue 限定)。<strong>下面所有方框会上直接改;A/B/C 改动会实时合成下方「组合检索式」。</strong></p>
+      <span class="tag">5 · 检索策略 · 对称双臂 · 可现场编辑</span>
+      <p class="lede">两臂笛卡尔组合(仿 Rao et al. Fig.2)。<strong>所有方框可直接改;每臂的子组改动会实时合成该臂「组合检索式」。</strong></p>
 
-      <label class="field-label" for="q-window">时间窗</label>
+      <label class="field-label" for="q-window">时间窗(两臂共用)</label>
       <input class="qmeta" id="q-window" type="text" value="2013–2025">
 
-      <label class="field-label" for="q-db">数据库 / venue</label>
-      <textarea class="qbox" id="q-db">ACM DL + IEEE Xplore + Scopus
-venue: CHI / UIST / TEI / DIS / CHI EA / Augmented Humans / IMWUT·UbiComp / ISS / MobileHCI
-IEEE: World Haptics / ToH / IEEE VR
-PubMed 选配(RQ4 神经依据交叉核对)</textarea>
-
-      <label class="field-label" for="q-a">A — 感知 / 感官目标</label>
-      <textarea class="qbox" id="q-a">(perception OR perceptual OR sensory OR multisensory OR cross-modal OR
+      <h3 style="color:var(--accent);margin-top:20px">臂 A · HCI 感知工程</h3>
+      <label class="field-label" for="qa-db">数据库 / venue</label>
+      <textarea class="qbox" id="qa-db">ACM DL + IEEE Xplore + Scopus
+venue: CHI / UIST / TEI / DIS / CHI EA / Augmented Humans / IMWUT·UbiComp / ISS / MobileHCI;IEEE: World Haptics / ToH / IEEE VR</textarea>
+      <label class="field-label" for="qa-a">A — 感知 / 感官目标</label>
+      <textarea class="qbox" id="qa-a">(perception OR perceptual OR sensory OR multisensory OR cross-modal OR
  propriocept* OR vestibular OR haptic OR tactile OR thermal OR
  olfact* OR smell OR gustat* OR taste OR interocept* OR "sensory substitution")</textarea>
-
-      <label class="field-label" for="q-b">B — 作用 / 工程化(关键的 "act on" 动词,排掉纯展示)</label>
-      <textarea class="qbox" id="q-b">(stimulat* OR "electrical muscle stimulation" OR EMS OR "galvanic vestibular" OR GVS OR
+      <label class="field-label" for="qa-b">B — 作用 / 工程化("act on" 动词,排掉纯展示)</label>
+      <textarea class="qbox" id="qa-b">(stimulat* OR "electrical muscle stimulation" OR EMS OR "galvanic vestibular" OR GVS OR
  electrotactile OR "electro-tactile" OR actuat* OR augment* OR substitut* OR
  illusion OR "pseudo-haptic" OR modulat* OR "sensory feedback" OR biofeedback OR
  "perceptual engineering")</textarea>
-
-      <label class="field-label" for="q-c">C — HCI 语境(若已用 venue 限定可省略)</label>
-      <textarea class="qbox" id="q-c">(HCI OR "human-computer interaction" OR interface OR wearable OR
+      <label class="field-label" for="qa-c">C — HCI 语境(用 venue 限定可省略)</label>
+      <textarea class="qbox" id="qa-c">(HCI OR "human-computer interaction" OR interface OR wearable OR
  "interaction design" OR "user experience" OR on-body OR "augmented human")</textarea>
+      <label class="field-label">臂 A 组合检索式(A AND B AND C;自动合成)</label>
+      <pre id="qa-combined"></pre>
+      <button class="button secondary" id="copyA">复制臂 A 检索式</button>
 
-      <label class="field-label" for="q-notes">会议笔记 / 调整理由</label>
-      <textarea class="qbox" id="q-notes" placeholder="例:B 组太宽,去掉 augment*/modulat*,靠 venue 兜;A 组加 'redirected walking' …"></textarea>
+      <h3 style="color:var(--accent);margin-top:24px">臂 B · 临床(autism 诊断与治疗)</h3>
+      <label class="field-label" for="qb-db">数据库</label>
+      <textarea class="qbox" id="qb-db">PubMed + Scopus(基于 ADSR2 MeSH)</textarea>
+      <label class="field-label" for="qb-p">P — autism 人群(所有式都 AND 上)</label>
+      <textarea class="qbox" id="qb-p">("Autism Spectrum Disorder"[Mesh] OR autis*[tiab] OR ASD[tiab] OR Asperger*[tiab] OR neurodivers*[tiab])</textarea>
+      <label class="field-label" for="qb-layer">通路概念(每行一层,自动 OR;可加其他通路)</label>
+      <textarea class="qbox" id="qb-layer">受器: (electroretinog* OR ERG OR "auditory brainstem response" OR ABR OR tactile OR somatosensory OR "tactile defensiveness")
+门控: ("sensory gating" OR GABA OR thalam* OR "excitatory inhibitory" OR "sensory over-responsivity")
+整合: (multisensory OR "temporal binding window" OR audiovisual OR crossmodal OR postural)
+情感: (insula* OR amygdala OR interocept* OR "heart rate variability" OR "sensory sensitivity")</textarea>
+      <label class="field-label" for="qb-dxtx">诊断 / 治疗</label>
+      <textarea class="qbox" id="qb-dxtx">(diagnos* OR "DSM-5" OR assessment OR treatment OR intervention OR therap* OR rehabilitation)</textarea>
+      <label class="field-label">臂 B 组合检索式(P AND 通路层 AND 诊疗;自动合成)</label>
+      <pre id="qb-combined"></pre>
+      <button class="button secondary" id="copyB">复制臂 B 检索式</button>
 
-      <label class="field-label">组合检索式(随上面改动自动合成)</label>
-      <pre id="q-combined"></pre>
+      <label class="field-label" for="q-notes" style="margin-top:20px">会议笔记 / 调整理由(两臂共用)</label>
+      <textarea class="qbox" id="q-notes" placeholder="例:臂A B组太宽去掉 augment*/modulat*;臂B 加 proprioception 通路 …"></textarea>
 
       <div class="qbar">
-        <button class="button" id="copyQueryBtn">复制组合检索式</button>
-        <button class="button secondary" id="exportSearchBtn">导出完整检索策略</button>
+        <button class="button" id="exportSearchBtn">导出完整检索策略(双臂)</button>
         <button class="button secondary" id="resetQueryBtn">还原默认</button>
         <span class="copied" id="qCopied" style="display:none">已复制 ✓</span>
       </div>
       <textarea class="export-area" id="searchExport" readonly placeholder="点「导出完整检索策略」生成可复制文本 …"></textarea>
 
-      <p class="rec" style="margin-top:14px">务实提醒:先在 ACM DL 跑 pilot(取前 ~20% 读),按命中率收紧 B 组(<code>augment*</code>/<code>modulat*</code> 会带进太多无关 UI,靠 venue + 标题/摘要筛兜底)。目标 corpus 体量对标 Rao 的 ~192。</p>
+      <p class="rec" style="margin-top:14px"><strong>筛选期排除(Covidence,非检索词):</strong>臂A——仅作 evaluation 者排除(须为 intervention)、纯信息展示 UI、read-out/控制型 BCI;臂B——非 autism 条件的临床假体(人工耳蜗/视网膜假体/TENS)仅 Background/Future。先跑 pilot(前 ~20%)按命中率收紧。</p>
     </section>
 
     <section id="figures">
@@ -256,28 +267,45 @@ PubMed 选配(RQ4 神经依据交叉核对)</textarea>
   <script>
     (function(){
       var $ = function(id){ return document.getElementById(id); };
-      var qIds = ["q-window","q-db","q-a","q-b","q-c","q-notes"];
+      var qIds = ["q-window","qa-db","qa-a","qa-b","qa-c","qb-db","qb-p","qb-layer","qb-dxtx","q-notes"];
       var defaults = {};
       qIds.forEach(function(id){ defaults[id] = $(id).value; });
       function val(id){ return ($(id).value || "").trim(); }
       function copy(t){ if(navigator.clipboard){ navigator.clipboard.writeText(t).catch(function(){}); } }
       function flash(el){ if(!el) return; el.style.display="inline"; setTimeout(function(){ el.style.display="none"; }, 1800); }
 
-      function combined(){
-        return [val("q-a"), val("q-b"), val("q-c")].filter(function(s){ return s.length; }).join("\nAND\n");
+      function combineA(){
+        return [val("qa-a"), val("qa-b"), val("qa-c")].filter(function(s){ return s.length; }).join("\nAND\n");
       }
-      function renderCombined(){ $("q-combined").textContent = combined() || "(在 A / B / C 中输入关键词 …)"; }
+      function layersOR(){
+        return val("qb-layer").split("\n").map(function(line){
+          var i = line.indexOf("("); return i >= 0 ? line.slice(i).trim() : "";
+        }).filter(function(s){ return s.length; }).join(" OR ");
+      }
+      function combineB(){
+        var parts = [];
+        if(val("qb-p")) parts.push(val("qb-p"));
+        var L = layersOR(); if(L) parts.push("(" + L + ")");
+        if(val("qb-dxtx")) parts.push(val("qb-dxtx"));
+        return parts.join("\nAND\n");
+      }
+      function renderA(){ $("qa-combined").textContent = combineA() || "(在 A / B / C 中输入关键词 …)"; }
+      function renderB(){ $("qb-combined").textContent = combineB() || "(在 P / 通路 / 诊疗 中输入关键词 …)"; }
 
       function searchText(){
-        var L = ["# Perceptual Engineering Review — 检索策略",
+        var L = ["# Perceptual Engineering Review — 检索策略(双臂)",
           "时间窗: " + val("q-window"), "",
-          "数据库 / venue:", val("q-db"), "",
-          "A — 感知/感官目标:", val("q-a"), "",
-          "B — 作用/工程化:", val("q-b"), "",
-          "C — HCI 语境:", val("q-c"), "",
-          "组合检索式:", combined(), ""];
+          "## 臂 A · HCI 感知工程",
+          "库/venue: " + val("qa-db"), "",
+          "A: " + val("qa-a"), "", "B: " + val("qa-b"), "", "C: " + val("qa-c"), "",
+          "组合: " + combineA(), "",
+          "## 臂 B · 临床(autism 诊断与治疗)",
+          "库: " + val("qb-db"), "",
+          "P: " + val("qb-p"), "", "通路层:", val("qb-layer"), "", "诊疗: " + val("qb-dxtx"), "",
+          "组合: " + combineB(), "",
+          "筛选期排除: 臂A 仅 evaluation 者 / 纯展示 UI / 控制型 BCI 排除;臂B 非-autism 临床假体仅 Background/Future。"];
         var notes = val("q-notes");
-        if(notes){ L.push("会议笔记 / 调整理由:"); L.push(notes); }
+        if(notes){ L.push(""); L.push("会议笔记 / 调整理由:"); L.push(notes); }
         return L.join("\n");
       }
 
@@ -300,18 +328,20 @@ PubMed 选配(RQ4 神经依据交叉核对)</textarea>
         return lines.join("\n");
       }
 
-      // live combined preview
-      ["q-a","q-b","q-c"].forEach(function(id){ $(id).addEventListener("input", renderCombined); });
-      renderCombined();
+      // live combined previews
+      ["qa-a","qa-b","qa-c"].forEach(function(id){ $(id).addEventListener("input", renderA); });
+      ["qb-p","qb-layer","qb-dxtx"].forEach(function(id){ $(id).addEventListener("input", renderB); });
+      renderA(); renderB();
 
       // search-strategy buttons
-      $("copyQueryBtn").addEventListener("click", function(){ copy(combined()); flash($("qCopied")); });
+      $("copyA").addEventListener("click", function(){ copy(combineA()); flash($("qCopied")); });
+      $("copyB").addEventListener("click", function(){ copy(combineB()); flash($("qCopied")); });
       var se = $("searchExport");
       $("exportSearchBtn").addEventListener("click", function(){
         var t = searchText(); se.style.display="block"; se.value=t; se.focus(); se.select(); copy(t);
       });
       $("resetQueryBtn").addEventListener("click", function(){
-        qIds.forEach(function(id){ $(id).value = defaults[id]; }); renderCombined();
+        qIds.forEach(function(id){ $(id).value = defaults[id]; }); renderA(); renderB();
       });
 
       // full export = decisions + search strategy
