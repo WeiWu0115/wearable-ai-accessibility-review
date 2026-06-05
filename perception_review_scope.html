@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Perceptual Engineering Review — Scope &amp; Search Strategy</title>
+  <meta name="description" content="Meeting decision sheet for the perceptual-engineering scoping review: theme, scope dimensions, expert decision checklists, and search strategy.">
+  <style>
+    :root{
+      --ink:#17202a; --muted:#5c6675; --line:#d8dee8; --soft:#f5f7fa;
+      --accent:#0f6b68; --accent-2:#8f3d56; --warm:#f6efe7; --blue:#e9f2f7;
+      --green:#e9f4ef; --violet:#f1edf7;
+    }
+    *{box-sizing:border-box;}
+    body{margin:0;color:var(--ink);background:#fff;
+      font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
+      line-height:1.62;}
+    a{color:var(--accent);text-underline-offset:3px;}
+    .wrap{width:min(1040px,calc(100% - 32px));margin:0 auto;}
+    header{border-bottom:1px solid var(--line);background:#fff;}
+    nav{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;font-size:.95rem;}
+    .brand{font-weight:720;color:var(--ink);}
+    .nav-links{display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
+    .hero{padding:48px 0 36px;border-bottom:1px solid var(--line);
+      background:linear-gradient(90deg,rgba(233,242,247,.9),rgba(246,239,231,.88)),#f7f8fa;}
+    h1{margin:0 0 14px;font-size:clamp(1.9rem,4.4vw,3.2rem);line-height:1.08;}
+    .subtitle{max-width:760px;margin:0 0 6px;color:#394657;font-size:1.1rem;}
+    .meta{color:var(--muted);font-size:.92rem;margin-top:10px;}
+    main{padding:8px 0 54px;}
+    section{padding:26px 0;border-bottom:1px solid var(--line);}
+    h2{margin:0 0 12px;font-size:clamp(1.35rem,3vw,1.9rem);line-height:1.2;}
+    .tag{display:inline-block;font-size:.74rem;font-weight:700;letter-spacing:.04em;
+      text-transform:uppercase;color:var(--accent);background:var(--green);
+      border:1px solid #cfe6dc;border-radius:999px;padding:2px 10px;margin-bottom:10px;}
+    .lede{font-size:1.05rem;color:#33404f;}
+    blockquote{margin:0 0 8px;padding:14px 16px;border-left:4px solid var(--accent);
+      background:var(--soft);border-radius:0 8px 8px 0;}
+    table{width:100%;border-collapse:collapse;margin:8px 0;font-size:.95rem;}
+    th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;}
+    th{background:var(--soft);font-weight:700;}
+    pre{margin:10px 0 0;padding:12px;white-space:pre-wrap;overflow-wrap:anywhere;
+      border:1px solid #d3dce6;border-radius:6px;background:#f6f8fa;color:#17202a;
+      font-size:.86rem;line-height:1.5;}
+    .pill{display:inline-block;background:#eef2f7;border:1px solid var(--line);
+      border-radius:999px;padding:2px 9px;margin:2px 3px 2px 0;font-size:.82rem;}
+    .decision{display:flex;flex-wrap:wrap;align-items:center;gap:8px;}
+    .decision label{display:inline-flex;align-items:center;gap:6px;font-weight:600;white-space:nowrap;}
+    .decision input[type=text]{flex:1;min-width:160px;padding:6px 8px;border:1px solid var(--line);
+      border-radius:6px;font:inherit;}
+    .checklist{list-style:none;padding:0;margin:0;}
+    .checklist li{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px dashed var(--line);}
+    .checklist li:last-child{border-bottom:none;}
+    .checklist input[type=checkbox]{margin-top:5px;width:17px;height:17px;flex:none;accent-color:var(--accent);}
+    .rec{color:var(--muted);font-size:.9rem;}
+    .callout{background:var(--warm);border:1px solid #e6d8c6;border-radius:10px;padding:16px 18px;}
+    .callout.violet{background:var(--violet);border-color:#ded2ee;}
+    .timeline{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0;font-weight:600;}
+    .timeline .step{background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px 11px;}
+    .timeline .arrow{color:var(--accent);font-weight:800;}
+    .button{display:inline-flex;align-items:center;justify-content:center;min-height:40px;
+      padding:9px 16px;border:1px solid var(--accent);color:#fff;background:var(--accent);
+      border-radius:6px;font-weight:650;cursor:pointer;text-decoration:none;font:inherit;}
+    .button.secondary{color:var(--accent);background:#fff;}
+    .export-area{width:100%;min-height:160px;margin-top:12px;padding:12px;border:1px solid var(--line);
+      border-radius:8px;font:inherit;font-size:.9rem;display:none;}
+    footer{padding:22px 0 40px;color:var(--muted);font-size:.92rem;}
+    @media(max-width:640px){table,thead,tbody,th,td,tr{display:block;}th{display:none;}
+      td{border:none;border-bottom:1px solid var(--line);}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav>
+        <span class="brand">Perceptual Engineering Review</span>
+        <span class="nav-links">
+          <a href="index.html">CAWI Home</a>
+          <a href="search_protocol.html">Search Protocol (v1)</a>
+          <a href="#search">Search Strategy</a>
+        </span>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="wrap">
+      <h1>Scope &amp; Search Strategy</h1>
+      <p class="subtitle">会议决策稿 — 与医学合作者 + HCI researcher 当面敲定 scoping review 的主题与检索策略。</p>
+      <p class="subtitle"><strong>What Do We Engineer When We Engineer Perception?</strong> · <em>From the Margins to the Everyday Interaction Medium</em></p>
+      <p class="meta">每个决策格可勾选 / 填写;填完点页尾「导出决策摘要」复制结果。配套:PROPOSAL.md · ADSR2(神经四层证据图)· cogaccess(屏幕端无障碍原则)· v0.1 · 2026-06-04</p>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section id="theme">
+      <span class="tag">1 · 主题陈述</span>
+      <blockquote>综述对象 = <strong>perceptual engineering</strong>:<em>有意去微调 / 增强 / 替代 / 衰减人类感官知觉的交互技术</em>(结合 CS + 神经生物学 + 心理生理学)。用一条<strong>全人类共有的神经感知处理链(受器 → 门控 → 整合 → 情感)</strong>当透镜,问 HCI 在为谁、用什么手段、作用于哪一层做这件事,并揭示感官多样人群的系统性缺席。</blockquote>
+    </section>
+
+    <section id="rule">
+      <span class="tag">2 · 核心纳入判据</span>
+      <p class="lede">技术必须「作用于知觉本身」,而非只是「呈现信息」。EMS 让手动、GVS 改变平衡、热致幻、电子味觉、感官替代 → 纳入;普通 AR 卡片、普通通知 → 排除。</p>
+      <div class="decision" data-key="核心纳入判据">
+        <label><input type="checkbox"> 同意</label>
+        <input type="text" placeholder="调整为 / 备注 …">
+      </div>
+    </section>
+
+    <section id="dims">
+      <span class="tag">3 · Scope 五维</span>
+      <table>
+        <thead><tr><th style="width:14%">维度</th><th style="width:48%">推荐</th><th style="width:38%">决策</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>感官域</strong></td>
+            <td>全九感纳入:视 / 听 / 触压 / 痛温 / 本体 / 前庭 / 内感受 / <strong>嗅 / 味</strong>。<span class="rec">与 ADSR2 故意分道:ADSR2 因「难可穿戴测」排除嗅味,但感知工程 HCI 的嗅味子领域活跃,本综述纳入。</span></td>
+            <td><div class="decision" data-key="感官域"><label><input type="checkbox"> 同意</label><input type="text" placeholder="调整 …"></div></td>
+          </tr>
+          <tr>
+            <td><strong>作用模态</strong></td>
+            <td><span class="pill">电 EMS/GVS/电触觉/电味/tDCS·tACS</span><span class="pill">机械触觉 振动/力反馈/超声/pseudo-haptic</span><span class="pill">热 Peltier/热致幻</span><span class="pill">化学 嗅显示/味觉</span><span class="pill">光与声(错觉级,非内容级)</span><span class="pill">感官替代 跨模态映射</span><span class="pill">生理反馈 HRV/EDA 闭环</span></td>
+            <td><div class="decision" data-key="作用模态"><label><input type="checkbox"> 同意</label><input type="text" placeholder="补漏 …"></div></td>
+          </tr>
+          <tr>
+            <td><strong>时间窗</strong></td>
+            <td><strong>2010–2025</strong>(EMS/actuated 浪潮 + 化学感官近十年爆发);Bach-y-Rita 1969 等奠基只在 Background 引,不进 corpus。</td>
+            <td><div class="decision" data-key="时间窗"><label><input type="checkbox"> 同意</label><input type="text" placeholder="调整 …"></div></td>
+          </tr>
+          <tr>
+            <td><strong>数据库 / venue</strong></td>
+            <td><strong>ACM DL + IEEE Xplore + Scopus</strong>。venue:CHI / UIST / TEI / DIS / CHI EA / <strong>Augmented Humans</strong> / IMWUT·UbiComp / ISS / MobileHCI;IEEE:<strong>World Haptics / ToH / IEEE VR</strong>。Scopus 跨学科补全 + snowballing;PubMed 选配(RQ4 神经依据交叉核对)。</td>
+            <td><div class="decision" data-key="数据库/venue"><label><input type="checkbox"> 同意</label><input type="text" placeholder="增删 …"></div></td>
+          </tr>
+          <tr>
+            <td><strong>纳入 / 排除</strong></td>
+            <td><strong>纳入</strong>:有 HCI/交互设计贡献且有意作用于知觉。<strong>排除</strong>:纯信息展示 UI;纯临床疗效试验(无设计贡献);纯 read-out/控制型 BCI;非英文;二次综述。</td>
+            <td><div class="decision" data-key="纳入/排除"><label><input type="checkbox"> 同意</label><input type="text" placeholder="调整 …"></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="experts">
+      <span class="tag">4 · 两位专家专属决策</span>
+      <h2 style="font-size:1.15rem;color:var(--accent-2)">给医生(临床 / 神经边界)</h2>
+      <ul class="checklist">
+        <li data-key="医生:神经刺激"><input type="checkbox"><span>神经刺激(tDCS / tACS / TMS)纳入还是单列?<span class="rec">推荐:HCI venue 内、针对知觉的纳入;侵入式 BCI 另案。</span></span></li>
+        <li data-key="医生:临床假体"><input type="checkbox"><span>临床假体(人工耳蜗 / 视网膜假体 / TENS 镇痛)只进 Background、不进 corpus?<span class="rec">推荐:是。</span></span></li>
+        <li data-key="医生:RQ4口径"><input type="checkbox"><span>背书 RQ4 编码口径(神经科学被怎么用:motivation / mechanism / evaluation / inspiration / 缺席 × 承重)。</span></li>
+      </ul>
+      <h2 style="font-size:1.15rem;color:var(--accent-2);margin-top:18px">给 HCI researcher(领域边界)</h2>
+      <ul class="checklist">
+        <li data-key="HCI:VR-AR切法"><input type="checkbox"><span>VR/AR 切法:<strong>知觉级</strong>(redirected walking / 跨模态错觉 / 感官重映射)纳入、<strong>内容级</strong>排除?<span class="rec">推荐:是。</span></span></li>
+        <li data-key="HCI:感官替代归属"><input type="checkbox"><span>感官替代 / 辅助设备(vOICe / BrainPort)算 perceptual engineering?<span class="rec">推荐:纳入,是 margins→everyday 的桥。</span></span></li>
+        <li data-key="HCI:venue补漏"><input type="checkbox"><span>venue / 模态有无遗漏(SIGGRAPH 知觉工作?ToH 触觉错觉?)。</span></li>
+      </ul>
+    </section>
+
+    <section id="search">
+      <span class="tag">5 · 检索策略</span>
+      <p class="lede">三组关键词笛卡尔组合(仿 Rao et al. Fig.2):<code>A 感知目标</code> AND <code>B 作用/工程化动作</code> AND(<code>C 语境</code> 或改用 venue 限定)。</p>
+      <pre>A — 感知 / 感官目标:
+(perception OR perceptual OR sensory OR multisensory OR cross-modal OR
+ propriocept* OR vestibular OR haptic OR tactile OR thermal OR
+ olfact* OR smell OR gustat* OR taste OR interocept* OR "sensory substitution")
+
+B — 作用 / 工程化(关键的 "act on" 动词,排掉纯展示):
+(stimulat* OR "electrical muscle stimulation" OR EMS OR "galvanic vestibular" OR GVS OR
+ electrotactile OR "electro-tactile" OR actuat* OR augment* OR substitut* OR
+ illusion OR "pseudo-haptic" OR modulat* OR "sensory feedback" OR biofeedback OR
+ "perceptual engineering")
+
+C — HCI 语境(若已用 venue 限定可省略):
+(HCI OR "human-computer interaction" OR interface OR wearable OR
+ "interaction design" OR "user experience" OR on-body OR "augmented human")</pre>
+      <p class="rec">务实提醒:先在 ACM DL 跑 pilot(取前 ~20% 读),按命中率收紧 B 组(<code>augment*</code>/<code>modulat*</code> 会带进太多无关 UI,靠 venue + 标题/摘要筛兜底)。目标 corpus 体量对标 Rao 的 ~192。</p>
+    </section>
+
+    <section id="figures">
+      <span class="tag">6 · 计划产出图表</span>
+      <div class="callout violet">
+        <strong>★ Signature 图 · 各感官模态「出现 / 爆发」时间线</strong>(papers/year 按模态分层;charting 已记「年份 × 模态」,编码即副产品)
+        <div class="timeline">
+          <span class="step">视 / 听</span><span class="arrow">→</span>
+          <span class="step">触觉·力反馈 (2000s)</span><span class="arrow">→</span>
+          <span class="step">EMS/GVS 身体致动 (~2013 起爆)</span><span class="arrow">→</span>
+          <span class="step">热 / 嗅 / 味 (2010s 后段)</span><span class="arrow">→</span>
+          <span class="step">内感受 / 情感界面 (~2018+,最新)</span>
+        </div>
+        <p style="margin:6px 0 0">论点:<strong>HCI 在时间上一路从「屏幕附近的外感受」钻向「身体内部的内感受 / 情感」</strong>——而内部正是 ADSR2 标出的可穿戴前沿与 autism 内感受失配所在。领域轨迹笔直开向感官多样性最要紧、却刚抵达的那片地。同时坐实 Past→Present→Future 与 margins→everyday。</p>
+      </div>
+      <ul>
+        <li>模态 × 处理层(受器/门控/整合/情感)矩阵 —— 声称作用在哪层 vs. 真有神经证据在哪层(对接 RQ4 + ADSR2「门控被高估」)。</li>
+        <li>augment ↔ substitute ↔ regulate/attenuate 谱 × 目标人群(对接 RQ5,显示 perceptual diversity 缺席)。</li>
+        <li>句式模板汇总图(actuation × sensory target × 处理层 × 神经根据 × 人群)。</li>
+      </ul>
+    </section>
+
+    <section id="next">
+      <span class="tag">7 · 会后下一步</span>
+      <ol>
+        <li>把第 3–4 节的决策填定 → 锁 scope。</li>
+        <li>据此定稿双库检索式 + 跑 pilot search。</li>
+        <li>建 charting 模板表(title / authors / year / venue / 技术 / 模态 / 目标层 / 神经调用类型·承重 / augment-substitute-regulate / 目标人群 / 扩散定位 / 关键发现)。</li>
+        <li>画时间线 v0(哪怕用 pilot 子集),验证第 6 节叙事。</li>
+      </ol>
+      <p style="margin-top:16px"><button class="button" id="exportBtn">导出决策摘要</button> <button class="button secondary" id="printBtn">打印 / 存 PDF</button></p>
+      <textarea class="export-area" id="exportArea" readonly placeholder="点上方「导出决策摘要」生成可复制文本 …"></textarea>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>Perceptual Engineering Scoping Review · 会议决策稿 v0.1 · <a href="index.html">返回 CAWI 主页</a></p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      function gather(){
+        var lines = ["# Perceptual Engineering Review — 决策摘要", ""];
+        document.querySelectorAll(".decision").forEach(function(d){
+          var key = d.getAttribute("data-key");
+          var agreed = d.querySelector("input[type=checkbox]").checked ? "✓ 同意" : "□ 未定";
+          var note = (d.querySelector("input[type=text]").value || "").trim();
+          lines.push("- " + key + ": " + agreed + (note ? "  | 备注: " + note : ""));
+        });
+        lines.push("");
+        document.querySelectorAll(".checklist li").forEach(function(li){
+          var key = li.getAttribute("data-key");
+          var done = li.querySelector("input[type=checkbox]").checked ? "✓" : "□";
+          lines.push("- " + done + " " + key);
+        });
+        return lines.join("\n");
+      }
+      var area = document.getElementById("exportArea");
+      document.getElementById("exportBtn").addEventListener("click", function(){
+        var text = gather();
+        area.style.display = "block";
+        area.value = text;
+        area.focus(); area.select();
+        if(navigator.clipboard){ navigator.clipboard.writeText(text).catch(function(){}); }
+      });
+      document.getElementById("printBtn").addEventListener("click", function(){ window.print(); });
+    })();
+  </script>
+</body>
+</html>
