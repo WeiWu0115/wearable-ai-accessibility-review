@@ -63,6 +63,14 @@
     .button.secondary{color:var(--accent);background:#fff;}
     .export-area{width:100%;min-height:160px;margin-top:12px;padding:12px;border:1px solid var(--line);
       border-radius:8px;font:inherit;font-size:.9rem;display:none;}
+    .field-label{display:block;font-weight:650;margin:14px 0 4px;}
+    textarea.qbox{width:100%;min-height:84px;padding:10px 12px;border:1px solid var(--line);
+      border-radius:8px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+      font-size:.85rem;line-height:1.55;background:#fff;resize:vertical;}
+    .qmeta{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff;}
+    #q-combined{min-height:64px;background:var(--green);border-color:#cfe6dc;}
+    .qbar{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;}
+    .copied{color:var(--accent);font-weight:650;font-size:.9rem;margin-left:6px;}
     footer{padding:22px 0 40px;color:var(--muted);font-size:.92rem;}
     @media(max-width:640px){table,thead,tbody,th,td,tr{display:block;}th{display:none;}
       td{border:none;border-bottom:1px solid var(--line);}}
@@ -159,23 +167,48 @@
     </section>
 
     <section id="search">
-      <span class="tag">5 · 检索策略</span>
-      <p class="lede">三组关键词笛卡尔组合(仿 Rao et al. Fig.2):<code>A 感知目标</code> AND <code>B 作用/工程化动作</code> AND(<code>C 语境</code> 或改用 venue 限定)。</p>
-      <pre>A — 感知 / 感官目标:
-(perception OR perceptual OR sensory OR multisensory OR cross-modal OR
- propriocept* OR vestibular OR haptic OR tactile OR thermal OR
- olfact* OR smell OR gustat* OR taste OR interocept* OR "sensory substitution")
+      <span class="tag">5 · 检索策略 · 可现场编辑</span>
+      <p class="lede">三组关键词笛卡尔组合(仿 Rao et al. Fig.2):<code>A 感知目标</code> AND <code>B 作用/工程化动作</code> AND(<code>C 语境</code> 或改用 venue 限定)。<strong>下面所有方框会上直接改;A/B/C 改动会实时合成下方「组合检索式」。</strong></p>
 
-B — 作用 / 工程化(关键的 "act on" 动词,排掉纯展示):
-(stimulat* OR "electrical muscle stimulation" OR EMS OR "galvanic vestibular" OR GVS OR
+      <label class="field-label" for="q-window">时间窗</label>
+      <input class="qmeta" id="q-window" type="text" value="2010–2025">
+
+      <label class="field-label" for="q-db">数据库 / venue</label>
+      <textarea class="qbox" id="q-db">ACM DL + IEEE Xplore + Scopus
+venue: CHI / UIST / TEI / DIS / CHI EA / Augmented Humans / IMWUT·UbiComp / ISS / MobileHCI
+IEEE: World Haptics / ToH / IEEE VR
+PubMed 选配(RQ4 神经依据交叉核对)</textarea>
+
+      <label class="field-label" for="q-a">A — 感知 / 感官目标</label>
+      <textarea class="qbox" id="q-a">(perception OR perceptual OR sensory OR multisensory OR cross-modal OR
+ propriocept* OR vestibular OR haptic OR tactile OR thermal OR
+ olfact* OR smell OR gustat* OR taste OR interocept* OR "sensory substitution")</textarea>
+
+      <label class="field-label" for="q-b">B — 作用 / 工程化(关键的 "act on" 动词,排掉纯展示)</label>
+      <textarea class="qbox" id="q-b">(stimulat* OR "electrical muscle stimulation" OR EMS OR "galvanic vestibular" OR GVS OR
  electrotactile OR "electro-tactile" OR actuat* OR augment* OR substitut* OR
  illusion OR "pseudo-haptic" OR modulat* OR "sensory feedback" OR biofeedback OR
- "perceptual engineering")
+ "perceptual engineering")</textarea>
 
-C — HCI 语境(若已用 venue 限定可省略):
-(HCI OR "human-computer interaction" OR interface OR wearable OR
- "interaction design" OR "user experience" OR on-body OR "augmented human")</pre>
-      <p class="rec">务实提醒:先在 ACM DL 跑 pilot(取前 ~20% 读),按命中率收紧 B 组(<code>augment*</code>/<code>modulat*</code> 会带进太多无关 UI,靠 venue + 标题/摘要筛兜底)。目标 corpus 体量对标 Rao 的 ~192。</p>
+      <label class="field-label" for="q-c">C — HCI 语境(若已用 venue 限定可省略)</label>
+      <textarea class="qbox" id="q-c">(HCI OR "human-computer interaction" OR interface OR wearable OR
+ "interaction design" OR "user experience" OR on-body OR "augmented human")</textarea>
+
+      <label class="field-label" for="q-notes">会议笔记 / 调整理由</label>
+      <textarea class="qbox" id="q-notes" placeholder="例:B 组太宽,去掉 augment*/modulat*,靠 venue 兜;A 组加 'redirected walking' …"></textarea>
+
+      <label class="field-label">组合检索式(随上面改动自动合成)</label>
+      <pre id="q-combined"></pre>
+
+      <div class="qbar">
+        <button class="button" id="copyQueryBtn">复制组合检索式</button>
+        <button class="button secondary" id="exportSearchBtn">导出完整检索策略</button>
+        <button class="button secondary" id="resetQueryBtn">还原默认</button>
+        <span class="copied" id="qCopied" style="display:none">已复制 ✓</span>
+      </div>
+      <textarea class="export-area" id="searchExport" readonly placeholder="点「导出完整检索策略」生成可复制文本 …"></textarea>
+
+      <p class="rec" style="margin-top:14px">务实提醒:先在 ACM DL 跑 pilot(取前 ~20% 读),按命中率收紧 B 组(<code>augment*</code>/<code>modulat*</code> 会带进太多无关 UI,靠 venue + 标题/摘要筛兜底)。目标 corpus 体量对标 Rao 的 ~192。</p>
     </section>
 
     <section id="figures">
@@ -219,7 +252,33 @@ C — HCI 语境(若已用 venue 限定可省略):
 
   <script>
     (function(){
-      function gather(){
+      var $ = function(id){ return document.getElementById(id); };
+      var qIds = ["q-window","q-db","q-a","q-b","q-c","q-notes"];
+      var defaults = {};
+      qIds.forEach(function(id){ defaults[id] = $(id).value; });
+      function val(id){ return ($(id).value || "").trim(); }
+      function copy(t){ if(navigator.clipboard){ navigator.clipboard.writeText(t).catch(function(){}); } }
+      function flash(el){ if(!el) return; el.style.display="inline"; setTimeout(function(){ el.style.display="none"; }, 1800); }
+
+      function combined(){
+        return [val("q-a"), val("q-b"), val("q-c")].filter(function(s){ return s.length; }).join("\nAND\n");
+      }
+      function renderCombined(){ $("q-combined").textContent = combined() || "(在 A / B / C 中输入关键词 …)"; }
+
+      function searchText(){
+        var L = ["# Perceptual Engineering Review — 检索策略",
+          "时间窗: " + val("q-window"), "",
+          "数据库 / venue:", val("q-db"), "",
+          "A — 感知/感官目标:", val("q-a"), "",
+          "B — 作用/工程化:", val("q-b"), "",
+          "C — HCI 语境:", val("q-c"), "",
+          "组合检索式:", combined(), ""];
+        var notes = val("q-notes");
+        if(notes){ L.push("会议笔记 / 调整理由:"); L.push(notes); }
+        return L.join("\n");
+      }
+
+      function decisionsText(){
         var lines = ["# Perceptual Engineering Review — 决策摘要", ""];
         document.querySelectorAll(".decision").forEach(function(d){
           var key = d.getAttribute("data-key");
@@ -235,15 +294,28 @@ C — HCI 语境(若已用 venue 限定可省略):
         });
         return lines.join("\n");
       }
-      var area = document.getElementById("exportArea");
-      document.getElementById("exportBtn").addEventListener("click", function(){
-        var text = gather();
-        area.style.display = "block";
-        area.value = text;
-        area.focus(); area.select();
-        if(navigator.clipboard){ navigator.clipboard.writeText(text).catch(function(){}); }
+
+      // live combined preview
+      ["q-a","q-b","q-c"].forEach(function(id){ $(id).addEventListener("input", renderCombined); });
+      renderCombined();
+
+      // search-strategy buttons
+      $("copyQueryBtn").addEventListener("click", function(){ copy(combined()); flash($("qCopied")); });
+      var se = $("searchExport");
+      $("exportSearchBtn").addEventListener("click", function(){
+        var t = searchText(); se.style.display="block"; se.value=t; se.focus(); se.select(); copy(t);
       });
-      document.getElementById("printBtn").addEventListener("click", function(){ window.print(); });
+      $("resetQueryBtn").addEventListener("click", function(){
+        qIds.forEach(function(id){ $(id).value = defaults[id]; }); renderCombined();
+      });
+
+      // full export = decisions + search strategy
+      var area = $("exportArea");
+      $("exportBtn").addEventListener("click", function(){
+        var text = decisionsText() + "\n\n" + searchText();
+        area.style.display = "block"; area.value = text; area.focus(); area.select(); copy(text);
+      });
+      $("printBtn").addEventListener("click", function(){ window.print(); });
     })();
   </script>
 </body>
