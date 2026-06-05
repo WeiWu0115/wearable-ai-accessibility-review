@@ -87,7 +87,6 @@
           <a href="index.html">CAWI Home</a>
           <a href="perception_review_proposal.html">Proposal 立项</a>
           <a href="search_protocol_v2.html">Protocol v2</a>
-          <a href="charting.html">Charting</a>
           <a href="search_protocol.html">v1</a>
           <a href="#search">Search Strategy</a>
         </span>
@@ -191,6 +190,11 @@ venue: CHI / UIST / TEI / DIS / CHI EA / Augmented Humans / IMWUT·UbiComp / ISS
  electrotactile OR "electro-tactile" OR actuat* OR augment* OR substitut* OR
  illusion OR "pseudo-haptic" OR modulat* OR "sensory feedback" OR biofeedback OR
  "perceptual engineering")</textarea>
+      <div class="qbar" style="margin-top:6px">
+        <button class="button secondary" id="bBroad" type="button">B 组 = broad(召回优先)</button>
+        <button class="button secondary" id="bNarrow" type="button">B 组 = narrow(去泛词,精度优先)</button>
+        <span class="rec">narrow 去掉 augment*/modulat*,靠特异术语 + venue 兜(pilot precision &lt; ~15% 时切)</span>
+      </div>
       <label class="field-label" for="qa-c">C — HCI 语境(用 venue 限定可省略)</label>
       <textarea class="qbox" id="qa-c">(HCI OR "human-computer interaction" OR interface OR wearable OR
  "interaction design" OR "user experience" OR on-body OR "augmented human")</textarea>
@@ -338,6 +342,11 @@ venue: CHI / UIST / TEI / DIS / CHI EA / Augmented Humans / IMWUT·UbiComp / ISS
       // search-strategy buttons
       $("copyA").addEventListener("click", function(){ copy(combineA()); flash($("qCopied")); });
       $("copyB").addEventListener("click", function(){ copy(combineB()); flash($("qCopied")); });
+
+      // Arm A · B-group broad/narrow toggle
+      var B_NARROW = '("electrical muscle stimulation" OR EMS OR "galvanic vestibular" OR GVS OR\n electrotactile OR "electro-tactile" OR "electrical stimulation" OR\n "pseudo-haptic" OR illusion OR "sensory substitution" OR\n "thermal feedback" OR "olfactory display" OR "taste interface" OR\n "perceptual engineering" OR "sensory feedback" OR biofeedback)';
+      $("bBroad").addEventListener("click", function(){ $("qa-b").value = defaults["qa-b"]; renderA(); });
+      $("bNarrow").addEventListener("click", function(){ $("qa-b").value = B_NARROW; renderA(); });
       var se = $("searchExport");
       $("exportSearchBtn").addEventListener("click", function(){
         var t = searchText(); se.style.display="block"; se.value=t; se.focus(); se.select(); copy(t);
