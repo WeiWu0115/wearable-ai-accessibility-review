@@ -102,8 +102,8 @@
 
     <section id="cq">
       <span class="tag">0 · 中心问题</span>
-      <blockquote>当 HCI 构建「微调 / 改变人类感知」的技术时,我们究竟在工程化什么——<strong>瞄准哪些感官、用什么手段、作用在谁的身体上、以什么科学为据、又为谁设计?</strong></blockquote>
-      <p class="lede">一句话立场:感知工程当下主要服务(神经典型的)<strong>增强 / 表达 / 娱乐</strong>;但按 HCI 设计史的 <strong>curb-cut 规律</strong>,真正会沉淀为下一代日常交互 media 的,往往是为<strong>感官非典型人群</strong>解决「调节 / 容纳」而生的设计。AI + wearable 正在催生新的 everyday 交互 media——本综述<strong>整理之前的</strong>(感知工程版图),并据此<strong>看向长远的</strong>(With-Not-For 的感知多样性设计议程)。</p>
+      <blockquote>当 HCI 把神经科学的<strong>词汇与工具</strong>搬进「微调 / 改变人类感知」的技术里,我们究竟在工程化什么——瞄准哪些感官、用什么手段、作用在谁的身体上、<strong>以什么科学为据、合不合伦理、又为谁设计?</strong></blockquote>
+      <p class="lede">一句话立场:感知工程正大量借用神经科学,却<strong>没把医学的纪律与伦理一并搬过来</strong>——「neural」沦为流行词、拿临床工具靠「你感觉到了吗?」验证、改神经通路不顾后果。我们用一条<strong>临床用来理解神经多样性的真实通路(受器 → 门控 → 脑岛整合 → 情感)</strong>当尺去量这件事;并按 HCI 设计史的 <strong>curb-cut 规律</strong>(为感官边缘人群而设计的,终将成为所有人的默认),从 autism / neurodiverse 切入、推向普适,为 wearable AI 立一个<strong>有据、可问责、可及</strong>的设计议程。</p>
     </section>
 
     <section id="arc">
@@ -120,24 +120,24 @@
       <div class="rq"><span class="label">RQ1 · 感知目标</span> — 这些工作瞄准 / 改变哪些感官与感知目标?(沿神经四层:受器 / 门控 / 整合 / 情感)</div>
       <div class="rq"><span class="label">RQ2 · 设计机制</span> — 用什么设计机制与刺激 / 调节模态?(EMS、GVS、thermal、chemical/olfactory/gustatory、vibrotactile、sensory substitution…)</div>
       <div class="rq"><span class="label">RQ3 · 技术与身体</span> — 用什么技术与形态,与身体是 <strong>on / in / around</strong> 何种关系?</div>
-      <div class="rq"><span class="label">RQ4 · 如何调用神经科学(reflexive #1)</span> — 神经科学 / 心理生理学被怎么用:<em>motivation / mechanism / evaluation / inspiration / 缺席</em> × <strong>承重程度</strong>(表层引用 vs. load-bearing)?</div>
+      <div class="rq"><span class="label">RQ4 · 神经科学被如何调用、有多有据、合不合伦理(reflexive #1)</span> — 怎么用:<em>motivation / mechanism / evaluation / inspiration / 缺席</em> × <strong>承重程度</strong>(表层 vs. load-bearing);验证靠 biosensor / 客观指标,还是只靠<strong>自评量表</strong>(「你感觉到了吗?」);是否核算对神经通路干预的<strong>后果与伦理</strong>(如 body schema 改写后的可逆性)?</div>
       <div class="rq"><span class="label">RQ5 · 为谁设计与扩散定位(reflexive #2)</span> — 起点目标人群(临床/障碍特定 vs. 通用/增强)、是否想象向主流 everyday 扩散、是否援引 universal design / accessibility 脉络?</div>
-      <p class="meta">RQ1–3 = 描述版图;RQ4 = 「neuroscience veneer / 神经科学贴皮」批评;RQ5 = curb-cut / 普适性批评。</p>
+      <p class="meta">RQ1–3 = 描述版图;RQ4 = 「无纪律地借用神经科学 / neural veneer / 伦理缺位」批评;RQ5 = curb-cut / 普适性批评。</p>
     </section>
 
     <section id="scaffold">
       <span class="tag">3 · 演绎骨架 · 神经感知四层模型</span>
-      <p>借 Rao 用「comfort 四维」当演绎种子的做法,本综述用 <code>ADSR2</code> 的四层处理链当 deductive coding 骨架——它是<strong>全人类共有</strong>的感知处理模型,神经多样人群只是其上的一种参数化,因此框架天然普适、非「autism 专用」。</p>
+      <p>本综述用 <code>ADSR2</code> 的<strong>神经通路</strong>当 deductive coding 骨架:感觉被真实加工的链条 <strong>受器 → 门控(换元)→ 脑岛整合 → 情感评价</strong>,是<strong>全人类共有</strong>的;临床正是借这条通路上的「断点」来理解神经多样性(neurodiverse = 通路某处出问题)。它天然普适、非「autism 专用」,又能把 HCI 的各类干预<strong>逐阶段对位</strong>。</p>
       <table>
-        <thead><tr><th>层</th><th>功能</th><th>典型可作用 / 可感知接口</th></tr></thead>
+        <thead><tr><th>通路阶段</th><th>功能 &amp; neurodiverse 断点</th><th>映射到 HCI 的作用</th><th>对应 therapy / 设计原则</th></tr></thead>
         <tbody>
-          <tr><td><strong>受器 Receptor</strong></td><td>把物理能量转成神经信号</td><td>多为临床(ERG/ABR);可穿戴 proxy 有限</td></tr>
-          <tr><td><strong>门控 Gating</strong></td><td>筛选 / 调音量(E/I、SOR)</td><td>EDA / HRV(感知);attenuation(作用)</td></tr>
-          <tr><td><strong>整合 Integration</strong></td><td>多感觉绑定、TBW、姿势</td><td>IMU(感知);sensory substitution / TBW 训练(作用)</td></tr>
-          <tr><td><strong>情感 Affective</strong></td><td>给信号贴威胁 / 效价标签</td><td>HRV+心跳任务(感知);interoceptive feedback(作用)</td></tr>
+          <tr><td><strong>受器 Receptor</strong></td><td>把物理能量转成神经信号;断点:受器 / 外周异常</td><td>受器端 / 之前施加感觉:<strong>multisensory 增强</strong></td><td>感觉输入 / 外周刺激</td></tr>
+          <tr><td><strong>门控 Gating(换元)</strong></td><td>脊髓换元、筛选调音量(E/I、SOR);断点:换元神经元不足</td><td><strong>电刺激 / 热刺激</strong>(Brooks、Nakagaki:电激皮肤配视觉 code 造温度幻觉)</td><td>电生理 / 运动疗法</td></tr>
+          <tr><td><strong>整合 Integration(脑岛)</strong></td><td>多感觉绑定、TBW、姿势;断点:整合 mismatch</td><td><strong>设计原则 / 训练</strong>:视觉提示、强连接、肌肉记忆(Pavlov 式)</td><td><strong>COGA 等 accessibility 原则 ≈ therapy(医学与 HCI 在此汇合)</strong></td></tr>
+          <tr><td><strong>情感 Affective</strong></td><td>贴威胁 / 效价标签;断点:情感处理异常</td><td>interoceptive feedback(感知 HRV+心跳任务)</td><td>当前多<strong>以心理量表充数(= veneer 风险)</strong></td></tr>
         </tbody>
       </table>
-      <p class="meta"><strong>跨域呼应(预期 finding):</strong> ADSR2 发现 autism 文献里「门控层被普遍高估」;若感知工程 HCI 也大量「调节注意 / 过滤」的 claim 而证据薄,即为同一批评的跨域汇合。</p>
+      <p class="meta"><strong>两条预期 finding:</strong>(1) ADSR2 发现 autism 文献「门控层被普遍高估」,若 HCI 也大量「调节 / 过滤」claim 而证据薄 = 同一批评跨域汇合;(2) <strong>越往通路内部走(整合 → 情感),科学验证越退化为自评量表 = neural veneer</strong>。</p>
     </section>
 
     <section id="template">
@@ -157,17 +157,21 @@
     <section id="ethics">
       <span class="tag">6 · 伦理立场</span>
       <div class="callout">
-        curb-cut 的反面:把残障 / 神经多样人群当「主流创新的 R&amp;D 实验室」是 instrumentalizing(cf. Liz Jackson, <em>disability dongle</em>)。
-        <p style="margin:8px 0 0"><strong>本综述立场:不是「为边缘设计好让主流捡便宜」,而是「与 perceptual diversity 一起设计(With, Not For),扩散是副产品而非目的」。</strong> "With, Not For" 在此承重,而非装饰。</p>
+        <strong>(1) 无纪律地从医学搬运。</strong> HCI 是交叉学科,但常把临床工具(电刺激)与「neural」一词直接挪用、仅凭「你感觉到了吗?」验证,绕过了医学多年积累的纪律与伦理。典型例:给人加<strong>第六根手指</strong>,大脑迅速纳入 body schema——但移除后的可逆性、潜在<strong>幻肢效应</strong>少有人审视。对人体的予取予求,不该跳过医学的代价核算。
+      </div>
+      <div class="callout violet">
+        <strong>(2) curb-cut 的反面。</strong> 把残障 / 神经多样人群当「主流创新的 R&amp;D 实验室」是 instrumentalizing(cf. Liz Jackson, <em>disability dongle</em>)。
+        <p style="margin:8px 0 0"><strong>本综述立场:与 perceptual diversity 一起设计(With, Not For),扩散是副产品而非目的;且任何对神经通路的干预都应有据、可问责、可逆。</strong> "With, Not For" 在此承重,而非装饰。</p>
       </div>
     </section>
 
     <section id="contrib">
       <span class="tag">7 · 贡献</span>
       <ol>
-        <li>首个以<strong>神经感知处理模型(四层)为演绎骨架</strong>、跨 ACM DL + 生物医学库的 perceptual-engineering HCI 范围综述——方法学本身即「神经 × HCI」的桥。</li>
-        <li>一套描述领域的<strong>框架 + 句式模板</strong>(actuation × sensory target × 处理层 × 神经根据 × 人群)+ augment↔substitute↔regulate 谱。</li>
-        <li>经 RQ4/RQ5 揭示 <strong>「神经科学贴皮」+「门控被高估」的跨域汇合</strong>,与 perceptual diversity 的系统性缺席,据此提出 <strong>From-the-Margins-to-the-Everyday / With-Not-For</strong> 设计议程,接 wearable AI / CAWI 闭环。</li>
+        <li>首个以<strong>神经通路(受器 → 门控 → 脑岛整合 → 情感)为演绎骨架</strong>、跨 ACM DL + 生物医学库的 perceptual-engineering HCI 范围综述——方法学本身即「神经 × HCI」的桥。</li>
+        <li>一套描述领域的<strong>共享词汇 + 句式模板</strong>(actuation × sensory target × 处理层 × 神经根据 × 人群)+ augment↔substitute↔regulate 谱,以及<strong>连接临床 therapy 与 HCI 设计原则(如 COGA)的逐阶段对照表</strong>。</li>
+        <li><strong>揭示神经科学如何被(误)用、代价几何</strong>:neural veneer(主张超出证据)、「门控被高估」跨域汇合、拿医学工具不顾医学纪律与伦理(body schema 例),以及 perceptual diversity 的系统性缺席。</li>
+        <li>据此提出 <strong>From-the-Margins-to-the-Everyday / With-Not-For</strong> 议程——为<strong>有据、可问责、可及</strong>的 wearable AI 立设计方向,接 CAWI sense→actuate 闭环。</li>
       </ol>
     </section>
 
