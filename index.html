@@ -332,6 +332,20 @@
       line-height: 1.5;
     }
 
+    details.more {
+      margin: 14px 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+      padding: 4px 14px;
+    }
+    details.more > summary {
+      cursor: pointer;
+      font-weight: 650;
+      color: var(--accent);
+      padding: 8px 0;
+    }
+
     footer {
       padding: 24px 0 36px;
       color: var(--muted);
@@ -366,12 +380,8 @@
         <div class="nav-links">
           <a href="#framework">Framework</a>
           <a href="#translation">Translation Map</a>
-          <a href="#keywords">Keywords</a>
           <a href="search_protocol.html">Search Protocol</a>
-          <a href="interview_questions.html">Interview</a>
-          <a href="medical_coauthor_analysis.html">Medical Coding</a>
-          <a href="advisor_proposal_scaffold.html">Advisor Scaffold</a>
-          <a href="meeting_brief.pdf">PDF</a>
+          <a href="perception_review_scope.html">Perception Scope</a>
           <a href="meeting_brief.html">Full Brief</a>
         </div>
       </nav>
@@ -385,14 +395,10 @@
         <p class="subtitle">A scoping review project mapping neurodiversity, health-based support strategies, HCI accessibility, XR, and human-AI interaction into design principles for wearable AI.</p>
         <p>核心目标：把医学 / 康复 / 神经多样性领域中关于认知、感官、运动、情绪与环境支持的方法，系统映射到 Wearable AI / UI/UX Accessibility 的设计原则中。</p>
         <div class="actions">
-          <a class="button" href="meeting_brief.pdf">Download PDF</a>
+          <a class="button" href="meeting_brief.pdf">Download PDF Brief</a>
           <a class="button secondary" href="search_protocol.html">Search Protocol</a>
           <a class="button secondary" href="perception_review_scope.html">Perception Review Scope</a>
-          <a class="button secondary" href="interview_questions.html">Interview Questions</a>
-          <a class="button secondary" href="medical_coauthor_analysis.html">Medical Coding Results</a>
-          <a class="button secondary" href="advisor_proposal_scaffold.html">Advisor Scaffold</a>
           <a class="button secondary" href="meeting_brief.html">Read Full Brief</a>
-          <a class="button secondary" href="meeting_brief.md">Markdown Source</a>
         </div>
       </div>
       <div class="loop" aria-label="CAWI interaction loop">
@@ -495,7 +501,8 @@
         <div class="keyword-block"><strong>Accessibility</strong>cognitive accessibility, XR accessibility, inclusive design, accessible computing, assistive technology</div>
       </div>
 
-      <h3>Keyword Alignment Matrix</h3>
+      <details class="more">
+        <summary>Keyword Alignment Matrix · 点击展开</summary>
       <table class="alignment-table">
         <thead>
           <tr>
@@ -545,7 +552,13 @@
         </tbody>
       </table>
 
-      <h3>Review Search Layers</h3>
+      </details>
+
+      <p>这五层检索式只是概览。完整的<strong>七层检索式、受控词表、HCI venue 手检与筛选 / 校准计划</strong>见独立的检索协议页。</p>
+      <p><a class="button secondary" href="search_protocol.html">Open Full Search Protocol →</a></p>
+
+      <details class="more">
+        <summary>Review Search Layers (本页概览版) · 点击展开</summary>
       <div class="search-layer">
         <p class="layer-title">Layer 1: Health / Neurodiversity / Access Needs</p>
         <pre>(neurodiversity OR neurodivergent OR autism OR autistic OR ADHD OR dyslexia OR dyspraxia OR "cognitive impairment" OR "sensory processing" OR "executive function")
@@ -592,6 +605,7 @@ AND
 AND
 (explainability OR transparency OR fairness OR personalization OR autonomy OR "user control" OR privacy OR misclassification)</pre>
       </div>
+      </details>
     </section>
   </main>
 
