@@ -146,7 +146,7 @@
           </tr>
           <tr>
             <td><strong>纳入 / 排除</strong></td>
-            <td><strong>纳入</strong>:有 HCI/交互设计贡献且有意作用于知觉。<strong>排除</strong>:纯信息展示 UI;纯临床疗效试验(无设计贡献);纯 read-out/控制型 BCI;非英文;二次综述。</td>
+            <td><strong>纳入</strong>:有 HCI/交互设计贡献且有意作用于知觉。<strong>排除</strong>:纯信息展示 UI;纯临床疗效试验(无设计贡献);<strong>非 autism 条件的临床假体(人工耳蜗 / 视网膜假体 / TENS)→ 仅 Background/Future</strong>;纯 read-out/控制型 BCI;非英文;二次综述。</td>
             <td><div class="decision" data-key="纳入/排除"><label><input type="checkbox"> 同意</label><input type="text" placeholder="调整 …"></div></td>
           </tr>
         </tbody>
@@ -158,8 +158,8 @@
       <h2 style="font-size:1.15rem;color:var(--accent-2)">给医生(临床 / 神经边界)</h2>
       <ul class="checklist">
         <li data-key="医生:神经刺激"><input type="checkbox"><div class="li-body"><span>神经刺激(tDCS / tACS / TMS)纳入还是单列?<span class="rec">推荐:HCI venue 内、针对知觉的纳入;侵入式 BCI 另案。</span></span><input type="text" class="li-note" placeholder="手写结论 / 备注 …"></div></li>
-        <li data-key="医生:临床假体"><input type="checkbox"><div class="li-body"><span>临床假体(人工耳蜗 / 视网膜假体 / TENS 镇痛)只进 Background、不进 corpus?<span class="rec">推荐:是。</span></span><input type="text" class="li-note" placeholder="手写结论 / 备注 …"></div></li>
-        <li data-key="医生:RQ4口径"><input type="checkbox"><div class="li-body"><span>背书 RQ4 编码口径:神经科学被怎么用(motivation / mechanism / evaluation / inspiration / 缺席 × 承重);<strong>验证靠 biosensor / 客观指标,还是只靠自评量表(「你感觉到了吗?」)</strong>;是否核算<strong>对神经通路干预的后果与伦理(如 body schema 改写后的可逆性、幻肢风险)</strong>。</span><input type="text" class="li-note" placeholder="手写结论 / 备注 …"></div></li>
+        <li data-key="医生:临床假体"><input type="checkbox" checked><div class="li-body"><span><strong>已定:</strong>临床搜索锚定 <strong>autism 的诊断与治疗</strong>,故人工耳蜗 / 视网膜假体 / TENS 镇痛<strong>不进搜索</strong>,仅进 Background + Future Work。<span class="rec">(这些是为聋 / 盲 / 疼痛而非 autism,落在 autism dx/tx 搜索范围外。)</span></span><input type="text" class="li-note" placeholder="手写结论 / 备注 …"></div></li>
+        <li data-key="医生:RQ4口径"><input type="checkbox"><div class="li-body"><span>背书 RQ4 编码口径:神经科学被怎么用(motivation / mechanism / evaluation / inspiration / 缺席 × 承重);<strong>验证靠 biosensor / 客观指标,还是只靠自评量表</strong>(<span class="rec">注:自评对内感受 sensibility 等主观维度合理,配 HR / 呼吸 / EDA 更可靠;veneer 特指「神经机制 claim 仅以自评单独背书、无客观锚点」</span>);是否核算<strong>对神经通路干预的后果与伦理(如 body schema 改写后的可逆性、幻肢风险)</strong>。</span><input type="text" class="li-note" placeholder="手写结论 / 备注 …"></div></li>
       </ul>
       <h2 style="font-size:1.15rem;color:var(--accent-2);margin-top:18px">给 HCI researcher(领域边界)</h2>
       <ul class="checklist">
