@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Charting — Perceptual Engineering Review</title>
+  <meta name="description" content="Online data-extraction (charting) form for the perceptual-engineering scoping review: fill per paper, persist locally, export/import CSV.">
+  <style>
+    :root{--ink:#17202a;--muted:#5c6675;--line:#d8dee8;--soft:#f5f7fa;--accent:#0f6b68;--accent-2:#8f3d56;--green:#e9f4ef;}
+    *{box-sizing:border-box;}
+    body{margin:0;color:var(--ink);background:#fff;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;line-height:1.55;}
+    a{color:var(--accent);}
+    .wrap{width:min(1180px,calc(100% - 28px));margin:0 auto;}
+    header{border-bottom:1px solid var(--line);}
+    nav{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:60px;font-size:.95rem;}
+    .brand{font-weight:720;}
+    .nav-links{display:flex;flex-wrap:wrap;gap:12px;}
+    .hero{padding:30px 0 18px;background:linear-gradient(90deg,rgba(233,244,239,.9),rgba(233,242,247,.85)),#f7f8fa;border-bottom:1px solid var(--line);}
+    h1{margin:0 0 8px;font-size:clamp(1.5rem,3.5vw,2.2rem);}
+    .sub{color:#394657;margin:0;}
+    main{padding:18px 0 60px;}
+    .form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px 16px;}
+    .field{display:flex;flex-direction:column;gap:4px;}
+    .field.wide{grid-column:1 / -1;}
+    .field label{font-weight:650;font-size:.85rem;}
+    .field .rq{color:var(--muted);font-weight:400;}
+    input[type=text],select,textarea{padding:7px 9px;border:1px solid var(--line);border-radius:6px;font:inherit;background:#fff;width:100%;}
+    textarea{min-height:52px;resize:vertical;}
+    .multi{display:flex;flex-wrap:wrap;gap:4px 10px;border:1px solid var(--line);border-radius:6px;padding:7px 9px;background:#fff;}
+    .multi label{font-weight:400;font-size:.82rem;display:inline-flex;align-items:center;gap:4px;white-space:nowrap;}
+    .multi input{accent-color:var(--accent);}
+    .bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:16px 0;}
+    .button{display:inline-flex;align-items:center;min-height:38px;padding:8px 14px;border:1px solid var(--accent);color:#fff;background:var(--accent);border-radius:6px;font-weight:650;cursor:pointer;font:inherit;text-decoration:none;}
+    .button.secondary{color:var(--accent);background:#fff;}
+    .button.danger{color:var(--accent-2);background:#fff;border-color:var(--accent-2);}
+    .count{color:var(--muted);font-size:.9rem;}
+    .table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:8px;margin-top:8px;}
+    table{border-collapse:collapse;font-size:.8rem;white-space:nowrap;}
+    th,td{border:1px solid var(--line);padding:5px 8px;text-align:left;vertical-align:top;max-width:260px;overflow:hidden;text-overflow:ellipsis;}
+    th{background:var(--soft);position:sticky;top:0;}
+    tr:nth-child(even) td{background:#fafbfc;}
+    .row-act{cursor:pointer;color:var(--accent);text-decoration:underline;}
+    .row-del{cursor:pointer;color:var(--accent-2);text-decoration:underline;}
+    textarea#io{width:100%;min-height:120px;font-family:ui-monospace,Menlo,monospace;font-size:.82rem;margin-top:8px;display:none;}
+    .hint{color:var(--muted);font-size:.85rem;}
+    .editing{background:#fff7ec;border:1px solid #e6d8c6;border-radius:8px;padding:6px 10px;font-size:.85rem;display:none;margin-bottom:8px;}
+  </style>
+</head>
+<body>
+  <header><div class="wrap"><nav>
+    <span class="brand">Charting · Perceptual Engineering</span>
+    <span class="nav-links">
+      <a href="search_protocol_v2.html">Protocol v2</a>
+      <a href="perception_review_scope.html">Scope</a>
+      <a href="perception_review_proposal.html">Proposal</a>
+      <a href="index.html">CAWI Home</a>
+    </span>
+  </nav></div></header>
+
+  <div class="hero"><div class="wrap">
+    <h1>Charting · 数据提取表</h1>
+    <p class="sub">每篇纳入文献填一行;<strong>本地自动保存</strong>(localStorage),可<strong>导出 / 导入 CSV</strong> 与队友合并。字段对应 RQ1–5 + 四层骨架。Codebook 见 <a href="https://github.com/WeiWu0115/wearable-ai-accessibility-review/blob/main/version2/perception-engineering-review/CHARTING_TEMPLATE.md">CHARTING_TEMPLATE.md</a>。</p>
+  </div></div>
+
+  <main class="wrap">
+    <div class="editing" id="editingBadge"></div>
+    <div class="form-grid" id="form"></div>
+    <div class="bar">
+      <button class="button" id="addBtn">添加 / 更新条目</button>
+      <button class="button secondary" id="clearForm">清空表单</button>
+      <span class="count" id="count"></span>
+    </div>
+
+    <div class="bar">
+      <button class="button secondary" id="exportBtn">导出 CSV(下载)</button>
+      <button class="button secondary" id="copyBtn">复制 CSV</button>
+      <button class="button secondary" id="importToggle">导入 / 粘贴 CSV</button>
+      <button class="button danger" id="clearAll">清空全部</button>
+      <span class="count" id="copied" style="display:none;color:var(--accent)">已复制 ✓</span>
+    </div>
+    <textarea id="io" placeholder="把 CSV 粘到这里,然后点「合并导入」…"></textarea>
+    <div class="bar" id="importBar" style="display:none">
+      <button class="button" id="importBtn">合并导入</button>
+      <span class="hint">表头需与导出格式一致;按列名匹配。</span>
+    </div>
+
+    <div class="table-scroll"><table id="tbl"><thead></thead><tbody></tbody></table></div>
+  </main>
+
+  <script>
+  (function(){
+    var FIELDS = [
+      {k:"id",label:"ID",t:"text"},
+      {k:"arm",label:"Arm",t:"select",o:["A-HCI","B-Clinical"]},
+      {k:"title",label:"Title",t:"text",wide:true},
+      {k:"authors",label:"Authors",t:"text"},
+      {k:"year",label:"Year",t:"text"},
+      {k:"venue",label:"Venue",t:"text"},
+      {k:"doi",label:"DOI / link",t:"text"},
+      {k:"modality",label:"Modality",rq:"RQ1",t:"multi",o:["vision","auditory","tactile","thermal","pain","proprioceptive","vestibular","interoceptive","olfactory","gustatory","multisensory"]},
+      {k:"layer",label:"Layer",rq:"RQ1",t:"multi",o:["receptor","gating","integration","affective","other-pathway"]},
+      {k:"actuation",label:"Actuation",rq:"RQ2",t:"multi",o:["EMS","GVS","electrotactile","electric-taste","tDCS/tACS","vibrotactile","force-feedback","ultrasound-haptic","pseudo-haptic","thermal","olfactory-display","gustatory","optical","acoustic","sensory-substitution","physiological-feedback"]},
+      {k:"action_type",label:"Action type",rq:"RQ2",t:"select",o:["augment","substitute","attenuate","calibrate"]},
+      {k:"form_factor",label:"Form factor",rq:"RQ3",t:"text"},
+      {k:"body_relation",label:"Body relation",rq:"RQ3",t:"select",o:["on-body","in-body","around-body"]},
+      {k:"neuro_use",label:"Neuro use",rq:"RQ4",t:"select",o:["motivation","mechanism","evaluation","inspiration","absent"]},
+      {k:"neuro_loadbearing",label:"Load-bearing",rq:"RQ4",t:"select",o:["surface","load-bearing"]},
+      {k:"validation",label:"Validation",rq:"RQ4",t:"select",o:["objective/biosensor","behavioral-task","self-report-only","mixed","none"]},
+      {k:"ethics_addressed",label:"Ethics addressed",rq:"RQ4",t:"select",o:["yes","partial","no"]},
+      {k:"population",label:"Population",rq:"RQ5",t:"select",o:["clinical/disability-specific","general/augmentation","both"]},
+      {k:"perc_diversity_centered",label:"Perc. diversity centered",rq:"RQ5",t:"select",o:["yes","no"]},
+      {k:"generalization_claim",label:"Generalization claim",rq:"RQ5",t:"select",o:["yes","no"]},
+      {k:"accessibility_lineage",label:"Accessibility lineage",rq:"RQ5",t:"select",o:["yes","no"]},
+      {k:"sentence_template",label:"Sentence template",t:"textarea",wide:true},
+      {k:"key_finding",label:"Key finding",t:"textarea",wide:true},
+      {k:"include_intervention",label:"Include?",t:"select",o:["intervention","evaluation-only","excluded-other"]},
+      {k:"reviewer",label:"Reviewer",t:"text"},
+      {k:"notes",label:"Notes",t:"textarea",wide:true}
+    ];
+    var KEY="pe_charting_rows", $=function(id){return document.getElementById(id);};
+    var rows = JSON.parse(localStorage.getItem(KEY)||"[]");
+    var editIdx = -1;
+
+    // build form
+    var fc=$("form");
+    FIELDS.forEach(function(f){
+      var d=document.createElement("div"); d.className="field"+(f.wide?" wide":"");
+      var lab="<label>"+f.label+(f.rq?" <span class='rq'>"+f.rq+"</span>":"")+"</label>";
+      var ctrl="";
+      if(f.t==="text") ctrl="<input type='text' id='f_"+f.k+"'>";
+      else if(f.t==="textarea") ctrl="<textarea id='f_"+f.k+"'></textarea>";
+      else if(f.t==="select"){ ctrl="<select id='f_"+f.k+"'><option value=''>—</option>"+f.o.map(function(o){return "<option>"+o+"</option>";}).join("")+"</select>"; }
+      else if(f.t==="multi"){ ctrl="<div class='multi' id='f_"+f.k+"'>"+f.o.map(function(o){return "<label><input type='checkbox' value='"+o+"'>"+o+"</label>";}).join("")+"</div>"; }
+      d.innerHTML=lab+ctrl; fc.appendChild(d);
+    });
+
+    function getVal(f){
+      var el=$("f_"+f.k);
+      if(f.t==="multi"){ return Array.prototype.slice.call(el.querySelectorAll("input:checked")).map(function(c){return c.value;}).join(";"); }
+      return el.value.trim();
+    }
+    function setVal(f,v){
+      var el=$("f_"+f.k);
+      if(f.t==="multi"){ var set=(v||"").split(";"); el.querySelectorAll("input").forEach(function(c){c.checked=set.indexOf(c.value)>=0;}); }
+      else el.value=v||"";
+    }
+    function clearForm(){ FIELDS.forEach(function(f){setVal(f,"");}); editIdx=-1; $("editingBadge").style.display="none"; }
+
+    function save(){ localStorage.setItem(KEY,JSON.stringify(rows)); render(); }
+
+    function render(){
+      $("count").textContent = rows.length+" 条";
+      var th=document.querySelector("#tbl thead"), tb=document.querySelector("#tbl tbody");
+      th.innerHTML="<tr>"+FIELDS.map(function(f){return "<th>"+f.k+"</th>";}).join("")+"<th>操作</th></tr>";
+      tb.innerHTML=rows.map(function(r,i){
+        return "<tr>"+FIELDS.map(function(f){return "<td title=\""+(r[f.k]||"").replace(/"/g,'&quot;')+"\">"+(r[f.k]||"")+"</td>";}).join("")
+          +"<td><span class='row-act' data-i='"+i+"'>编辑</span> · <span class='row-del' data-i='"+i+"'>删</span></td></tr>";
+      }).join("");
+    }
+
+    $("addBtn").addEventListener("click",function(){
+      var r={}; FIELDS.forEach(function(f){r[f.k]=getVal(f);});
+      if(editIdx>=0){ rows[editIdx]=r; } else { rows.push(r); }
+      save(); clearForm();
+    });
+    $("clearForm").addEventListener("click",clearForm);
+
+    document.querySelector("#tbl tbody").addEventListener("click",function(e){
+      var i=e.target.getAttribute("data-i"); if(i===null) return; i=+i;
+      if(e.target.classList.contains("row-del")){ if(confirm("删除此行?")){ rows.splice(i,1); save(); } }
+      else if(e.target.classList.contains("row-act")){ FIELDS.forEach(function(f){setVal(f,rows[i][f.k]);}); editIdx=i; var b=$("editingBadge"); b.style.display="block"; b.textContent="正在编辑第 "+(i+1)+" 行(点「添加/更新条目」保存,或「清空表单」取消)"; window.scrollTo({top:0,behavior:"smooth"}); }
+    });
+
+    // CSV
+    function esc(v){ v=v==null?"":(""+v); return /[",\n]/.test(v) ? '"'+v.replace(/"/g,'""')+'"' : v; }
+    function toCSV(){ var head=FIELDS.map(function(f){return f.k;}).join(","); var body=rows.map(function(r){return FIELDS.map(function(f){return esc(r[f.k]);}).join(",");}).join("\n"); return head+"\n"+body; }
+    function parseCSV(text){
+      var out=[],row=[],cur="",q=false,i=0,c;
+      text=text.replace(/\r\n?/g,"\n");
+      for(;i<text.length;i++){ c=text[i];
+        if(q){ if(c==='"'){ if(text[i+1]==='"'){cur+='"';i++;} else q=false; } else cur+=c; }
+        else { if(c==='"') q=true; else if(c===',' ){row.push(cur);cur="";} else if(c==='\n'){row.push(cur);out.push(row);row=[];cur="";} else cur+=c; }
+      }
+      if(cur!==""||row.length){ row.push(cur); out.push(row); }
+      return out;
+    }
+    function flash(){ var c=$("copied"); c.style.display="inline"; setTimeout(function(){c.style.display="none";},1600); }
+
+    $("exportBtn").addEventListener("click",function(){
+      var blob=new Blob(["﻿"+toCSV()],{type:"text/csv;charset=utf-8"});
+      var a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="charting_"+new Date().toISOString().slice(0,10)+".csv"; a.click();
+    });
+    $("copyBtn").addEventListener("click",function(){ var t=toCSV(); if(navigator.clipboard)navigator.clipboard.writeText(t).then(flash,function(){}); });
+    $("importToggle").addEventListener("click",function(){ var io=$("io"),bar=$("importBar"); var show=io.style.display!=="block"; io.style.display=show?"block":"none"; bar.style.display=show?"flex":"none"; });
+    $("importBtn").addEventListener("click",function(){
+      var data=parseCSV($("io").value.trim()); if(!data.length){return;}
+      var head=data[0].map(function(h){return h.trim();});
+      var added=0;
+      for(var i=1;i<data.length;i++){ if(data[i].length===1&&data[i][0]==="")continue; var r={}; FIELDS.forEach(function(f){var j=head.indexOf(f.k); r[f.k]=j>=0?(data[i][j]||""):"";}); rows.push(r); added++; }
+      save(); $("io").value=""; alert("合并导入 "+added+" 行。");
+    });
+    $("clearAll").addEventListener("click",function(){ if(confirm("清空全部已录入数据?(导出后再清更安全)")){ rows=[]; save(); } });
+
+    render();
+  })();
+  </script>
+</body>
+</html>
