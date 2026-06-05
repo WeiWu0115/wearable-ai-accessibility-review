@@ -182,22 +182,29 @@
       <textarea class="qbox" id="qa-db">ACM DL + IEEE Xplore + Scopus
 venue: CHI / UIST / TEI / DIS / CHI EA / Augmented Humans / IMWUT·UbiComp / ISS / MobileHCI;IEEE: World Haptics / ToH / IEEE VR</textarea>
       <label class="field-label" for="qa-a">A — 感知 / 感官目标</label>
-      <textarea class="qbox" id="qa-a">(perception OR perceptual OR sensory OR multisensory OR cross-modal OR
- propriocept* OR vestibular OR haptic OR tactile OR thermal OR
- olfact* OR smell OR gustat* OR taste OR interocept* OR "sensory substitution")</textarea>
+      <textarea class="qbox" id="qa-a">(perception OR perceptual OR sensory OR multisensory OR "multi-sensory"
+ OR crossmodal OR "cross-modal" OR multimodal OR "multi-modal"
+ OR propriocept* OR vestibular OR haptic OR tactile OR thermal
+ OR olfact* OR smell OR gustat* OR taste OR interocept*
+ OR "sensory substitution" OR "sensory augmentation" OR "sensory modulation")</textarea>
       <label class="field-label" for="qa-b">B — 作用 / 工程化("act on" 动词,排掉纯展示)</label>
-      <textarea class="qbox" id="qa-b">(stimulat* OR "electrical muscle stimulation" OR EMS OR "galvanic vestibular" OR GVS OR
- electrotactile OR "electro-tactile" OR actuat* OR augment* OR substitut* OR
- illusion OR "pseudo-haptic" OR modulat* OR "sensory feedback" OR biofeedback OR
- "perceptual engineering")</textarea>
+      <textarea class="qbox" id="qa-b">(stimulat* OR "electrical muscle stimulation" OR EMS
+ OR "galvanic vestibular stimulation" OR "galvanic vestibular" OR GVS
+ OR electrotactile OR "electro-tactile" OR actuat* OR actuator*
+ OR augment* OR substitut* OR modulat* OR regulat*
+ OR illusion OR "pseudo-haptic" OR pseudohaptic
+ OR "sensory feedback" OR "perceptual feedback" OR biofeedback OR neurofeedback
+ OR "perceptual engineering")</textarea>
       <div class="qbar" style="margin-top:6px">
         <button class="button secondary" id="bBroad" type="button">B 组 = broad(召回优先)</button>
         <button class="button secondary" id="bNarrow" type="button">B 组 = narrow(去泛词,精度优先)</button>
         <span class="rec">narrow 去掉 augment*/modulat*,靠特异术语 + venue 兜(pilot precision &lt; ~15% 时切)</span>
       </div>
       <label class="field-label" for="qa-c">C — HCI 语境(用 venue 限定可省略)</label>
-      <textarea class="qbox" id="qa-c">(HCI OR "human-computer interaction" OR interface OR wearable OR
- "interaction design" OR "user experience" OR on-body OR "augmented human")</textarea>
+      <textarea class="qbox" id="qa-c">(HCI OR "human-computer interaction" OR interface* OR wearable* OR "wearable computing"
+ OR "interaction design" OR "interactive system*" OR "user interface*"
+ OR "user experience" OR UX OR on-body OR "on body"
+ OR "augmented human" OR "human augmentation")</textarea>
       <label class="field-label">臂 A 组合检索式(A AND B AND C;自动合成)</label>
       <pre id="qa-combined"></pre>
       <button class="button secondary" id="copyA">复制臂 A 检索式</button>
@@ -207,14 +214,18 @@ venue: CHI / UIST / TEI / DIS / CHI EA / Augmented Humans / IMWUT·UbiComp / ISS
       <textarea class="qbox" id="qb-db">PubMed + Scopus(基于 ADSR2 MeSH)</textarea>
       <label class="field-label" for="qb-p">P — autism 人群(所有式都 AND 上)</label>
       <textarea class="qbox" id="qb-p">("Autism Spectrum Disorder"[Mesh] OR autis*[tiab] OR ASD[tiab] OR Asperger*[tiab] OR neurodivers*[tiab])</textarea>
-      <label class="field-label" for="qb-layer">通路概念(每行一层,自动 OR;可加其他通路)</label>
-      <textarea class="qbox" id="qb-layer">受器: (electroretinog* OR ERG OR "auditory brainstem response" OR ABR OR tactile OR somatosensory OR "tactile defensiveness")
-门控: ("sensory gating" OR GABA OR thalam* OR "excitatory inhibitory" OR "sensory over-responsivity")
-整合: (multisensory OR "temporal binding window" OR audiovisual OR crossmodal OR postural)
-情感: (insula* OR amygdala OR interocept* OR "heart rate variability" OR "sensory sensitivity")</textarea>
+      <label class="field-label" for="qb-layer">7 感觉域(每行一域,自动 OR;标注 / 排除行自动忽略)</label>
+      <textarea class="qbox" id="qb-layer">① 视觉: ("Electroretinography"[Mesh] OR electroretinog*[tiab] OR ERG[tiab] OR "Retina"[Mesh] OR retina*[tiab] OR photoreceptor*[tiab] OR "Visual Perception"[Mesh] OR "visual processing"[tiab])
+② 听觉: ("Evoked Potentials, Auditory, Brain Stem"[Mesh] OR "auditory brainstem response"[tiab] OR ABR[tiab] OR "otoacoustic emission*"[tiab] OR cochlea*[tiab] OR "Hearing Loss"[Mesh] OR audiomet*[tiab] OR "Auditory Perception"[Mesh])
+③ 触压觉·振动·纹理: ("Touch"[Mesh] OR "Touch Perception"[Mesh] OR tactile[tiab] OR somatosensory[tiab] OR "tactile defensiveness"[tiab] OR vibrotactile[tiab] OR vibration[tiab] OR "texture perception"[tiab] OR mechanoreceptor*[tiab] OR Shank3[tiab] OR Mecp2[tiab] OR Fmr1[tiab])
+④ 痛温觉: ("Pain"[Mesh] OR "Pain Perception"[Mesh] OR "Pain Threshold"[Mesh] OR nocicept*[tiab] OR "pain sensitivity"[tiab] OR "quantitative sensory testing"[tiab] OR QST[tiab] OR "Thermoreceptors"[Mesh] OR "thermal perception"[tiab] OR "temperature perception"[tiab] OR allodynia[tiab] OR hyperalgesia[tiab])
+⑤ 本体觉: ("Proprioception"[Mesh] OR propriocept*[tiab] OR kinesth*[tiab] OR "Muscle Spindles"[Mesh] OR sensorimotor[tiab] OR "motor control"[tiab])
+⑥ 前庭觉: ("Vestibule, Labyrinth"[Mesh] OR vestibul*[tiab] OR "Postural Balance"[Mesh] OR postural[tiab] OR balance[tiab] OR "Vestibular Function Tests"[Mesh] OR otolith*[tiab] OR "semicircular canal*"[tiab])
+⑦ 内感受: ("Interoception"[Mesh] OR interocept*[tiab] OR "Autonomic Nervous System"[Mesh] OR "heart rate variability"[tiab] OR "Heart Rate"[Mesh] OR "Galvanic Skin Response"[Mesh] OR electroderm*[tiab] OR "heartbeat tracking"[tiab] OR "respiratory sinus arrhythmia"[tiab])
+默认排除(不跑): 嗅味 ("Olfactory Perception"[Mesh] OR olfact*[tiab] OR smell[tiab] OR "Taste Perception"[Mesh] OR gustat*[tiab] OR taste[tiab] OR chemosens*[tiab])</textarea>
       <label class="field-label" for="qb-dxtx">诊断 / 治疗</label>
       <textarea class="qbox" id="qb-dxtx">(diagnos* OR "DSM-5" OR assessment OR treatment OR intervention OR therap* OR rehabilitation)</textarea>
-      <label class="field-label">臂 B 组合检索式(P AND 通路层 AND 诊疗;自动合成)</label>
+      <label class="field-label">臂 B 组合检索式(P AND 感觉域 AND 诊疗;自动合成,标注/排除行忽略)</label>
       <pre id="qb-combined"></pre>
       <button class="button secondary" id="copyB">复制臂 B 检索式</button>
 
@@ -285,7 +296,9 @@ venue: CHI / UIST / TEI / DIS / CHI EA / Augmented Humans / IMWUT·UbiComp / ISS
       }
       function layersOR(){
         return val("qb-layer").split("\n").map(function(line){
-          var i = line.indexOf("("); return i >= 0 ? line.slice(i).trim() : "";
+          if(/排除|留作记录|不跑|每条/.test(line)) return "";          // 跳过标注 / 排除行
+          var i = line.indexOf("("), j = line.lastIndexOf(")");
+          return (i >= 0 && j > i) ? line.slice(i, j + 1).trim() : "";   // 只取 (...) 组
         }).filter(function(s){ return s.length; }).join(" OR ");
       }
       function combineB(){

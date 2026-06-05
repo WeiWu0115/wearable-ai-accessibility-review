@@ -105,21 +105,28 @@
       <div class="arm a">
         <p class="kv"><b>库:</b> ACM DL + IEEE Xplore(+ Scopus 跨学科补全 / snowballing)</p>
         <p class="kv"><b>venue:</b> CHI · UIST · TEI · DIS · CHI EA · Augmented Humans · IMWUT/UbiComp · ISS · MobileHCI;IEEE: World Haptics · ToH · IEEE VR</p>
-        <p class="kv"><b>式:</b> <code>A</code> AND <code>B</code> AND(<code>C</code> 或 venue 限定)· English · 2013–2025</p>
+        <p class="kv"><b>式:</b> <code>A</code> AND <code>B</code> AND <code>C</code> · English · 2013–2025(收敛后单一版)</p>
         <pre>A — 感知 / 感官目标:
-(perception OR perceptual OR sensory OR multisensory OR cross-modal OR
- propriocept* OR vestibular OR haptic OR tactile OR thermal OR
- olfact* OR smell OR gustat* OR taste OR interocept* OR "sensory substitution")
+(perception OR perceptual OR sensory OR multisensory OR "multi-sensory"
+ OR crossmodal OR "cross-modal" OR multimodal OR "multi-modal"
+ OR propriocept* OR vestibular OR haptic OR tactile OR thermal
+ OR olfact* OR smell OR gustat* OR taste OR interocept*
+ OR "sensory substitution" OR "sensory augmentation" OR "sensory modulation")
 AND
-B — 作用 / 工程化("act on" 动词,排掉纯展示):
-(stimulat* OR "electrical muscle stimulation" OR EMS OR "galvanic vestibular" OR GVS OR
- electrotactile OR "electro-tactile" OR actuat* OR augment* OR substitut* OR
- illusion OR "pseudo-haptic" OR modulat* OR "sensory feedback" OR biofeedback OR
- "perceptual engineering")
+B — 作用 / 工程化:
+(stimulat* OR "electrical muscle stimulation" OR EMS
+ OR "galvanic vestibular stimulation" OR "galvanic vestibular" OR GVS
+ OR electrotactile OR "electro-tactile" OR actuat* OR actuator*
+ OR augment* OR substitut* OR modulat* OR regulat*
+ OR illusion OR "pseudo-haptic" OR pseudohaptic
+ OR "sensory feedback" OR "perceptual feedback" OR biofeedback OR neurofeedback
+ OR "perceptual engineering")
 AND
-C — HCI 语境(用 venue 限定可省略):
-(HCI OR "human-computer interaction" OR interface OR wearable OR
- "interaction design" OR "user experience" OR on-body OR "augmented human")</pre>
+C — HCI 语境:
+(HCI OR "human-computer interaction" OR interface* OR wearable* OR "wearable computing"
+ OR "interaction design" OR "interactive system*" OR "user interface*"
+ OR "user experience" OR UX OR on-body OR "on body"
+ OR "augmented human" OR "human augmentation")</pre>
         <p class="kv" style="margin-top:10px"><b>筛选期排除(Covidence,非检索词):</b> 仅作 <strong>evaluation</strong> 手段者 → 排(技术须作为 <strong>intervention</strong>);纯信息展示 UI;纯 read-out / 控制型 BCI;二次综述;非英文。</p>
       </div>
     </section>
@@ -128,19 +135,23 @@ C — HCI 语境(用 venue 限定可省略):
       <span class="tag">臂 B · 临床(autism 诊断与治疗)</span>
       <div class="arm b">
         <p class="kv"><b>库:</b> PubMed(+ Scopus),基于 <code>ADSR2</code> MeSH · 2013–2025</p>
-        <p class="kv"><b>式:</b> <code>P</code> AND <code>通路概念(四层 OR)</code> AND <code>诊断 / 治疗</code></p>
-        <pre>P — autism 人群(所有式都 AND 上):
-("Autism Spectrum Disorder"[Mesh] OR autis*[tiab] OR ASD[tiab] OR Asperger*[tiab] OR neurodivers*[tiab])
-AND
-通路概念(四层任一,OR 合并;可加其他通路):
-  受器: (electroretinog* OR ERG OR "auditory brainstem response" OR ABR OR tactile OR somatosensory OR "tactile defensiveness")
-  门控: ("sensory gating" OR GABA OR thalam* OR "excitatory inhibitory" OR "sensory over-responsivity")
-  整合: (multisensory OR "temporal binding window" OR audiovisual OR crossmodal OR postural)
-  情感: (insula* OR amygdala OR interocept* OR "heart rate variability" OR "sensory sensitivity")
-AND
-诊断 / 治疗:
+        <p class="kv"><b>式:</b> <code>P</code> AND <code>(7 感觉域 OR …)</code> AND <code>诊断 / 治疗</code>(医生版,按感觉域分块)</p>
+        <pre>P — autism 人群(每条都 AND 上):
+("Autism Spectrum Disorder"[Mesh] OR autis*[tiab] OR ASD[tiab] OR "Asperger*"[tiab] OR neurodivers*[tiab])
+
+AND 以下感觉域(任一;可分别跑或 OR 合并):
+① 视觉: ("Electroretinography"[Mesh] OR electroretinog*[tiab] OR ERG[tiab] OR "Retina"[Mesh] OR retina*[tiab] OR photoreceptor*[tiab] OR "Visual Perception"[Mesh] OR "visual processing"[tiab])
+② 听觉: ("Evoked Potentials, Auditory, Brain Stem"[Mesh] OR "auditory brainstem response"[tiab] OR ABR[tiab] OR "otoacoustic emission*"[tiab] OR cochlea*[tiab] OR "Hearing Loss"[Mesh] OR audiomet*[tiab] OR "Auditory Perception"[Mesh])
+③ 触压觉·振动·纹理: ("Touch"[Mesh] OR "Touch Perception"[Mesh] OR tactile[tiab] OR somatosensory[tiab] OR "tactile defensiveness"[tiab] OR vibrotactile[tiab] OR vibration[tiab] OR "texture perception"[tiab] OR mechanoreceptor*[tiab] OR Shank3[tiab] OR Mecp2[tiab] OR Fmr1[tiab])
+④ 痛温觉: ("Pain"[Mesh] OR "Pain Perception"[Mesh] OR "Pain Threshold"[Mesh] OR nocicept*[tiab] OR "pain sensitivity"[tiab] OR "quantitative sensory testing"[tiab] OR QST[tiab] OR "Thermoreceptors"[Mesh] OR "thermal perception"[tiab] OR "temperature perception"[tiab] OR allodynia[tiab] OR hyperalgesia[tiab])
+⑤ 本体觉: ("Proprioception"[Mesh] OR propriocept*[tiab] OR kinesth*[tiab] OR "Muscle Spindles"[Mesh] OR sensorimotor[tiab] OR "motor control"[tiab])
+⑥ 前庭觉: ("Vestibule, Labyrinth"[Mesh] OR vestibul*[tiab] OR "Postural Balance"[Mesh] OR postural[tiab] OR balance[tiab] OR "Vestibular Function Tests"[Mesh] OR otolith*[tiab] OR "semicircular canal*"[tiab])
+⑦ 内感受: ("Interoception"[Mesh] OR interocept*[tiab] OR "Autonomic Nervous System"[Mesh] OR "heart rate variability"[tiab] OR "Heart Rate"[Mesh] OR "Galvanic Skin Response"[Mesh] OR electroderm*[tiab] OR "heartbeat tracking"[tiab] OR "respiratory sinus arrhythmia"[tiab])
+
+AND 诊断 / 治疗:
 (diagnos* OR "DSM-5" OR assessment OR treatment OR intervention OR therap* OR rehabilitation)</pre>
-        <p class="kv" style="margin-top:10px"><b>说明:</b> 四层是<strong>主通路</strong>;autism 复杂,<strong>可能并存其他通路</strong>,可加行扩展。各层可分别检索,或如上 OR 合并成一条广检。</p>
+        <p class="kv" style="margin-top:10px"><b>默认排除(留作记录,不跑):</b> 嗅 / 味化学感官 <code>("Olfactory Perception"[Mesh] OR olfact* OR smell OR "Taste Perception"[Mesh] OR gustat* OR taste OR chemosens*)</code>;触及进食 / 营养再启用。(注:臂 A 反而纳入嗅 / 味。)</p>
+        <p class="kv"><b>说明:</b> 搜索按 <strong>7 感觉域</strong> 组织;四阶段神经通路(受器→门控→整合→情感)是 <strong>coding / 合流</strong> 的脚手架。</p>
         <p class="kv"><b>筛选期排除:</b> 非 autism 条件的临床假体(人工耳蜗 / 视网膜假体 / TENS)→ 仅 Background / Future Work,不进搜索。</p>
       </div>
     </section>
