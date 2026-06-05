@@ -4,6 +4,7 @@
 
 Added:
 
+- version2 Perceptual Engineering scoping review: Proposal, Scope (editable two-arm search builder), Search Protocol v2, SEARCH_STRATEGY, PILOT_PLAN, and PROGRESS (resume-here) — scope + two-arm search strategy finalized 2026-06-05.
 - Public medical coauthor coding results page.
 - Public automatic raw transcript and coding memo from the 2026-05-28 medical coauthor interview.
 - Homepage link to medical coauthor materials.
