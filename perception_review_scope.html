@@ -51,6 +51,8 @@
     .checklist li{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px dashed var(--line);}
     .checklist li:last-child{border-bottom:none;}
     .checklist input[type=checkbox]{margin-top:5px;width:17px;height:17px;flex:none;accent-color:var(--accent);}
+    .li-body{flex:1;display:flex;flex-direction:column;gap:6px;}
+    .li-note{width:100%;padding:6px 9px;border:1px solid var(--line);border-radius:6px;font:inherit;background:#fff;}
     .rec{color:var(--muted);font-size:.9rem;}
     .callout{background:var(--warm);border:1px solid #e6d8c6;border-radius:10px;padding:16px 18px;}
     .callout.violet{background:var(--violet);border-color:#ded2ee;}
@@ -154,15 +156,15 @@
       <span class="tag">4 · 两位专家专属决策</span>
       <h2 style="font-size:1.15rem;color:var(--accent-2)">给医生(临床 / 神经边界)</h2>
       <ul class="checklist">
-        <li data-key="医生:神经刺激"><input type="checkbox"><span>神经刺激(tDCS / tACS / TMS)纳入还是单列?<span class="rec">推荐:HCI venue 内、针对知觉的纳入;侵入式 BCI 另案。</span></span></li>
-        <li data-key="医生:临床假体"><input type="checkbox"><span>临床假体(人工耳蜗 / 视网膜假体 / TENS 镇痛)只进 Background、不进 corpus?<span class="rec">推荐:是。</span></span></li>
-        <li data-key="医生:RQ4口径"><input type="checkbox"><span>背书 RQ4 编码口径(神经科学被怎么用:motivation / mechanism / evaluation / inspiration / 缺席 × 承重)。</span></li>
+        <li data-key="医生:神经刺激"><input type="checkbox"><div class="li-body"><span>神经刺激(tDCS / tACS / TMS)纳入还是单列?<span class="rec">推荐:HCI venue 内、针对知觉的纳入;侵入式 BCI 另案。</span></span><input type="text" class="li-note" placeholder="手写结论 / 备注 …"></div></li>
+        <li data-key="医生:临床假体"><input type="checkbox"><div class="li-body"><span>临床假体(人工耳蜗 / 视网膜假体 / TENS 镇痛)只进 Background、不进 corpus?<span class="rec">推荐:是。</span></span><input type="text" class="li-note" placeholder="手写结论 / 备注 …"></div></li>
+        <li data-key="医生:RQ4口径"><input type="checkbox"><div class="li-body"><span>背书 RQ4 编码口径(神经科学被怎么用:motivation / mechanism / evaluation / inspiration / 缺席 × 承重)。</span><input type="text" class="li-note" placeholder="手写结论 / 备注 …"></div></li>
       </ul>
       <h2 style="font-size:1.15rem;color:var(--accent-2);margin-top:18px">给 HCI researcher(领域边界)</h2>
       <ul class="checklist">
-        <li data-key="HCI:VR-AR切法"><input type="checkbox"><span>VR/AR 切法:<strong>知觉级</strong>(redirected walking / 跨模态错觉 / 感官重映射)纳入、<strong>内容级</strong>排除?<span class="rec">推荐:是。</span></span></li>
-        <li data-key="HCI:感官替代归属"><input type="checkbox"><span>感官替代 / 辅助设备(vOICe / BrainPort)算 perceptual engineering?<span class="rec">推荐:纳入,是 margins→everyday 的桥。</span></span></li>
-        <li data-key="HCI:venue补漏"><input type="checkbox"><span>venue / 模态有无遗漏(SIGGRAPH 知觉工作?ToH 触觉错觉?)。</span></li>
+        <li data-key="HCI:VR-AR切法"><input type="checkbox"><div class="li-body"><span>VR/AR 切法:<strong>知觉级</strong>(redirected walking / 跨模态错觉 / 感官重映射)纳入、<strong>内容级</strong>排除?<span class="rec">推荐:是。</span></span><input type="text" class="li-note" placeholder="手写结论 / 备注 …"></div></li>
+        <li data-key="HCI:感官替代归属"><input type="checkbox"><div class="li-body"><span>感官替代 / 辅助设备(vOICe / BrainPort)算 perceptual engineering?<span class="rec">推荐:纳入,是 margins→everyday 的桥。</span></span><input type="text" class="li-note" placeholder="手写结论 / 备注 …"></div></li>
+        <li data-key="HCI:venue补漏"><input type="checkbox"><div class="li-body"><span>venue / 模态有无遗漏(SIGGRAPH 知觉工作?ToH 触觉错觉?)。</span><input type="text" class="li-note" placeholder="手写结论 / 备注 …"></div></li>
       </ul>
     </section>
 
@@ -290,7 +292,9 @@ PubMed 选配(RQ4 神经依据交叉核对)</textarea>
         document.querySelectorAll(".checklist li").forEach(function(li){
           var key = li.getAttribute("data-key");
           var done = li.querySelector("input[type=checkbox]").checked ? "✓" : "□";
-          lines.push("- " + done + " " + key);
+          var noteEl = li.querySelector(".li-note");
+          var note = noteEl ? (noteEl.value || "").trim() : "";
+          lines.push("- " + done + " " + key + (note ? "  | 答: " + note : ""));
         });
         return lines.join("\n");
       }
