@@ -10,55 +10,84 @@
 
 ---
 
-## 臂 A · HCI 感知工程
+## 臂 A · HCI 感知工程  (HCI researcher 版 · 2026-06-05)
 
 **库:** ACM DL + IEEE Xplore(+ Scopus 跨学科补全 / snowballing)
 **venue:** CHI · UIST · TEI · DIS · CHI EA · Augmented Humans · IMWUT/UbiComp · ISS · MobileHCI;IEEE: World Haptics · ToH · IEEE VR
-**式:** `A` AND `B` AND(`C` 或 venue 限定),English,2013–2025
+**reviewer:** HCI = 1st(检索 + 建库),医学生 = 2nd · English · 2013–2025
+> HCI researcher 给两个变体(会上版,具体检索时还会再调):**A1 精确**(具名技术 AND 语境)+ **A2 召回**(模态 AND 作用 AND 语境)。先跑 A1 看精度,再用 A2 补召回。
 
+**A1 · 精确(named-technique AND context):**
 ```
-A — 感知 / 感官目标:
-(perception OR perceptual OR sensory OR multisensory OR cross-modal OR
- propriocept* OR vestibular OR haptic OR tactile OR thermal OR
- olfact* OR smell OR gustat* OR taste OR interocept* OR "sensory substitution")
+(
+  "sensory substitution" OR "sensory augmentation" OR "sensory modulation"
+  OR "perceptual augmentation" OR "perceptual modulation" OR "perceptual engineering"
+  OR "electrical muscle stimulation" OR EMS
+  OR "galvanic vestibular stimulation" OR GVS
+  OR electrotactile OR "electro-tactile"
+  OR "pseudo-haptic" OR pseudohaptic
+  OR "haptic illusion" OR "thermal illusion"
+  OR "olfactory display" OR "gustatory interface"
+  OR "interoceptive feedback" OR "cross-modal feedback"
+  OR "crossmodal feedback" OR biofeedback
+)
 AND
-B — 作用 / 工程化("act on" 动词,排掉纯展示):
-(stimulat* OR "electrical muscle stimulation" OR EMS OR "galvanic vestibular" OR GVS OR
- electrotactile OR "electro-tactile" OR actuat* OR augment* OR substitut* OR
- illusion OR "pseudo-haptic" OR modulat* OR "sensory feedback" OR biofeedback OR
- "perceptual engineering")
-AND
-C — HCI 语境(用 venue 限定可省略):
-(HCI OR "human-computer interaction" OR interface OR wearable OR
- "interaction design" OR "user experience" OR on-body OR "augmented human")
+(
+  HCI OR "human-computer interaction" OR "interaction design"
+  OR wearable* OR "on-body" OR "on body"
+  OR "augmented human" OR "human augmentation"
+  OR interface* OR "user interface"
+)
 ```
 
-**reviewer:** HCI = 1st(检索 + 建库),医学生 = 2nd。
+**A2 · 召回(modality AND action AND context):**
+```
+(
+  propriocept* OR vestibular OR haptic OR tactile OR thermal
+  OR olfact* OR smell OR gustat* OR taste OR interocept*
+)
+AND
+(
+  stimulat* OR actuat* OR augment* OR substitut* OR modulat*
+  OR illusion OR feedback
+)
+AND
+(
+  HCI OR "human-computer interaction" OR wearable* OR interface*
+  OR "interaction design" OR "augmented human"
+)
+```
+
+**注:** 臂 A **纳入嗅 / 味**(感知工程嗅味子领域活跃 —— 与臂 B 相反)。
 **筛选期排除(Covidence,非检索词):** 仅作 **evaluation** 手段者 → 排(技术须作为 **intervention**);纯信息展示 UI;纯 read-out / 控制型 BCI;二次综述;非英文。
 
 ---
 
-## 臂 B · 临床(autism 诊断与治疗)
+## 臂 B · 临床(autism 诊断与治疗)  (医生版 · 2026-06-05)
 
-**库:** PubMed(+ Scopus),基于 `ADSR2` MeSH,2013–2025
-**式:** `P` AND `通路概念(四层 OR)` AND `诊断/治疗`
+**库:** PubMed(+ Scopus),基于 `ADSR2` MeSH · 2013–2025
+**reviewer:** 医学生 = 1st(检索 + 建库),HCI = 2nd
+**式:** `P` AND `(感觉域块 OR …)` AND `诊断/治疗`,**按 7 个感觉域分块**(可分别跑或 OR 合并)。
+> 医生版(会上);她在具体检索时会按命中调整。**注:四阶段神经通路(受器→门控→整合→情感)是 *coding / 合流* 的脚手架;搜索本身按 *感觉域* 组织。**
 
 ```
-P — autism 人群(所有式都 AND 上):
-("Autism Spectrum Disorder"[Mesh] OR autis*[tiab] OR ASD[tiab] OR Asperger*[tiab] OR neurodivers*[tiab])
-AND
-通路概念(四层任一,OR 合并;可加其他通路):
-  受器: (electroretinog* OR ERG OR "auditory brainstem response" OR ABR OR tactile OR somatosensory OR "tactile defensiveness")
-  门控: ("sensory gating" OR GABA OR thalam* OR "excitatory inhibitory" OR "sensory over-responsivity")
-  整合: (multisensory OR "temporal binding window" OR audiovisual OR crossmodal OR postural)
-  情感: (insula* OR amygdala OR interocept* OR "heart rate variability" OR "sensory sensitivity")
-AND
-诊断 / 治疗:
+P — autism 人群(每条都 AND 上):
+("Autism Spectrum Disorder"[Mesh] OR autis*[tiab] OR ASD[tiab] OR "Asperger*"[tiab] OR neurodivers*[tiab])
+
+AND 以下感觉域(任一;可分别跑或 OR 合并):
+① 视觉: ("Electroretinography"[Mesh] OR electroretinog*[tiab] OR ERG[tiab] OR "Retina"[Mesh] OR retina*[tiab] OR photoreceptor*[tiab] OR "Visual Perception"[Mesh] OR "visual processing"[tiab])
+② 听觉: ("Evoked Potentials, Auditory, Brain Stem"[Mesh] OR "auditory brainstem response"[tiab] OR ABR[tiab] OR "otoacoustic emission*"[tiab] OR cochlea*[tiab] OR "Hearing Loss"[Mesh] OR audiomet*[tiab] OR "Auditory Perception"[Mesh])
+③ 触压觉(含振动/纹理): ("Touch"[Mesh] OR "Touch Perception"[Mesh] OR tactile[tiab] OR somatosensory[tiab] OR "tactile defensiveness"[tiab] OR vibrotactile[tiab] OR vibration[tiab] OR "texture perception"[tiab] OR mechanoreceptor*[tiab] OR Shank3[tiab] OR Mecp2[tiab] OR Fmr1[tiab])
+④ 痛温觉: ("Pain"[Mesh] OR "Pain Perception"[Mesh] OR "Pain Threshold"[Mesh] OR nocicept*[tiab] OR "pain sensitivity"[tiab] OR "quantitative sensory testing"[tiab] OR QST[tiab] OR "Thermoreceptors"[Mesh] OR "thermal perception"[tiab] OR "temperature perception"[tiab] OR allodynia[tiab] OR hyperalgesia[tiab])
+⑤ 本体觉: ("Proprioception"[Mesh] OR propriocept*[tiab] OR kinesth*[tiab] OR "Muscle Spindles"[Mesh] OR sensorimotor[tiab] OR "motor control"[tiab])
+⑥ 前庭觉: ("Vestibule, Labyrinth"[Mesh] OR vestibul*[tiab] OR "Postural Balance"[Mesh] OR postural[tiab] OR balance[tiab] OR "Vestibular Function Tests"[Mesh] OR otolith*[tiab] OR "semicircular canal*"[tiab])
+⑦ 内感受: ("Interoception"[Mesh] OR interocept*[tiab] OR "Autonomic Nervous System"[Mesh] OR "heart rate variability"[tiab] OR "Heart Rate"[Mesh] OR "Galvanic Skin Response"[Mesh] OR electroderm*[tiab] OR "heartbeat tracking"[tiab] OR "respiratory sinus arrhythmia"[tiab])
+
+AND 诊断 / 治疗:
 (diagnos* OR "DSM-5" OR assessment OR treatment OR intervention OR therap* OR rehabilitation)
 ```
 
-**reviewer:** 医学生 = 1st(检索 + 建库),HCI = 2nd。
-**说明:** 四层是**主通路**;autism 复杂,**可能并存其他通路**,可加行扩展。各层可分别检索,或如上 OR 合并成一条广检。
+**默认排除(留作记录,不跑):** 嗅 / 味化学感官 —— `("Olfactory Perception"[Mesh] OR olfact*[tiab] OR smell[tiab] OR "Taste Perception"[Mesh] OR gustat*[tiab] OR taste[tiab] OR chemosens*[tiab])`;仅当综述触及进食 / 营养时再启用。(注:臂 A 反而纳入嗅 / 味。)
 **筛选期排除:** 非 autism 条件的临床假体(人工耳蜗 / 视网膜假体 / TENS)→ 仅 Background / Future Work,不进搜索。
 
 ---
@@ -73,8 +102,9 @@ AND
 
 ## 务实提醒
 
-- 先在 ACM DL 跑 **pilot**(取前 ~20% 读),按命中率收紧臂 A 的 B 组(`augment*`/`modulat*` 会带进太多无关 UI,靠 venue + 标题/摘要筛兜底)。
+- 先在 ACM DL 跑 **pilot**(取前 ~20% 读):臂 A 先 **A1(精确)** 看命中率,再用 **A2(召回)** 补漏;A2 的 `augment*`/`modulat*` 噪声多,靠 venue + 标题/摘要筛兜底。
 - 目标 corpus 体量对标 Rao 的 ~192。
 - 自评 / 量表是 **proxy**(非特异:焦虑 / 抑郁均可致心率·呼吸变化;autism 还有 baseline drift):合理但不应**单独**为神经机制 claim 背书 → 编码 RQ4 时记录验证方式。
+- 两位专家均表示**具体检索时会再微调**;本文件为会上(2026-06-05)定稿版。
 
-*v1 · 2026-06-05*
+*v2 · 2026-06-05 · 收录医生(7 感觉域)与 HCI researcher(A1/A2)会上检索式*
